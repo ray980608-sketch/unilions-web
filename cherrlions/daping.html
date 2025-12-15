@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daping - Cheerleader</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* --- 1. 全局設定 --- */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- [新增特效 1] 文字反白顏色 --- */
+        /* 當你用滑鼠選取文字時，會變成統一獅橘色 */
+        ::selection {
+            background: #ff8c00;
+            color: white;
+        }
+
+
+        /* --- 3. 內容區容器 --- */
+        .main-container {
+            margin-top: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        /* --- [新增特效 2] 定義進場動畫 --- */
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(40px); /* 從下方 40px 處開始 */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* 回到原位 */
+            }
+        }
+
+        /* --- 4. 卡片設計 --- */
+        .profile-card {
+            display: flex;
+            width: 700px;
+            height: 400px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            /* 這裡套用進場動畫：0.8秒，緩慢滑入 */
+            animation: slideUpFade 0.8s ease-out forwards;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* 陰影稍微加深 */
+        }
+
+        .card-image {
+            flex: 1;
+            background-color: #333;
+            overflow: hidden; /* 重要！防止圖片放大時超出格子 */
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease; /* 圖片變換速度 */
+        }
+
+        /* [新增特效 3] 滑鼠移過整張卡片時，圖片微微放大 */
+        .profile-card:hover .card-image img {
+            transform: scale(1.08); 
+        }
+
+        .card-info {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            text-align: left;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #ccc;
+            line-height: 1;
+            transition: 0.3s; /* 按鈕變色也要平滑 */
+        }
+        .close-btn:hover {
+            color: #ff8c00;
+            transform: rotate(90deg); /* 滑鼠移上去會轉一下 */
+        }
+
+        .deco-line {
+            width: 60px;
+            height: 6px;
+            background-color: #ff8c00;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-size: 1.1em;
+            color: #888;
+            margin-bottom: 25px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-box {
+            background-color: #fff4e6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ffe0b2;
+            min-width: 80px;
+            transition: 0.3s; /* 平滑變色 */
+            cursor: default;
+        }
+
+        /* [新增特效 4] 數據格滑鼠懸停效果 */
+        .stat-box:hover {
+            background-color: #ff8c00;
+            border-color: #ff8c00;
+            transform: translateY(-3px); /* 微微浮起 */
+        }
+
+        /* 當滑鼠移到盒子時，裡面的字要變白色 */
+        .stat-box:hover .stat-value,
+        .stat-box:hover .stat-label {
+            color: white;
+        }
+
+        .stat-value {
+            display: block;
+            font-weight: bold;
+            color: #d35400;
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            color: #888;
+            margin-top: 3px;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                width: 90%;
+                height: auto;
+            }
+            .card-image {
+                height: 300px;
+            }
+            .card-info {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+ <header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../images/unilions_logo.jpg" alt="Uni-Lions Logo">
+        </a>
+    </div>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <nav id="nav-menu">
+        <ul>
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="../history.html">球隊沿革</a></li>
+            <li><a href="../roster.html">猛獅戰隊</a></li>
+            <li><a href="../cheer.html">應援專區</a></li>
+            <li><a href="https://lioncrew.uni-lions.com.tw/?srsltid=AfmBOorFvXPQ7g9BWlbJ9bGTWt34-2Ivv0bZxoIGnyLTFld7AA4uAnCJ" target="_blank">萊恩酷</a></li>
+            <li><a href="https://ticket.ibon.com.tw/Index/Sport">售票資訊</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <div class="main-container">
+        
+<div class="profile-card">
+            
+            <div class="magazine-image">
+                <img src="../images/cheer/daping(1).jpg" alt="daping Photo">
+            </div>
+
+            <div class="card-info">
+                <a href="javascript:history.back()" class="close-btn">&times;</a>
+
+                <div class="deco-line"></div>
+                
+                <div class="name">達平 #1</div>
+                <div class="title">Unilions Cheerleader</div> <p class="description">
+                    統一獅永遠的精神領袖！ 從外野那嘶吼的吶喊，到帶領全場球迷跳動的背影，達平用他的熱血與汗水，鑄造了猛獅主場最震撼的應援風景。 只要有他在，全場「統一尚勇」的歌聲就不會停歇，他是連結球隊與球迷之間最堅強的紐帶。
+                </p>
+
+                <div class="stats-grid">
+
+
+
+                    <a href="https://www.instagram.com/skychen1981/" target="_blank" class="stat-box" 
+   style="text-decoration: none; cursor: pointer; flex: 1;;">
+    
+    <span class="stat-value">IG</span>
+    <span class="stat-label">Follow Me</span>
+</a>
+    </div>
+</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

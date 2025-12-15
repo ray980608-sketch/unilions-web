@@ -1,0 +1,1301 @@
+/* ========================================= */
+/* 0. 全站基礎設定 (必須放在最上面)         */
+/* ========================================= */
+html {
+    scroll-behavior: smooth; /* 讓按鈕點擊後有絲滑滾動效果 */
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    margin: 0;
+    display: block; 
+}
+
+/* ========================================= */
+/* 1. 導覽列 (Navbar) - 所有頁面共用        */
+/* ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    transition: 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.8));
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #ff6600;
+}
+
+.navbar a.active {
+    color: #ff6600;
+    border-bottom: 2px solid #ff6600;
+    padding-bottom: 5px;
+}
+
+/* ========================================= */
+/* 2. 球員列表頁 (roster.html) 專用樣式     */
+/* ========================================= */
+
+/* 標題區 */
+.roster-header {
+    text-align: center;
+    margin-top: 120px; /* 避開導覽列 */
+    margin-bottom: 40px;
+}
+
+.roster-header h1 {
+    font-size: 48px;
+    margin: 0;
+    color: #000;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.roster-header p {
+    color: #ff6600;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin-top: 10px;
+}
+
+/* === ✨ 這裡是你剛剛缺少的：分類按鈕選單 ✨ === */
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    text-decoration: none;
+    color: #333;
+    background-color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: 2px solid #ddd;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.filter-btn:hover {
+    background-color: #ff6600;
+    color: white;
+    border-color: #ff6600;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(255, 102, 0, 0.3);
+}
+
+.filter-btn:active {
+    transform: scale(0.95);
+}
+
+/* 分類標題 */
+.category-title {
+    max-width: 1200px;
+    margin: 60px auto 30px auto;
+    padding-left: 20px;
+    font-size: 28px;
+    color: #333;
+    font-weight: 900;
+    letter-spacing: 1px;
+    border-left: 8px solid #ff6600;
+    line-height: 1;
+    
+    /* 修正錨點定位被導覽列擋住的問題 */
+    scroll-margin-top: 120px; 
+}
+
+/* 列表容器 */
+.roster-container {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+/* 球員卡片 (列表用) */
+.roster-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roster-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 102, 0, 0.2);
+    border-color: #ff6600;
+}
+
+.card-image {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.card-info {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #eee;
+}
+
+.roster-card .position {
+    display: block;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.roster-card h3 {
+    margin: 5px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.roster-card .number {
+    font-size: 48px;
+    font-weight: 900;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin-top: 10px;
+    line-height: 1;
+}
+
+.roster-card:hover .number {
+    color: #ff6600;
+}
+
+/* 滑鼠移上去的特效 - 只針對連結 (a) 有效 */
+a.roster-card:hover {
+    transform: translateY(-10px); /* 往上浮起 */
+    box-shadow: 0 15px 30px rgba(255, 102, 0, 0.2); /* 橘色光暈 */
+    border-color: #ff6600;
+    cursor: pointer; /* 變手指 */
+}
+/* 如果是 div (教練)，強制不要變手指 */
+div.roster-card {
+    cursor: default; /* 變回箭頭 */
+}
+
+/* ========================================= */
+/* 🚑 緊急修正：強制讓教練卡片不要動 */
+/* ========================================= */
+div.roster-card:hover {
+    transform: none !important;       /* 不准浮起來 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important; /* 陰影不准變大 */
+    border-color: #eee !important;    /* 邊框不准變橘色 */
+    cursor: default !important;       /* 滑鼠不准變手指 */
+}
+/* 🚑 補充修正：教練的背號也不准變橘色 */
+div.roster-card:hover .number {
+    color: #333 !important; /* 強制維持黑色 */
+}
+
+/* ========================================= */
+/* 3. 陳傑憲個人頁 (chen.html) 專用樣式     */
+/* ========================================= */
+.player-card {
+    background-color: white;
+    width: 850px;
+    margin: 120px auto 50px auto; 
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: stretch;
+    padding: 50px;
+    gap: 50px;
+}
+
+.card-left {
+    flex: 1;
+    text-align: center;
+    border-right: 2px solid #ddd;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-photo {
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+.card-left h2 {
+    font-size: 40px;
+    margin: 0;
+    color: #000;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.slogan {
+    color: #444;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+.card-left button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+}
+
+.card-left button:hover {
+    background-color: #000;
+}
+
+.card-right {
+    flex: 1.3;
+}
+
+.card-right h3 {
+    font-size: 22px;
+    color: #000;
+    border-bottom: 4px solid #ff6600;
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    margin-top: 30px;
+    width: fit-content;
+}
+
+.card-right h3:first-child {
+    margin-top: 0;
+}
+
+.info-table {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.info-table th {
+    text-align: justify;
+    text-align-last: justify;
+    width: 70px;
+    color: #888;
+    padding: 8px 20px 8px 0;
+}
+
+.info-table td {
+    font-weight: 600;
+    color: #000;
+}
+
+.stats {
+    background-color: #fcfcfc;
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+}
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-item .label {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.stat-item .value {
+    font-size: 22px;
+    color: #222;
+    font-weight: 900;
+    font-family: Arial, sans-serif;
+}
+
+/* ========================================= */
+/* 4. 首頁 (index.html) 專用樣式            */
+/* ========================================= */
+.hero-banner {
+    width: 100%;
+    height: 700px;
+    background-image: url('images/unilions2025.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-top: 60px;
+    position: relative;
+}
+
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+    padding: 0 0 60px 80px;
+    text-align: left;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 72px;
+    font-weight: 900;
+    color: white;
+    margin: 0;
+    font-style: italic;
+    line-height: 1;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    border-left: 8px solid #ff6600;
+    padding-left: 20px;
+}
+
+.hero-content p {
+    font-size: 24px;
+    color: #ddd;
+    margin: 20px 0 30px 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.cta-button {
+    margin-left: 20px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 18px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.news-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 40px;
+}
+
+.section-title {
+    font-size: 32px;
+    color: #000;
+    margin-bottom: 40px;
+    font-weight: 900;
+    border-left: 6px solid #ff6600;
+    padding-left: 15px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+/* === 新聞卡片樣式 === */
+.news-card {
+    background: white;
+    
+    /* 👇 修改 1：原本是 transparent (透明)，改成 #e0e0e0 (淺灰色) */
+    /* 這樣平常就看得到框框了 */
+    border: 2px solid #e0e0e0; 
+    
+    /* 👇 修改 2：圓角設定，數字越大越圓，原本是 10px，我們改成 20px */
+    border-radius: 20px; 
+    
+    /* 保持原本的設定 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 400px;
+    overflow: hidden;
+    text-align: left;
+    
+    /* 動畫設定 */
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* 確保邊框不會把卡片撐大 */
+}
+
+/* === 滑鼠移上去的互動 === */
+.news-card:hover {
+    /* 👇 滑鼠移上去時，淺灰框變成「猛獅橘」！ */
+    border-color: #ff6600; 
+    
+    /* 稍微放大 + 浮起來 */
+    transform: scale(1.05) translateY(-10px);
+    
+    /* 陰影加深 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    
+    /* 確保蓋在別張卡片上面 */
+    z-index: 2;
+    cursor: pointer;
+}
+
+.news-card {
+    /* 這裡省略其他設定... */
+    
+    /* 👇 這一行非常重要！它是控制動畫速度的 */
+    /* all 0.3s ease = 所有變化都在 0.3 秒內滑順完成 */
+    transition: all 0.3s ease; 
+}
+
+.news-card {
+    /* ... 這裡保留原本的寬度、陰影等設定 ... */
+    
+    /* 👇 加入這行：先給它一個 3px 的透明邊框佔位子 */
+    border: 3px solid transparent; 
+    
+    /* 確保邊框算在寬度內，不會把排版擠壞 */
+    box-sizing: border-box; 
+    
+    /* 動畫設定記得要保留喔 */
+    transition: all 0.3s ease;
+}
+
+.news-card-content {
+    padding: 25px;
+}
+
+.news-card .date {
+    color: #999;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.news-card h3 {
+    font-size: 20px;
+    margin: 0 0 15px 0;
+    color: #222;
+}
+
+.news-card p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    text-decoration: none;
+    color: #ff6600;
+    font-weight: bold;
+    font-size: 14px;
+}
+/* ========================================= */
+/* 🚀 按鈕動畫特效專區 */
+/* ========================================= */
+
+/* 1. 定義動畫劇本：名稱叫 'heartbeat' (心跳) */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);   /* 原始大小 */
+        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.7); /* 橘色光暈 */
+    }
+    70% {
+        transform: scale(1.05); /* 稍微變大 5% */
+        box-shadow: 0 0 20px 10px rgba(255, 102, 0, 0); /* 光暈散開並消失 */
+    }
+    100% {
+        transform: scale(1);   /* 回復原狀 */
+        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
+    }
+}
+
+/* 2. 把動畫套用到按鈕上 */
+.cta-button {
+    /* 讓它執行上面的動畫，2秒一次，無限循環 */
+    animation: heartbeat 0.5s infinite; 
+    
+    /* 讓按鈕本身圓潤一點，比較現代 */
+    border-radius: 50px; 
+    transition: all 0.3s ease; /* 讓其他變色效果也滑順 */
+}
+.cta-button {
+    /* 👇 加入這一行，底線就會消失！ */
+    text-decoration: none;
+    
+    /* 原本的動畫設定保留 */
+    animation: heartbeat 1s infinite; 
+    border-radius: 50px; 
+    transition: all 0.3s ease;
+    
+    /* 建議順便加這行，讓字體變成粗體，看起來更有份量 */
+    font-weight: bold; 
+}
+
+/* 3. 滑鼠移上去的時候 (Hover) */
+.cta-button:hover {
+    animation: none; /* 滑鼠移上去就暫停心跳，專注變色 */
+    background-color: #ffcc00; /* 變成亮黃色 */
+    color: #000; /*文字變黑*/
+    transform: scale(1.1) rotate(-3deg); /* 放大並稍微歪一點點，很俏皮 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* 浮起來的陰影 */
+}
+
+/* 4. 滑鼠按下去的時候 (Click) */
+.cta-button:active {
+    transform: scale(0.95); /* 稍微縮下去，有按壓感 */
+}
+/* === 歷史沿革 (統一對齊版) === */
+
+/* 1. 設定大箱子 (讓標題跟內容共用這個寬度) */
+.history-wrapper {
+    max-width: 800px;        /* 限制寬度 */
+    margin: 0 auto 50px auto;/* 置中 */
+    padding: 0 20px;         /* 手機版左右留白 */
+    text-align: left;        /* 全部文字靠左對齊 */
+}
+
+/* 2. 修改標題樣式 (配合對齊) */
+.history-wrapper .category-title {
+    margin-top: 40px;        /* 標題上方留點空隙 */
+    margin-bottom: 15px;     /* 標題與內容的距離 */
+    padding-left: 0;         /* 確保左邊沒有多餘的留白 */
+    border-left: 5px solid #ff6600; /* (選用) 左邊加一條橘線裝飾 */
+    padding-left: 15px;      /* 如果有橘線，文字要縮進去一點才好看 */
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* 3. 修改內容樣式 (乖乖跟隨標題) */
+.history-wrapper .history-content {
+    /* ❌ 原本有設定 margin 和 width，現在全部拿掉，讓它跟隨大箱子 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 4. 段落微調 */
+.history-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 15px;
+    padding-left: 20px; /* 💡關鍵：讓文字稍微縮排，對齊標題文字的起始點 */
+}
+
+.history-content strong {
+    color: #ff6600;
+    margin-right: 8px;
+}
+/* ========================================= */
+/* 📊 戰績表樣式 (Standings) */
+/* ========================================= */
+
+.standings-section {
+    padding: 40px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+/* 表格容器 */
+.table-container {
+    max-width: 900px;        /* 限制最大寬度，比較好讀 */
+    margin: 0 auto;          /* 置中 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 整個表格浮起來 */
+    border-radius: 10px;     /* 圓角 */
+    overflow: hidden;        /* 切掉超出的圓角 */
+}
+
+/* 賽季標題條 (深灰色那條) */
+.season-header {
+    background: linear-gradient(to bottom, #4a4a4a, #333); /* 深灰漸層 */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* 表格本體設定 */
+.standings-table {
+    width: 100%;
+    border-collapse: collapse; /* 格線合併，不要有空隙 */
+    font-size: 1rem;
+}
+
+/* 表頭 (排名、球隊...) */
+.standings-table thead tr {
+    background-color: #222;  /* 更深一點的黑 */
+    color: white;
+}
+
+.standings-table th {
+    padding: 12px;
+    font-weight: normal;
+    font-size: 0.9rem;
+    color: #ccc;             /* 淺灰色字 */
+}
+
+/* 表格內容格子 */
+.standings-table td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee; /* 每一行下面有灰線 */
+    color: #333;
+    font-weight: bold;       /* 數字粗體比較清楚 */
+}
+
+/* 排名數字特別大一點 */
+.rank-num {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.4rem;
+    font-style: italic;      /* 斜體更有速度感 */
+    color: #555;
+}
+
+/* 球隊名稱與Logo對齊 */
+.team-name {
+    display: flex;
+    align-items: center;     /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    gap: 10px;               /* 圖片跟文字的距離 */
+}
+
+.team-icon {
+    width: 30px;             /* Logo 大小控制 */
+    height: auto;
+}
+
+/* 🦁 統一獅專屬高亮區 (Highlight) */
+.standings-table tr.highlight {
+    background-color: #fff5e6; /* 淡淡的橘色背景 */
+}
+
+.standings-table tr.highlight td {
+    color: #ff6600;            /* 全部文字變橘色 */
+    border-bottom: 2px solid #ff6600; /* 下底線變橘色 */
+}
+
+/* 滑鼠移上去的效果 */
+.standings-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+.standings-table tbody tr.highlight:hover {
+    background-color: #ffe0cc; /* 統一獅那行移上去更橘 */
+}/* ========================================= */
+/* 🍊 統一獅風格標題 (帶有橘色豎線) */
+/* ========================================= */
+
+/* 1. 設定標題文字本體 */
+.section-title {
+    position: relative;       /* 關鍵：讓橘色線以這個標題為基準定位 */
+    display: inline-block;    /* 關鍵：讓標題方塊縮到跟文字一樣寬，線才會貼著字 */
+    padding-left: 25px;       /* 在左邊留一點空間給橘色線，不要黏在一起 */
+    margin-bottom: 30px;      /* 跟下面的表格保持距離 */
+    
+    font-size: 2rem;          /* 字體大小 */
+    font-weight: bold;        /* 粗體 */
+    color: #333;              /* 深黑色字 */
+    text-transform: uppercase;/* 英文強制大寫 (STANDING) */
+}
+
+/* 2. 畫出那條橘色的線 (使用偽元素 ::before) */
+.section-title::before {           /* 這是畫圖形一定要寫的咒語 */
+    position: absolute;       /* 絕對定位 */
+    left: 0;                  /* 貼在標題方塊的最左邊 */
+    top: 50%;                 /* 垂直定位在中間 */
+    transform: translateY(-50%); /* 修正垂直置中，讓它精準對齊中線 */
+    
+    width: 6px;               /* 線的寬度 (粗細) */
+    height: 70%;              /* 線的高度 (比文字稍微矮一點點比較有質感) */
+    background-color: #ff6600; /* 猛獅橘！ */
+    border-radius: 3px;       /* 線的兩端稍微圓圓的 */
+}
+
+/* 3. 確保父容器讓標題置中 (補充檢查) */
+.standings-section {
+    text-align: center; /* 確保整個標題在畫面中間 */
+    /* ... 其他原本的設定保留 ... */
+}
+/* ========================================= */
+/* ⚾️ 球員個人頁面 (完整全配版 CSS) */
+/* ========================================= */
+
+/* 1. 外層大容器 (負責左右排版) */
+.player-profile-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    background: white;
+    display: flex;          /* 讓裡面變成左右排列 */
+    align-items: flex-start;
+    gap: 60px;              /* 左右間距 */
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* 2. 左邊：照片區 (負責顯示照片) */
+.profile-left {
+    flex: 1;                /* 佔 1 等份 */
+    position: sticky;       /* 捲動時黏在頂部 */
+    top: 20px;
+}
+
+.main-photo {
+    width: 100%;            /* 寬度填滿容器 */
+    max-width: 100%;        /* ⚠️ 關鍵：最大不超過容器寬度 */
+    height: auto;           /* ⚠️ 關鍵：高度自動計算，保持原本比例 */
+    border-radius: 20px;
+    box-shadow: 10px 10px 0px #ff9933;
+    object-fit: contain;    /* ⚠️ 關鍵：確保整張圖片都顯示出來，不裁切 */
+    display: block;
+}
+
+/* 背景大背號 */
+.player-number {
+    font-size: 8rem;
+    font-weight: 900;
+    color: #f4f4f4;
+    position: absolute;
+    top: -40px;
+    left: -30px;
+    z-index: -1;
+}
+
+/* 3. 右邊：文字資料區 */
+.profile-right {
+    flex: 1.2;              /* 佔 1.2 等份 (比照片寬一點) */
+}
+
+.player-name {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.eng-name {
+    font-size: 1.2rem;
+    color: #888;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.player-slogan {
+    color: #ff6600;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.divider {
+    height: 2px;
+    background: #eee;
+    margin: 20px 0;
+}
+
+/* 4. 資料表格 (這就是我們剛剛修好的美化版) */
+.profile-table {
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+
+.profile-table tr {
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.profile-table tr:hover {
+    background-color: #fcfcfc;
+}
+
+.profile-table th {
+    text-align: left;
+    width: 140px;           /* 固定標題寬度 */
+    color: #888;
+    padding: 16px 5px;
+    font-weight: normal;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.profile-table td {
+    font-weight: bold;
+    color: #333;
+    padding: 16px 0;
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+/* 5. 介紹文字區 */
+.player-bio h3 {
+    border-left: 4px solid #ff6600;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.player-bio p {
+    line-height: 1.8;
+    color: #555;
+}
+
+/* 6. 按鈕區塊 (包含中職紅按鈕) */
+.action-buttons {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 中職官網按鈕 */
+.cpbl-btn {
+    display: inline-block;
+    background-color: #b20000; /* 紅色 */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(178, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cpbl-btn:hover {
+    background-color: #d90000;
+    transform: translateY(-3px);
+}
+
+/* 返回按鈕 */
+.back-btn {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* 7. 手機版響應式 (螢幕變小就變直排) */
+@media (max-width: 768px) {
+    .player-profile-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+    .main-photo {
+        max-width: 100%;
+    }
+}
+/* ========================================= */
+/* 📣 應援專區 (Cheer Zone) 樣式 */
+/* ========================================= */
+
+/* 應援主視覺 */
+.cheer-hero {
+    height: 400px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/unilionscheer.jpg'); /* 記得找一張全場橘海的照片 */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.cheer-hero h1 {
+    font-size: 4rem;
+    margin: 0;
+    text-shadow: 0 5px 15px rgba(255, 102, 0, 0.8);
+    font-style: italic;
+}
+
+/* 團長區 */
+.leaders-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.leader-card {
+    text-align: center;
+    width: 250px;
+}
+
+.leader-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* 圓形頭像 */
+    overflow: hidden;
+    margin: 0 auto 20px auto;
+    border: 5px solid #ff6600;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.leader-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leader-card:hover .leader-photo {
+    transform: scale(1.1) rotate(5deg); /* 滑鼠移過去會轉一下 */
+}
+
+/* Uni-Girls 區 */
+.ug-bg {
+    background-color: #fff5e6; /* 淡橘色背景 */
+    padding-bottom: 60px;
+}
+
+.ug-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 自動排版 */
+    gap: 30px;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.ug-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.ug-card:hover {
+    transform: translateY(-10px);
+}
+
+.ug-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.ug-card h3 {
+    margin: 10px 0;
+    color: #ff6600;
+}
+
+/* 影片區 (RWD 神奇語法) */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.video-card {
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+.video-card h3 {
+    padding: 10px;
+    margin: 0;
+}
+
+/* ⚠️ 這是讓 YouTube 在手機上不會跑版的關鍵魔法 */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 的比例 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+/* ========================================= */
+/* 📱 手機版 RWD 最終整合版 (請貼在 style.css 最下面) */
+/* ========================================= */
+
+/* 1. 漢堡按鈕樣式 (平常隱藏) */
+#menu-toggle { display: none; }
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 1001;
+    padding: 10px;
+}
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 2. 手機版專屬規則 (螢幕小於 768px 時生效) */
+@media (max-width: 768px) {
+
+    /* --- A. 導覽列與漢堡 (強制顯示) --- */
+    .navbar {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 20px;
+        height: 70px;
+    }
+    
+    .logo img { height: 40px; width: auto; }
+    
+    .hamburger { display: flex !important; } /* 漢堡出來！ */
+
+    /* --- B. 滑動選單 --- */
+    #nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 250px;
+        height: auto;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 20px 0;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 5px 15px rgba(0,0,0,0.3);
+        border-radius: 0 0 0 10px;
+    }
+    #nav-menu ul { flex-direction: column; width: 100%; gap: 0; }
+    #nav-menu ul li { width: 100%; text-align: center; }
+    #nav-menu ul li a {
+        display: block;
+        padding: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    /* 開關邏輯 */
+    #menu-toggle:checked ~ #nav-menu { right: 0; }
+    #menu-toggle:checked ~ .hamburger span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+    #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    /* --- C. 📸 照片裁切修復專區 (重點！) --- */
+    
+    /* 1. 個人頁 (陳傑憲) */
+    .profile-left {
+        position: static !important; /* 解除固定 */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .main-photo {
+        width: 100% !important;
+        height: auto !important;        /* 高度自動 */
+        object-fit: contain !important; /* 完整顯示，不裁切 */
+        max-height: none !important;    /* 解除限制 */
+        border-radius: 15px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 20px; /*讓照片離卡片頂部有一點距離，看起來比較不壓迫*/
+    }
+    
+    /* 2. 戰隊列表頁 (林佳緯) */
+    .roster-card .card-image {
+        height: auto !important; /* 卡片高度自動 */
+        min-height: 200px;
+        padding: 10px;
+    }
+    .roster-card .card-image img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important; /* 完整顯示 */
+    }
+
+    /* --- D. 其他修正 (戰績表、新聞) --- */
+    .player-profile-container { flex-direction: column; padding: 20px; gap: 30px; }
+    .hero-content h1 { font-size: 3rem; }
+    .table-container {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: scroll !important; /* 戰績表滑動 */
+        padding-bottom: 10px;
+    }
+    .standings-table { min-width: 600px !important; }
+    .news-card { width: 100% !important; margin: 0 auto; }
+    .news-grid { grid-template-columns: 1fr; }
+
+} /* ⬅️ 這是整個 @media 的結束括號，一定要有！ */
+
+/* ========================================= */
+/* 📸 個人頁面專屬 IG 按鈕 (大顆版) */
+/* ========================================= */
+.ig-btn-large {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(220, 39, 67, 0.3);
+    transition: all 0.3s ease;
+}
+
+.ig-btn-large img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* 把 IG icon 變成白色 */
+}
+
+.ig-btn-large:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(220, 39, 67, 0.5);
+}
+/* 讓變成連結的卡片保持原本樣式 */
+.leader-card {
+    text-decoration: none; /* 去除底線 */
+    color: inherit;        /* 文字顏色跟隨原本設定，不要變藍色 */
+    display: flex;         /* 保持原本的排版屬性 */
+    flex-direction: column;
+    align-items: center;
+    /* ...保留你原本 leader-card 的其他設定... */
+    cursor: pointer;       /* 滑鼠移上去變手指 */
+}
+
+/* 滑鼠移上去的特效 (可選) */
+.leader-card:hover {
+    transform: translateY(-5px); /* 微微浮起 */
+    transition: 0.3s;
+}
+/* 確保當 leader-card 變成連結(a)時，依然保持塊狀特性 */
+a.leader-card {
+    display: flex;         /* 讓內部的圖片文字垂直排列 */
+    flex-direction: column;
+    align-items: center;   /* 內容置中 */
+    width: 250px;          /* ⚠️ 關鍵：強制限制寬度，不然它可能會佔滿整行 */
+    text-decoration: none; /* 去除底線 */
+    color: inherit;        /* 顏色繼承 */
+}
+/* 1. 調整名字 (h3) 的距離 */
+.leader-card h3 {
+    margin-bottom: 5px;  /* 原本距離很大，改小成 5px */
+    margin-top: 10px;    /* 稍微跟照片保持一點距離 */
+    color: #333;         /* 確保名字是深黑色 */
+    font-size: 1.5rem;   /* 字體大小 */
+}
+
+/* 2. 調整 Hashtag (p) 的距離 */
+.leader-card p {
+    margin-top: 0;       /* 把上方的距離歸零，這樣就會貼著名字了 */
+    color: #888;         /* (建議) 讓 Hashtag 顏色稍微淡一點，比較有層次感 */
+    font-size: 0.95rem;  /* (建議) 字體比名字小一點點 */
+    font-weight: bold;   /* (建議) 加粗一點 */
+}
+/* === 📸 左側照片區 (改名避免衝突) === */
+        
+        /* 原本叫 .card-image，請改成 .magazine-image */
+        .magazine-image {
+            flex: 1; 
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        /* 這裡也要記得改 */
+        .magazine-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: top center; 
+            transition: transform 0.6s ease;
+        }
+
+        /* 滑鼠移上去的特效也要改 */
+        .profile-card:hover .magazine-image img {
+            transform: scale(1.08); 
+        }
+        /* 找到這一段，加入 flex: 1; */
+

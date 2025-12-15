@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>faye Uni-Girls</title>
+    
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* --- 2. York 專屬清新風 CSS --- */
+        
+        * { box-sizing: border-box; }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 背景改成很柔和的雲朵白，帶一點點暖色 */
+            background-color: #faf9f6; 
+            font-family: 'Varela Round', 'Helvetica Neue', Arial, sans-serif; /* 圓潤字體優先 */
+        }
+
+        /* 文字選取顏色：改成可愛的粉橘色 */
+        ::selection { background: #ffb7b2; color: white; }
+
+        .main-container {
+            margin-top: 100px; 
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        /* 讓卡片有一個輕輕上下浮動的可愛動畫 */
+        @keyframes floatY {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* === ☁️ 卡片本體：圓潤可愛 === */
+        .profile-card {
+            display: flex;
+            width: 750px; /* 稍微寬一點，讓畫面更鬆散舒服 */
+            height: 500px; 
+            background-color: white;
+            
+            /* ✅ 關鍵：不對稱的圓角，左上右下大，右上左小，很俏皮 */
+            border-radius: 50px 20px 50px 20px; 
+            
+            /* 柔和的散光陰影 */
+            box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+            
+            overflow: hidden;
+            border: 5px solid white; /* 加一圈白邊，像拍立得 */
+            
+            /* 套用浮動動畫 */
+            animation: floatY 4s ease-in-out infinite;
+        }
+
+        /* === 📸 左側照片區 === */
+        .magazine-image {
+            flex: 1; 
+            background-color: #ffe4e1; /* 照片還沒載入時是粉底 */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .magazine-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: top center; /* 對齊頭頂 */
+            transition: transform 0.5s ease;
+        }
+
+        /* 滑鼠移上去照片會「歪頭」一下 */
+        .profile-card:hover .magazine-image img {
+            transform: scale(1.05) rotate(-2deg); 
+        }
+
+        /* === 📝 右側文字區 === */
+        .card-info {
+            flex: 1.2; 
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* 靠左 */
+            position: relative;
+            background: radial-gradient(circle at top right, #fff5f2, #fff); /* 微微的粉橘漸層背景 */
+        }
+
+        /* 返回按鈕：變成一個圓圈圈 */
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #aaa;
+            width: 35px;
+            height: 35px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .close-btn:hover {
+            color: white;
+            background-color: #ffaa80; /* 粉橘色 */
+            transform: scale(1.1);
+        }
+
+        /* 裝飾：可愛的小圓點 */
+        .deco-dot {
+            width: 15px;
+            height: 15px;
+            background-color: #ffaa80;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .name {
+            font-size: 2.2em;
+            font-weight: 900;
+            color: #4a4a4a; /* 深灰比純黑柔和 */
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 1em;
+            color: #ffaa80; /* 粉橘色 */
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: #fff0e6;
+            padding: 5px 15px;
+            border-radius: 20px; /* 膠囊形狀標籤 */
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        /* 數據格子區：改成圓形氣泡 */
+        .stats-grid {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .stat-box {
+            background-color: white;
+            padding: 10px;
+            border-radius: 20px; /* 圓角矩形 */
+            text-align: center;
+            border: 2px solid #f0f0f0; /* 淡淡的邊框 */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+            cursor: default;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .stat-box:hover {
+            border-color: #ffaa80;
+            background-color: #fff8f5;
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            display: block;
+            font-weight: bold;
+            color: #4a4a4a;
+            font-size: 1.1em;
+        }
+
+        .stat-label {
+            font-size: 0.7em;
+            color: #999;
+            margin-top: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* IG 按鈕特別樣式 */
+        .ig-box {
+            background-color: #fff0f5; /* 淡淡粉紅底 */
+            border-color: #ffebf0;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .ig-box:hover {
+            background-color: #ff6b6b; /* 懸停變深粉紅 */
+            border-color: #ff6b6b;
+        }
+        .ig-box:hover .stat-value,
+        .ig-box:hover .stat-label {
+            color: white; /* 字變白 */
+        }
+
+        /* 手機版 RWD */
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                width: 90%;
+                height: auto;
+                border-radius: 30px; /* 手機版圓角小一點 */
+            }
+            .magazine-image {
+                height: 350px; 
+            }
+            .card-info {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+   <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/unilions_logo.jpg" alt="Uni-Lions Logo">
+            </a>
+        </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span><span></span><span></span>
+        </label>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="../index.html">首頁</a></li>
+                <li><a href="../history.html">球隊沿革</a></li>
+                <li><a href="../roster.html">猛獅戰隊</a></li> 
+                <li><a href="../cheer.html">應援專區</a></li>
+                <li><a href="https://lioncrew.uni-lions.com.tw/?srsltid=AfmBOorFvXPQ7g9BWlbJ9bGTWt34-2Ivv0bZxoIGnyLTFld7AA4uAnCJ" target="_blank">萊恩酷</a></li>
+                <li><a href="https://ticket.ibon.com.tw/Index/Sport" target="_blank">售票資訊</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="profile-card">
+            <div class="magazine-image">
+                <img src="../images/cheer/faye(1).jpg" alt="faye Photo">
+            </div>
+
+            <div class="card-info">
+                <a href="javascript:history.back()" class="close-btn">&times;</a>
+
+                <div class="deco-dot"></div>
+                
+                <div class="name">斐棋</div>
+                <div class="title">✨ Uni-Girls </div> 
+                <p class="description">
+                    Uni-Girls 裡的「功夫少女」！ 擁有深厚的武術（散打）底子，跳起舞來力道十足，充滿爆發力。 招牌的俏麗短髮搭配甜死人的笑容，動靜皆宜的反差魅力，讓她在應援台上總是散發著獨特的光芒。
+                </p>
+
+                <div class="stats-grid">
+
+
+
+                    <a href="https://www.instagram.com/feichi1124/" target="_blank" class="stat-box" 
+   style="text-decoration: none; cursor: pointer; flex: 1;;">
+    
+    <span class="stat-value">IG</span>
+    <span class="stat-label">Follow Me</span>
+</a>
+    </div>
+</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
