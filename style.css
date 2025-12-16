@@ -1316,7 +1316,7 @@ a.leader-card {
     margin-bottom: 30px;
 /* ✅ 新增這行：左右留空間 */
     /* 0代表上下不加，20px代表左右各縮排 20px */
-    padding: 0 30px; 
+    padding: 0 20px; 
     
     /* ✅ 建議加上這行：防止寬度爆掉 */
     /* 這行是確保你的 padding 是往內縮，而不是往外長 */
@@ -1365,7 +1365,7 @@ a.leader-card {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important; /* 手機強制兩欄 */
     gap: 20px !important;
-    padding: 0 40px !important; /* ✅ 這裡就是你要的 40px 空間 */
+    padding: 0 20px !important; /* ✅ 這裡就是你要的 40px 空間 */
     box-sizing: border-box !important;
     margin: 20px auto !important;
 }
