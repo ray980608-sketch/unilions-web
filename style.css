@@ -1310,7 +1310,7 @@ ug-grid {
     /* 手機版強制兩欄平均分配 */
     grid-template-columns: repeat(2, 1fr);
     /* 卡片之間的間距 */
-    gap: 15px;
+    gap: 10px;
     /* 上下留點空間 */
     margin-top: 20px;
     margin-bottom: 30px;
