@@ -1322,6 +1322,36 @@ a.leader-card {
         padding: 0 20px !important; /* 手機版留白小一點 */
         gap: 15px !important;
     }
+    /* --- E. 💃 Uni-Girls 手機版最終修復 --- */
+    /* 1. 強制卡片變回兩欄網格 */
+    .ug-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* 強制兩欄 */
+        gap: 15px !important;
+        padding: 0 20px !important;
+    }
+
+    /* 2. 照片強制設定：3:4 比例 + 對齊頭頂 */
+    .ug-card img {
+        width: 100% !important;
+        height: auto !important;
+        
+        /* 👇 這裡是最關鍵的魔法 */
+        aspect-ratio: 3 / 4 !important;      /* 鎖定長方形比例 */
+        object-fit: cover !important;        /* 填滿格子，不要留白 */
+        object-position: top center !important; /* 臉絕對不能切到 */
+        
+        border-radius: 10px 10px 0 0 !important;
+        display: block !important;
+    }
+
+    /* 3. 確保名字不要有底線 */
+    .ug-card h3 {
+        font-size: 1rem !important; /* 手機版字稍微小一點點比較秀氣 */
+        margin-top: 8px !important;
+        text-decoration: none !important;
+        border: none !important;
+    }
 }
 
 /* 3. 卡片本體設定 */
