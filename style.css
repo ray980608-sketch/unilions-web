@@ -1305,7 +1305,7 @@ a.leader-card {
 
 /* 1. 定義一個新的網格容器，專門給 UG 女孩用 */
 /* 讓她們在手機上乖乖排成兩列 */
-.ug-grid {
+ug-grid {
     display: grid;
     /* 手機版強制兩欄平均分配 */
     grid-template-columns: repeat(2, 1fr);
