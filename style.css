@@ -1354,3 +1354,14 @@ a.leader-card {
     font-size: 1rem; /* 字體大小 */
     font-weight: normal; /* 不要太粗 */
 }
+
+    .main-photo {
+        width: 100% !important;
+        height: auto !important;        /* 高度自動 */
+        object-fit: contain !important; /* 完整顯示，不裁切 */
+        max-height: none !important;    /* 解除限制 */
+        border-radius: 15px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 20px; /*讓照片離卡片頂部有一點距離，看起來比較不壓迫*/
+    }
