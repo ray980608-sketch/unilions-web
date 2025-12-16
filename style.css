@@ -1305,17 +1305,22 @@ a.leader-card {
 
 /* 1. 定義一個新的網格容器，專門給 UG 女孩用 */
 /* 讓她們在手機上乖乖排成兩列 */
-.ug-grid {
+ug-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 確保手機是兩欄 */
-    gap: 30px;
-    max-width: 1000px;
-    margin: 40px auto;
-    
-    /* ✅ 這裡改成 40px */
+    /* 手機版強制兩欄平均分配 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 卡片之間的間距 */
+    gap: 10px;
+    /* 上下留點空間 */
+    margin-top: 20px;
+    margin-bottom: 30px;
+/* ✅ 新增這行：左右留空間 */
+    /* 0代表上下不加，20px代表左右各縮排 20px */
     padding: 0 20px; 
     
-    box-sizing: border-box; /* 這行保險一定要加 */
+    /* ✅ 建議加上這行：防止寬度爆掉 */
+    /* 這行是確保你的 padding 是往內縮，而不是往外長 */
+    box-sizing: border-box; 
 }
 
 /* 2. 美化每一張小卡片 (ug-card) */
