@@ -1305,12 +1305,12 @@ a.leader-card {
 
 /* 1. 定義一個新的網格容器，專門給 UG 女孩用 */
 /* 讓她們在手機上乖乖排成兩列 */
-ug-grid {
+.ug-grid {
     display: grid;
     /* 手機版強制兩欄平均分配 */
     grid-template-columns: repeat(2, 1fr);
     /* 卡片之間的間距 */
-    gap: 10px;
+    gap: 15px;
     /* 上下留點空間 */
     margin-top: 20px;
     margin-bottom: 30px;
@@ -1337,7 +1337,6 @@ ug-grid {
     color: #333; /* 文字改成深灰色，比較有質感 */
     display: block; /* 讓整張卡片變成一個完整的區塊 */
     transition: transform 0.2s; /* 加個小動畫，按下去會彈一下 */
-    
 }
 
 /* 按下卡片時的效果 */
