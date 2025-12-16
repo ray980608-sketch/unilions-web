@@ -1313,7 +1313,7 @@ a.leader-card {
     margin: 40px auto;
     
     /* ✅ 這裡改成 40px */
-    padding: 0 40px; 
+    padding: 0 20px; 
     
     box-sizing: border-box; /* 這行保險一定要加 */
 }
