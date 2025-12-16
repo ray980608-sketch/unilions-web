@@ -1386,3 +1386,23 @@ a.leader-card {
     height: auto !important; 
     min-height: auto !important;
 }
+/* ========================================= */
+/* ✂️ 最終修容：去除女孩名字下方的橘線 */
+/* ========================================= */
+
+/* 1. 針對外層連結卡片 */
+.ug-card {
+    text-decoration: none !important; /* 強制拿掉底線 */
+    border: none !important;          /* 確保沒有邊框 */
+}
+
+/* 2. 針對裡面的名字 (h3) */
+.ug-card h3 {
+    text-decoration: none !important; /* 雙重保險，拿掉文字底線 */
+    border-bottom: none !important;   /* 如果是邊框線，也一併拿掉 */
+    
+    /* 確保文字還是漂亮的橘色，但沒有雜訊 */
+    color: #ff6600 !important; 
+    display: block !important;
+    margin-top: 10px !important;      /* 保持一點距離才好看 */
+}
