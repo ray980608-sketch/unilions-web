@@ -1387,22 +1387,30 @@ a.leader-card {
     min-height: auto !important;
 }
 /* ========================================= */
-/* ✂️ 最終修容：去除女孩名字下方的橘線 */
+/* ✂️ 最終修容：強制殺掉所有底線 (UG 專用) */
 /* ========================================= */
 
-/* 1. 針對外層連結卡片 */
-.ug-card {
-    text-decoration: none !important; /* 強制拿掉底線 */
-    border: none !important;          /* 確保沒有邊框 */
+/* 1. 針對外層的連結卡片 (a標籤) */
+a.ug-card {
+    text-decoration: none !important; /* ❌ 絕對不准有底線 */
+    border: none !important;          /* ❌ 絕對不准有邊框 */
+    outline: none !important;         /* ❌ 絕對不准有外框 */
+    display: block !important;        /* 保持塊狀 */
 }
 
-/* 2. 針對裡面的名字 (h3) */
+/* 2. 針對裡面的名字 (h3標籤) */
 .ug-card h3 {
-    text-decoration: none !important; /* 雙重保險，拿掉文字底線 */
-    border-bottom: none !important;   /* 如果是邊框線，也一併拿掉 */
-    
-    /* 確保文字還是漂亮的橘色，但沒有雜訊 */
-    color: #ff6600 !important; 
+    text-decoration: none !important; /* ❌ 雙重保險，文字本身也不准有線 */
+    border-bottom: none !important;   /* ❌ 也不准用邊框畫線 */
+    color: #ff6600 !important;        /* ⭕️ 只要保留橘色字體就好 */
     display: block !important;
-    margin-top: 10px !important;      /* 保持一點距離才好看 */
+    margin-top: 10px !important;
+}
+
+/* 3. 針對滑鼠移上去的時候 (Hover) */
+a.ug-card:hover, 
+a.ug-card:active, 
+a.ug-card:visited {
+    text-decoration: none !important; /* ❌ 任何狀態下都不准出現線 */
+    color: inherit !important;
 }
