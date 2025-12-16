@@ -1463,3 +1463,35 @@ a.ug-card:visited {
     text-decoration: none !important; /* ❌ 任何狀態下都不准出現線 */
     color: inherit !important;
 }
+/* ========================================= */
+/* ⚾️ 手機版球員列表：強制改為兩欄 (像啦啦隊一樣) */
+/* ========================================= */
+@media (max-width: 768px) {
+    .roster-container {
+        display: grid !important;
+        /* 👇 關鍵指令：強制分成兩欄 (1fr 1fr) */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 15px !important;       /* 間距改小一點，不然會太擠 */
+        padding: 0 10px !important; /* 左右留白也縮小 */
+    }
+
+    /* 👇 因為變窄了，字體跟圖片稍微縮小一點才好看 */
+    .roster-card h3 {
+        font-size: 1.2rem !important; /* 名字改小 (原本很大) */
+        margin: 5px 0 !important;
+    }
+    
+    .roster-card .number {
+        font-size: 2.5rem !important; /* 背號改小 */
+        margin-top: 5px !important;
+    }
+
+    .roster-card .card-image {
+        min-height: 120px !important; /* 圖片高度縮小，避免卡片變成長條形 */
+        padding: 5px !important;
+    }
+    
+    .card-info {
+        padding: 10px !important; /* 資訊區的留白也縮小 */
+    }
+}
