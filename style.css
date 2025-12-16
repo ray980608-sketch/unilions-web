@@ -1129,6 +1129,28 @@ div.roster-card:hover .number {
         padding: 10px 20px;
         height: 70px;
     }
+    /* --- E. 💃 Uni-Girls 手機版最終強制修復 (貼在 @media 裡面) --- */
+    .ug-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* 強制兩欄 */
+        gap: 15px !important;
+        padding: 0 20px !important;
+    }
+
+    .ug-card img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4 !important;      /* 鎖定 3:4 比例 */
+        object-fit: cover !important;        /* 填滿格子 */
+        object-position: top center !important; /* 臉絕對不能切到 */
+        border-radius: 10px 10px 0 0 !important;
+    }
+    
+    .ug-card h3 {
+        color: #ff6600 !important; /* 強制橘色 */
+        text-decoration: none !important; /* 去除底線 */
+        border: none !important;
+    }
     
     .logo img { height: 40px; width: auto; }
     
