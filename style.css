@@ -1299,3 +1299,55 @@ a.leader-card {
         }
         /* 找到這一段，加入 flex: 1; */
 
+/* -------------------------------------------------- */
+/* Uni-Girls 專區修正補丁 (手機排版 + 去除藍線)  */
+/* -------------------------------------------------- */
+
+/* 1. 定義一個新的網格容器，專門給 UG 女孩用 */
+/* 讓她們在手機上乖乖排成兩列 */
+.ug-grid {
+    display: grid;
+    /* 手機版強制兩欄平均分配 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 卡片之間的間距 */
+    gap: 15px;
+    /* 上下留點空間 */
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* 2. 美化每一張小卡片 (ug-card) */
+.ug-card {
+    background: #fff; /* 卡片背景是白色 */
+    border-radius: 12px; /* 圓角看起來比較柔和 */
+    overflow: hidden; /* 讓圖片的角角不要跑出圓框外 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加一點點陰影比較有立體感 */
+    text-align: center; /* 文字置中 */
+    padding-bottom: 10px; /* 名字下面留點白邊 */
+    
+    /* ✅ 關鍵！移除超連結的藍色底線和預設顏色 */
+    text-decoration: none; 
+    color: #333; /* 文字改成深灰色，比較有質感 */
+    display: block; /* 讓整張卡片變成一個完整的區塊 */
+    transition: transform 0.2s; /* 加個小動畫，按下去會彈一下 */
+}
+
+/* 按下卡片時的效果 */
+.ug-card:active {
+    transform: scale(0.98);
+}
+
+/* 3. 讓卡片裡的圖片乖乖聽話 */
+.ug-card img {
+    width: 100%; /* 寬度撐滿卡片 */
+    aspect-ratio: 3 / 4; /* 設定一個漂亮的長方形比例 */
+    object-fit: cover; /* 圖片填滿格子，多餘的裁掉，不會變形 */
+    display: block;
+}
+
+/* 4. 美化卡片裡的名字 (h3) */
+.ug-card h3 {
+    margin-top: 10px;
+    font-size: 1rem; /* 字體大小 */
+    font-weight: normal; /* 不要太粗 */
+}
