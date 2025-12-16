@@ -1299,97 +1299,90 @@ a.leader-card {
         }
         /* 找到這一段，加入 flex: 1; */
 
-/* -------------------------------------------------- */
-/* Uni-Girls 專區修正補丁 (手機排版 + 去除藍線)  */
-/* -------------------------------------------------- */
+/* ========================================= */
+/* 🚑 12/16 緊急排版修正補丁 (UG專區)       */
+/* ========================================= */
 
-/* 1. 定義一個新的網格容器，專門給 UG 女孩用 */
-/* 讓她們在手機上乖乖排成兩列 */
-.ug-grid {
-    display: grid;
-    /* 手機版強制兩欄平均分配 */
-    grid-template-columns: repeat(2, 1fr);
-    /* 卡片之間的間距 */
-    gap: 15px;
-    /* 上下留點空間 */
-    margin-top: 20px;
-    margin-bottom: 30px;
-/* ✅ 新增這行：左右留空間 */
-    /* 0代表上下不加，20px代表左右各縮排 20px */
-    padding: 0 20px; 
-    
-    /* ✅ 建議加上這行：防止寬度爆掉 */
-    /* 這行是確保你的 padding 是往內縮，而不是往外長 */
-    box-sizing: border-box; 
-}
-
-/* 2. 美化每一張小卡片 (ug-card) */
-.ug-card {
-    background: #fff; /* 卡片背景是白色 */
-    border-radius: 12px; /* 圓角看起來比較柔和 */
-    overflow: hidden; /* 讓圖片的角角不要跑出圓框外 */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加一點點陰影比較有立體感 */
-    text-align: center; /* 文字置中 */
-    padding-bottom: 10px; /* 名字下面留點白邊 */
-    
-    /* ✅ 關鍵！移除超連結的藍色底線和預設顏色 */
-    text-decoration: none; 
-    color: #333; /* 文字改成深灰色，比較有質感 */
-    display: block; /* 讓整張卡片變成一個完整的區塊 */
-    transition: transform 0.2s; /* 加個小動畫，按下去會彈一下 */
-}
-
-/* 按下卡片時的效果 */
-.ug-card:active {
-    transform: scale(0.98);
-}
-
-/* 3. 讓卡片裡的圖片乖乖聽話 */
-.ug-card img {
-    width: 100%; /* 寬度撐滿卡片 */
-    aspect-ratio: 3 / 4; /* 設定一個漂亮的長方形比例 */
-    object-fit: cover; /* 圖片填滿格子，多餘的裁掉，不會變形 */
-    display: block;
-}
-
-/* 4. 美化卡片裡的名字 (h3) */
-.ug-card h3 {
-    margin-top: 10px;
-    font-size: 1rem; /* 字體大小 */
-    font-weight: normal; /* 不要太粗 */
-}
-/* === 🚑 最終急救包：強制修復 UG 專區 === */
-
-/* 1. 確保外框有 40px 的舒服留白 */
+/* 1. 確保外框是網格排列，而不是 Flex */
 .ug-grid {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* 手機強制兩欄 */
-    gap: 20px !important;
-    padding: 0 20px !important; /* ✅ 這裡就是你要的 40px 空間 */
+    /* 電腦版顯示 4 欄 (如果螢幕夠寬) */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; 
+    gap: 30px !important;
+    max-width: 1000px !important;
+    margin: 40px auto !important;
+    padding: 0 40px !important; /* 左右留白 */
     box-sizing: border-box !important;
-    margin: 20px auto !important;
 }
 
-/* 2. 針對「連結卡片」去除藍色底線 */
-a.ug-card {
-    text-decoration: none !important; /* ❌ 殺掉底線 */
-    color: #333 !important;           /* ❌ 殺掉藍色字，變回黑色 */
+/* 2. 手機版強制變成 2 欄 */
+@media (max-width: 768px) {
+    .ug-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 強制兩欄 */
+        padding: 0 20px !important; /* 手機版留白小一點 */
+        gap: 15px !important;
+    }
+}
+
+/* 3. 卡片本體設定 */
+.ug-card {
+    background: white !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    text-decoration: none !important; /* ❌ 殺掉藍色底線 */
+    display: block !important;        /* 讓它變成塊狀元素 */
+    transition: transform 0.3s !important;
+}
+
+/* 滑鼠移上去稍微浮起來 */
+.ug-card:hover {
+    transform: translateY(-5px) !important;
+}
+
+/* 4. 圖片設定 */
+.ug-card img {
+    width: 100% !important;
+    aspect-ratio: 3 / 4 !important;   /* 強制長方形比例，大家會一樣高 */
+    object-fit: cover !important;
     display: block !important;
 }
 
-/* 3. 確保名字是漂亮的橘色，且沒有底線 */
-a.ug-card h3 {
-    text-decoration: none !important; /* 雙重保險，殺掉底線 */
-    color: #ff6600 !important;        /* 名字維持猛獅橘 */
-    border-bottom: 2px solid #ff6600 !important; /* 如果你想要下底線裝飾保留這行，不要就刪掉 */
-    display: inline-block !important;
-    margin-top: 10px !important;
+/* 5. 名字設定 (去除底線 + 橘色字) */
+.ug-card h3 {
+    margin: 15px 0 !important;
+    color: #ff6600 !important;        /* 猛獅橘 */
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    text-decoration: none !important; /* ❌ 再次確認殺掉底線 */
+    border-bottom: none !important;   /* ❌ 殺掉任何橘色邊框線 */
+    display: block !important;
+    text-align: center !important;
+}
+/* ========================================= */
+/* 📸 UG 照片救援：完整顯示，絕不裁切 */
+/* ========================================= */
+
+.ug-card img {
+    /* 1. 讓寬度撐滿格子 */
+    width: 100% !important; 
+    
+    /* 2. 高度「自動」，照片多長就多長，不要鎖死 */
+    height: auto !important; 
+    
+    /* 3. 解除長寬比限制，原圖比例優先 */
+    aspect-ratio: unset !important; 
+    
+    /* 4. 關鍵！確保整張圖都秀出來 */
+    object-fit: contain !important; 
+    
+    /* 5. (選用) 如果照片背景是白的，這裡可以加個底色以免邊界看不清 */
+    background-color: #fff; 
+    display: block !important;
 }
 
-/* 4. 修正圖片比例 */
-a.ug-card img {
-    width: 100% !important;
-    aspect-ratio: 3 / 4 !important; /* 讓照片變成整齊的長方形 */
-    object-fit: cover !important;
-    border-radius: 10px 10px 0 0 !important;
+/* 確保卡片本身的高度也隨照片長大 */
+.ug-card {
+    height: auto !important; 
+    min-height: auto !important;
 }
