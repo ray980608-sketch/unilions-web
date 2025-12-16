@@ -1314,6 +1314,13 @@ a.leader-card {
     /* 上下留點空間 */
     margin-top: 20px;
     margin-bottom: 30px;
+/* ✅ 新增這行：左右留空間 */
+    /* 0代表上下不加，20px代表左右各縮排 20px */
+    padding: 0 20px; 
+    
+    /* ✅ 建議加上這行：防止寬度爆掉 */
+    /* 這行是確保你的 padding 是往內縮，而不是往外長 */
+    box-sizing: border-box; 
 }
 
 /* 2. 美化每一張小卡片 (ug-card) */
