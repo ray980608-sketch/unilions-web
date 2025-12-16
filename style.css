@@ -1358,3 +1358,38 @@ a.leader-card {
     font-size: 1rem; /* 字體大小 */
     font-weight: normal; /* 不要太粗 */
 }
+/* === 🚑 最終急救包：強制修復 UG 專區 === */
+
+/* 1. 確保外框有 40px 的舒服留白 */
+.ug-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 手機強制兩欄 */
+    gap: 20px !important;
+    padding: 0 40px !important; /* ✅ 這裡就是你要的 40px 空間 */
+    box-sizing: border-box !important;
+    margin: 20px auto !important;
+}
+
+/* 2. 針對「連結卡片」去除藍色底線 */
+a.ug-card {
+    text-decoration: none !important; /* ❌ 殺掉底線 */
+    color: #333 !important;           /* ❌ 殺掉藍色字，變回黑色 */
+    display: block !important;
+}
+
+/* 3. 確保名字是漂亮的橘色，且沒有底線 */
+a.ug-card h3 {
+    text-decoration: none !important; /* 雙重保險，殺掉底線 */
+    color: #ff6600 !important;        /* 名字維持猛獅橘 */
+    border-bottom: 2px solid #ff6600 !important; /* 如果你想要下底線裝飾保留這行，不要就刪掉 */
+    display: inline-block !important;
+    margin-top: 10px !important;
+}
+
+/* 4. 修正圖片比例 */
+a.ug-card img {
+    width: 100% !important;
+    aspect-ratio: 3 / 4 !important; /* 讓照片變成整齊的長方形 */
+    object-fit: cover !important;
+    border-radius: 10px 10px 0 0 !important;
+}
