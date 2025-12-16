@@ -1392,7 +1392,7 @@ a.leader-card {
 
 /* 1. 針對外層的連結卡片 (a標籤) */
 a.ug-card {
-    text-decoration: none !important; /* ❌ 絕對不准有底線 */
+    text-decoration: none; /* 去除底線 */ 
     border: none !important;          /* ❌ 絕對不准有邊框 */
     outline: none !important;         /* ❌ 絕對不准有外框 */
     display: block !important;        /* 保持塊狀 */
