@@ -1495,3 +1495,171 @@ a.ug-card:visited {
         padding: 10px !important; /* 資訊區的留白也縮小 */
     }
 }
+/* --- 📄 新聞內頁 (news1.html) 專用樣式 --- */
+
+.news-detail-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    animation: fadeIn 0.8s ease; /* 讓內容優雅地出現 */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.schedule-display {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.schedule-img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px; /* 圓角 */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* 漂亮的深陰影 */
+    border: 1px solid #eee;
+}
+
+.schedule-info {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.info-box h3 {
+    color: #ff6600;
+    border-bottom: 2px solid #ff6600;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-box li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.action-bar {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.download-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #e65c00;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
+}
+
+.back-link {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.news-footer {
+    text-align: center;
+    padding: 40px;
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+/* 手機版微調 */
+@media (max-width: 768px) {
+    .action-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .download-btn {
+        width: 100%;
+    }
+}
+.schedule-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+.tab-btn {
+    padding: 12px 25px;
+    border: 2px solid #ddd;
+    background-color: white;
+    color: #333;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 當按鈕被選中時的橘色樣式 */
+.tab-btn.active {
+    background-color: #ff6600;
+    color: white;
+    border-color: #ff6600;
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+}
+
+.tab-btn:hover:not(.active) {
+    border-color: #ff6600;
+    color: #ff6600;
+}
+
+/* 內容切換控制 */
+.schedule-content {
+    display: none; /* 預設隱藏 */
+}
+
+.schedule-content.active {
+    display: block; /* 被選中時顯示 */
+}
+
+/* 暫位區塊樣式 */
+.placeholder-box {
+    text-align: center;
+    padding: 100px 20px;
+    background: #fff;
+    border: 2px dashed #ddd;
+    border-radius: 15px;
+    color: #888;
+}
+
+/* 手機版適應 */
+@media (max-width: 768px) {
+    .schedule-tabs {
+        flex-direction: row;
+        gap: 8px;
+    }
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        flex: 1; /* 平分空間 */
+    }
+}
