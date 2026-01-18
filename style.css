@@ -1662,4 +1662,129 @@ a.ug-card:visited {
         font-size: 0.9rem;
         flex: 1; /* 平分空間 */
     }
+    
+}
+/* ========================================= */
+/* 🦁 頁尾 (Footer) 專用樣式                */
+/* ========================================= */
+.main-footer {
+    background-color: #111; /* 深黑色背景 */
+    color: #fff;
+    padding: 60px 0 20px 0;
+    margin-top: 80px;
+    border-top: 5px solid #ff6600; /* 頂部橘色粗線 */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 40px;
+}
+
+/* 品牌區 */
+.footer-logo {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.branding p {
+    color: #888;
+    line-height: 1.6;
+    font-size: 14px;
+    padding-right: 40px;
+}
+
+/* 社群按鈕 */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    width: 35px;
+    height: 35px;
+    background: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    background: #ff6600;
+    transform: translateY(-5px);
+}
+
+/* 連結清單 */
+.footer-column h3 {
+    font-size: 18px;
+    color: #ff6600;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+    padding-left: 10px; /* 滑鼠移上去會往右推一點，動態感 */
+}
+
+/* 底部版權條 */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #222;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    color: #555;
+    font-size: 12px;
+}
+
+/* 手機版 RWD */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .branding p {
+        padding-right: 0;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    .footer-column ul li a:hover {
+        padding-left: 0;
+    }
 }
