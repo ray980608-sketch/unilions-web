@@ -1670,13 +1670,13 @@ a.ug-card:visited {
 .main-footer {
     background-color: #111; /* 深黑色背景 */
     color: #fff;
-    padding: 60px 0 20px 0;
-    margin-top: 80px;
+    padding: 30px 0 20px 0;
+    margin-top: 60px;
     border-top: 5px solid #ff6600; /* 頂部橘色粗線 */
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -1772,19 +1772,13 @@ a.ug-card:visited {
     font-size: 12px;
 }
 
-/* 手機版 RWD */
+/* 手機版適應：強制變垂直排版 */
 @media (max-width: 768px) {
-    .footer-container {
+    .footer-top {
         flex-direction: column;
-        text-align: center;
+        gap: 15px;
     }
-    .branding p {
-        padding-right: 0;
-    }
-    .social-icons {
-        justify-content: center;
-    }
-    .footer-column ul li a:hover {
-        padding-left: 0;
+    .mini-footer-nav {
+        gap: 15px;
     }
 }
