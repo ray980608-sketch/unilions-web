@@ -1897,3 +1897,17 @@ a.ug-card:visited {
     width: 100%;
     margin-bottom: 60px;
 }
+@media (max-width: 768px) {
+    /* ... 保持原本的其他 RWD 代碼 ... */
+
+    /* 🏟️ 亞太主場：交通資訊方塊改為一欄一列 */
+    .info-grid {
+        grid-template-columns: 1fr !important; /* 強制變回單欄 */
+        gap: 20px !important;                 /* 手機版間距稍微縮小 */
+    }
+
+    /* 視線不良區也建議改為一欄一列，閱讀較順暢 */
+    .obstructed-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
