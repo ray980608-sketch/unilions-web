@@ -1911,3 +1911,162 @@ a.ug-card:visited {
         grid-template-columns: 1fr !important;
     }
 }
+/* --- ✉️ 聯絡我們頁面專屬樣式 --- */
+
+.contact-hero {
+    height: 250px;
+    background: #000, url('images/questions.jpg')
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.contact-wrapper {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+}
+
+/* 左側資訊卡 */
+.contact-info {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 20px;
+    border-left: 8px solid #ff6600;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.info-item .icon { font-size: 24px; }
+.info-item h4 { margin: 0; color: #ff6600; font-size: 16px; }
+.info-item p { margin: 5px 0 0 0; color: #333; font-weight: bold; }
+
+/* 右側表單 */
+.contact-form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.lions-form .form-group {
+    margin-bottom: 20px;
+}
+
+.lions-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+.lions-form input, .lions-form select, .lions-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+/* 表單點擊時的橘色光暈 */
+.lions-form input:focus, .lions-form textarea:focus {
+    border-color: #ff6600;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.1);
+}
+
+.submit-btn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #000;
+    transform: translateY(-3px);
+}
+
+/* 手機版：變回單欄 */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ========================================= */
+/* 🏟️ 亞太主場：全區塊置中佈局修正           */
+/* ========================================= */
+
+.stadium-section {
+    text-align: center;      /* ✨ 讓標題與內容水平置中 */
+    width: 100%;
+    max-width: 1200px;       /* 稍微放大寬度，讓置中更有氣勢 */
+    margin: 0 auto 100px auto; 
+    padding: 0 20px;         /* 給予左右呼吸空間 */
+    box-sizing: border-box;
+}
+
+.section-title {
+    display: inline-block;   /* ✨ 改為 inline-block 才能被 text-align 置中 */
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 15px 10px 15px; /* 增加底部的留白給底線 */
+    
+    /* 🎨 置中風格美化：移除左豎線，改用更有「中心感」的底線 */
+    position: relative;
+    border-left: none;       
+    border-bottom: 5px solid #ff6600; 
+    
+    font-size: 2.2rem;
+    color: #333;
+    text-transform: uppercase;
+}
+
+/* 移除原本的 ::before 豎線 (如果你之前有加的話) */
+.section-title::before {
+    display: none; 
+}
+
+/* 2. 互動地圖容器置中 */
+.interactive-container {
+    margin: 0 auto;          /* ✨ 強制容器在 section 中間 */
+    display: grid;
+    grid-template-columns: 250px 1fr; /* 保持你的側邊欄功能 */
+    gap: 30px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 25px;     /* 稍微加圓一點，更有現代感 */
+    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    
+    /* 容器內部的文字恢復靠左，閱讀才不會奇怪 */
+    text-align: left; 
+}
+
+/* 手機版：強制變單欄置中 */
+@media (max-width: 768px) {
+    .interactive-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+}
