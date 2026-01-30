@@ -2463,3 +2463,69 @@ a {
     border: none !important;          /* 確保沒有邊框線 */
     outline: none !important;         /* 確保點擊時沒有外框 */
 }
+/* ========================================= */
+/* 🦁 手機版專屬修正 (螢幕寬度小於 768px)    */
+/* ========================================= */
+@media (max-width: 768px) {
+
+    /* 1. 儀表板：從並排變為上下堆疊 */
+    .dashboard-grid {
+        display: flex !important;
+        flex-direction: column !important; /* 強制垂直排列 */
+        gap: 40px !important;
+        padding: 0 15px !important;
+    }
+
+    /* 2. 直播卡片：在手機上寬度全滿 */
+    .dashboard-col-left, 
+    .dashboard-col, 
+    .game-ticket-v3 {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto;
+    }
+
+    /* 3. 戰績表：解決「爆出去」的問題 (橫向捲動) */
+    .table-container {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important; /* ✨ 關鍵：表格可以左右滑動，不會撐破網頁 */
+        -webkit-overflow-scrolling: touch; /* 讓手機滑動更順暢 */
+        border-radius: 10px;
+    }
+
+    .standings-table {
+        min-width: 600px !important; /* 確保表格內容不會被擠成一團 */
+        font-size: 0.9rem !important; /* 字體稍微縮小 */
+    }
+
+    /* 4. 標題與間距微調 */
+    .section-title.underline {
+        font-size: 1.5rem !important;
+        margin-bottom: 25px !important;
+    }
+
+    .ticket-score-text, 
+    .score-v3 {
+        font-size: 2.2rem !important; /* 縮小手機版的比數文字 */
+    }
+
+    .team-logo-small, 
+    .team-logo-v3 {
+        height: 60px !important; /* 縮小球隊 Logo */
+    }
+
+    /* 5. 本月賽程：圖片寬度自適應 */
+    .schedule-img-box img, 
+    .main-calendar-img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 10px !important;
+    }
+
+    .schedule-notice-box, 
+    .schedule-footer-notice {
+        padding: 15px !important;
+        font-size: 0.9rem !important; /* 讓文字在小螢幕好讀 */
+    }
+}
