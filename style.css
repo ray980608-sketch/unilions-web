@@ -387,7 +387,7 @@ div.roster-card:hover .number {
 .hero-banner {
     width: 100%;
     height: 700px;
-    background-image: url('images/unilions2025.jpg');
+    background-image: url('images/unilionsspring.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -2069,4 +2069,397 @@ a.ug-card:visited {
         grid-template-columns: 1fr;
         padding: 20px;
     }
+}
+/* ========================================= */
+/* 🦁 儀表板：並列排版與比賽卡片美化         */
+/* ========================================= */
+
+.dashboard-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 左右 1:1 分割 */
+    gap: 40px;
+    align-items: start;
+}
+
+/* 標題樣式統一：置中且帶有橘色底線 */
+.section-title.underline {
+    display: block;
+    text-align: center;
+    border-left: none !important;
+    padding-left: 0;
+    margin-bottom: 40px;
+    position: relative;
+    font-size: 2.5rem;
+}
+
+
+
+/* --- 左側：比賽卡片圖形設計 (依據 image_63c2bb.png) --- */
+.game-card-graphic {
+    position: relative;
+    background-color: #fff;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.orange-slant-bg {
+    position: absolute;
+    width: 120%;
+    height: 120px;
+    background-color: #ff6600;
+    transform: rotate(-10deg);
+    z-index: 1;
+}
+
+.game-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.team-logo img {
+    height: 140px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+}
+
+.game-score {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #000;
+}
+
+.live-pill {
+    position: relative;
+    z-index: 2;
+    margin-top: 30px;
+    background: linear-gradient(to right, #ffcc66, #ff9933);
+    padding: 10px 35px;
+    border-radius: 50px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.white-dot {
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff;
+}
+
+/* --- 右側：戰績表修正 --- */
+.standings-mini {
+    margin: 0 !important; /* 移除原本表格的置中 margin */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* 手機版：自動變垂直排列 */
+@media (max-width: 900px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .game-score { font-size: 3.5rem; }
+    .team-logo img { height: 100px; }
+}
+/* ========================================= */
+/* 🏟️ 新版比賽卡片樣式 (依據新圖優化)        */
+/* ========================================= */
+
+.dashboard-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* 讓戰績表稍微寬一點比較好讀 */
+    gap: 40px;
+    align-items: start;
+}
+
+/* --- 左側卡片設計 --- */
+.game-ticket-card {
+    background-color: #fdf1e7; /* 奶油色背景 */
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.ticket-header {
+    padding: 30px 20px 10px 20px;
+}
+
+.ticket-info-line {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    border-bottom: 4px solid #1a3b5d; /* 深藍色底線 */
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.match-number-pill {
+    background-color: #ff9933; /* 橘黃色藥丸 */
+    color: #000;
+    display: inline-block;
+    padding: 5px 25px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.ticket-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 0;
+    flex-direction: row;
+}
+
+.ticket-team img {
+    height: 120px;
+    width: auto;
+}
+
+.ticket-score {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #000;
+    font-family: 'Arial Black', sans-serif;
+}
+
+.ticket-footer {
+    background-color: #ff6600; /* 經典猛獅橘 */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: skewY(-2deg) translateY(10px); /* 輕微斜切效果 */
+    flex-direction: row;
+}
+
+.live-tag {
+    transform: skewY(2deg); /* 把文字轉回來 */
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.live-dot-white {
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+/* --- 右側戰績表微調 --- */
+.standings-dashboard {
+    margin: 0 !important;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* 手機版：變回單欄 */
+@media (max-width: 900px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .ticket-score { font-size: 3.5rem; }
+    .ticket-team img { height: 80px; }
+}
+/* ========================================= */
+/* 📅 首頁賽程表專屬樣式                     */
+/* ========================================= */
+
+.schedule-display-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.calendar-wrapper {
+    background-color: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.calendar-wrapper:hover {
+    box-shadow: 0 15px 50px rgba(255, 102, 0, 0.1);
+}
+
+.main-calendar-img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin-bottom: 25px;
+}
+
+/* 下方提醒文字 */
+.schedule-notice {
+    background-color: #fdf1e7; /* 奶油色，呼應本日比賽卡片 */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    border-left: 6px solid #ff6600;
+}
+
+.schedule-notice p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 手機版縮小間距 */
+@media (max-width: 768px) {
+    .calendar-wrapper {
+        padding: 15px;
+    }
+    .schedule-notice p {
+        font-size: 0.95rem;
+    }
+}
+/* ========================================= */
+/* 🦁 完美比例儀表板：CSS 最終補丁           */
+/* ========================================= */
+
+.dashboard-centered-wrapper {
+    max-width: 1100px;           /* 統一全站對齊線 */
+    margin: 0 auto;              /* 絕對置中 */
+    padding: 0 50px;
+}
+
+.dashboard-grid {
+    display: grid;
+    /* ✨ 左邊固定 1500px (瘦版)，右邊佔滿剩餘空間 */
+    grid-template-columns: 300px 1fr; 
+    gap: 100px;
+    align-items: center;
+    margin-top: 100px;
+}
+
+/* 標題 Debug：解決雙重橘線 */
+.section-title.underline {
+    display: block;
+    text-align: center;
+    border-left: none !important;
+    padding-left: 0 !important;
+    position: relative;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+.section-title.underline::before { display: none !important; }
+
+
+/* 直播卡片設計 (依據 image_625a96.png 優化) */
+.game-ticket-v3 {
+    background-color: #fdf1e7; /* 奶油色 */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.game-ticket-v3:hover { transform: translateY(-5px); }
+
+.ticket-top { padding: 20px 10px; }
+.ticket-top p { font-size: 1.1rem; font-weight: bold; border-bottom: 2px solid #1a3b5d; padding-bottom: 5px; }
+.match-no { background: #ff9933; border-radius: 50px; padding: 2px 10px; font-size: 0.8rem; }
+
+.ticket-body { padding: 95px 0; display: flex; flex-direction: row; align-items: center; gap: 10px; justify-content: center;
+align-items: center;}
+.team-logo-v3 { height: 105px; }
+.score-v3 { font-size: 2.5rem; font-weight: 900; }
+
+.ticket-footer-live {
+    background-color: #ff6600;
+    color: white;
+    padding: 12px 0;
+    font-size: 2rem;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 閃爍動畫 */
+.live-dot-pulse {
+    width: 15px; height: 15px; background: #fff; border-radius: 50%;
+    animation: pulse-live 1.2s infinite;
+}
+@keyframes pulse-live {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+/* ========================================= */
+/* 🦁 左右並排核心樣式                       */
+/* ========================================= */
+
+.dashboard-wrapper {
+    display: flex;             /* ✅ 啟動彈性佈局，讓內容左右排 */
+    justify-content: center;   /* ✅ 讓整個區塊在網頁中間 */
+    align-items: center;   /* ✅ 讓兩邊的頂部對齊 */
+    gap: 50px;                 /* ✅ 設定左右兩邊的間距 */
+    max-width: 1100px;         /* ✅ 限制寬度，不要讓它們跑太遠 */
+    margin: 60px auto;         /* ✅ 讓整個容器置中 */
+    flex-direction: row;
+}
+
+/* 為了讓並排更穩定，建議各別設定寬度比例 */
+.game-card-side {
+    flex: 0 0 300px;           /* ✅ 固定左邊卡片寬度為 300px */
+}
+
+.standings-side {
+    flex: 1;                   /* ✅ 右邊戰績表自動填滿剩餘空間 */
+    min-width: 0;              /* 防止內容撐破格子 */
+}
+/* ========================================= */
+/* 🦁 全站超連結格式重置                     */
+/* ========================================= */
+
+a {
+    text-decoration: none !important; /* ✅ 強制移除所有底線 */
+    color: inherit;                  /* 讓連結顏色繼承父層文字顏色 */
+}
+
+/* 針對你的直播票券連結做額外保險 */
+.ticket-link, 
+.ticket-link:hover, 
+.ticket-link:active {
+    text-decoration: none !important;
+    border: none !important;          /* 確保沒有邊框線 */
+    outline: none !important;         /* 確保點擊時沒有外框 */
 }
