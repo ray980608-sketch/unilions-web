@@ -2474,6 +2474,7 @@ a {
         flex-direction: column !important; /* 強制垂直排列 */
         gap: 40px !important;
         padding: 0 15px !important;
+        border-radius: 10px !important;
     }
 
     /* 2. 直播卡片：在手機上寬度全滿 */
@@ -2483,6 +2484,7 @@ a {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto;
+        border-radius: 10px
     }
 
     /* 3. 戰績表：解決「爆出去」的問題 (橫向捲動) */
