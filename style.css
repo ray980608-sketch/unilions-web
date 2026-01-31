@@ -2688,3 +2688,97 @@ a {
     padding: 10px 0;
     border-bottom: 1px dashed #eee;
 }
+.stadium-interactive {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* 預設區塊顏色 */
+.map-zone {
+    fill: rgba(0, 0, 0, 0.2); 
+    stroke: #fff;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* 滑鼠移上去時變橘色 */
+.map-zone:hover {
+    fill: rgba(255, 102, 0, 0.8);
+}
+
+/* 被選中時的效果 */
+.map-zone.active {
+    fill: #ff6600 !important;
+    stroke: #000;
+}
+/* ========================================= */
+/* 🏟️ 互動球場地圖佈局補丁                   */
+/* ========================================= */
+
+.stadium-interactive {
+    display: flex;             /* ✅ 關鍵：啟動左右並排 */
+    gap: 40px;                 /* 左右兩邊的間距 */
+    background: #fff;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    margin-bottom: 60px;
+    align-items: flex-start;   /* 頂部對齊 */
+}
+
+/* 左側：地圖區容器 */
+.map-box {
+    flex: 1.5;                 /* 讓地圖佔比較大的空間 */
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+/* 右側：資訊面板 */
+#info-display {
+    flex: 1;                   /* 資訊欄佔剩餘空間 */
+    background: #fdf1e7;       /* 奶油色底色，呼應首頁風格 */
+    padding: 30px;
+    border-radius: 20px;
+    border-left: 6px solid #ff6600; /* 標誌性的猛獅橘線 */
+}
+
+#info-name {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+#info-text {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* 手機版：自動變回上下堆疊 */
+@media (max-width: 900px) {
+    .stadium-interactive {
+        flex-direction: column;
+    }
+}
+.map-zone {
+    fill: rgba(0, 0, 0, 0.1);  /* 平常淡淡的灰色 */
+    stroke: #ff6600;           /* 橘色邊框 */
+    stroke-width: 2;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.map-zone:hover {
+    fill: rgba(255, 102, 0, 0.6); /* 滑鼠移上去變橘色 */
+    transform: scale(1.1);        /* 稍微放大 */
+}
+
+.map-zone.active {
+    fill: #ff6600 !important;     /* 點選後變實心橘 */
+}
