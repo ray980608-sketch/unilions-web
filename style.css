@@ -2531,109 +2531,66 @@ a {
         font-size: 0.9rem !important; /* 讓文字在小螢幕好讀 */
     }
 }
+/* ========================================= */
+/* 🦁 終極手機版 RWD 整合補丁 (清爽版)       */
+/* ========================================= */
 @media (max-width: 768px) {
-    /* 1. 核心調整：大幅縮減外層的上下內距 */
-    .game-ticket-v3, 
-    .game-ticket-clean {
-        /* 將上下 padding 從昨天的 40px 縮減回 15px */
-        padding: 15px 20px !important; 
-        
-        /* 確保沒有被之前的 min-height 鎖死高度 */
-        min-height: auto !important; 
-        
-        /* 讓內容更緊湊 */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
 
-    /* 2. 縮減內部元件的垂直間距 */
-    .ticket-body {
-        padding: 5px 0 !important;   /* 縮小 Logo 區塊的內距 */
-        gap: 8px !important;         /* 縮小 Logo 與比數之間的距離 */
-    }
-
-    /* 3. 稍微縮小元件尺寸，讓整體比例協調 */
-    .team-logo-v3, 
-    .team-logo-small {
-        height: 55px !important;    /* Logo 稍微變小一點 */
-    }
-
-    .score-v3, 
-    .ticket-score-text {
-        font-size: 1.8rem !important; /* 比數文字縮小 */
-        margin: 5px 0 !important;
-    }
-
-    /* 4. 縮減底部橘色條的高度 */
-    .ticket-footer-live {
-        padding: 8px 0 !important;   /* 讓 LIVE 條變細一點 */
-        font-size: 1.5rem !important;
-    }
-}
-@media (max-width: 768px) {
-    /* 1. 修正首頁：確保大容器寬度 100% 且不留死角 */
+    /* 1. 大框架：強制垂直並置中 */
     .dashboard-grid {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important; /* ✅ 讓子元件(卡片、戰績)水平置中 */
+        align-items: center !important;
         width: 100% !important;
         padding: 0 !important;
         margin: 0 !important;
-        gap: 60px !important;
+        gap: 30px !important;
     }
 
-    /* 2. 修正直播卡片偏右：移除所有可能的位移與浮動 */
-    .dashboard-col {
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; /* ✅ 確保內容物在欄位內絕對置中 */
-    }
-
+    /* 2. 直播區：橫向擴張 + 左右絕對置中 */
     .game-ticket-v3, 
     .game-ticket-clean, 
     .ticket-link {
         display: block !important;
-        margin-left: auto !important;   /* ✅ 核心：自動分配左右間距 */
-        margin-right: auto !important;
-        float: none !important;
+        width: 95% !important;         /* ✅ 寬度佔滿 95% */
+        max-width: 500px !important;   /* ✅ 允許它在大手機上更寬 */
+        margin: 0 auto !important;     /* ✅ 強制水平置中 */
+        left: 0 !important;
+        right: 0 !important;
         position: relative !important;
-        left: 0 !important;             /* 歸零任何位移 */
-        width: 85% !important;          /* 稍微縮小寬度，讓置中感更明顯 */
-        max-width: 350px !important;    /* 限制寬度維持精緻感 */
     }
 
-    /* 3. 修正「交通資訊」大標題歪斜 */
+    /* 3. 直播區內容：稍微變矮一點點，看起來更精緻 */
+    .ticket-body {
+        padding: 15px 0 !important;    /* 縮減上下間距 */
+        gap: 10px !important;
+    }
+
+    .team-logo-v3 {
+        height: 60px !important;       /* 縮小手機版 Logo */
+    }
+
+    .score-v3 {
+        font-size: 2.5rem !important;  /* 縮小比數文字 */
+    }
+
+    /* 4. 戰績表：橫向捲動 + 寬度對齊 */
+    .table-container {
+        display: block !important;
+        width: 95% !important;         /* 寬度跟直播區對齊 */
+        margin: 0 auto !important;
+        overflow-x: auto !important;
+        border-radius: 10px;
+    }
+
+    .standings-table {
+        min-width: 600px !important;   /* 確保表格內容不擠壓 */
+    }
+
+    /* 5. 標題：修正歪斜問題 */
     .section-title {
         text-align: center !important;
-        padding-left: 0 !important;     /* ✅ 移除桌機版留給垂直橘線的 25px */
-        margin-left: auto !important;
-        margin-right: auto !important;
+        padding-left: 0 !important;    /* ✅ 關鍵：移除桌機版留下的 25px */
         width: 100% !important;
-    }
-}
-@media (max-width: 768px) {
-    /* 1. 調整卡片外框：增加寬度比例 */
-    .game-ticket-v3, 
-    .game-ticket-clean,
-    .ticket-link {
-        width: 95% !important;       /* ✅ 從原本的 85% 增加到 95% */
-        
-        /* ✨ 關鍵：提高最大寬度限制，打破之前的 320px 限制 */
-        max-width: 500px !important;  
-        
-        /* 確保水平置中 */
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block !important;
-    }
-
-    /* 2. 內部比例微調：避免變寬後內容太散 */
-    .ticket-body-area,
-    .ticket-main {
-        padding: 20px 10px !important;
-        /* 如果你希望 Logo 左右分開一點，可以加這行： */
-        /* justify-content: space-around !important; */
     }
 }
