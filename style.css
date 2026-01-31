@@ -2572,23 +2572,44 @@ a {
     }
 }
 @media (max-width: 768px) {
-    /* 修正父容器，確保不往右擠 */
+    /* 1. 修正首頁：確保大容器寬度 100% 且不留死角 */
     .dashboard-grid {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important; /* ✅ 強制子元件水平置中 */
-        padding: 0 !important;          /* 移除可能的內距 */
+        align-items: center !important; /* ✅ 讓子元件(卡片、戰績)水平置中 */
         width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 40px !important;
     }
 
-    /* 修正直播卡片偏右問題 */
+    /* 2. 修正直播卡片偏右：移除所有可能的位移與浮動 */
+    .dashboard-col {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* ✅ 確保內容物在欄位內絕對置中 */
+    }
+
     .game-ticket-v3, 
-    .game-ticket-clean,
+    .game-ticket-clean, 
     .ticket-link {
-        margin: 0 auto !important;      /* ✅ 核心：強制左右間距自動分配 */
         display: block !important;
-        width: 90% !important;          /* 讓卡片左右留一點呼吸空間 */
-        max-width: 350px !important;    /* 限制最大寬度，避免太胖 */
-        left: 0 !important;             /* 確保沒有被絕對定位影響 */
+        margin-left: auto !important;   /* ✅ 核心：自動分配左右間距 */
+        margin-right: auto !important;
+        float: none !important;
+        position: relative !important;
+        left: 0 !important;             /* 歸零任何位移 */
+        width: 85% !important;          /* 稍微縮小寬度，讓置中感更明顯 */
+        max-width: 320px !important;    /* 限制寬度維持精緻感 */
+    }
+
+    /* 3. 修正「交通資訊」大標題歪斜 */
+    .section-title {
+        text-align: center !important;
+        padding-left: 0 !important;     /* ✅ 移除桌機版留給垂直橘線的 25px */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
     }
 }
