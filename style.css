@@ -2536,7 +2536,7 @@ a {
     .game-ticket-v3, 
     .game-ticket-clean {
         /* 將上下 padding 從昨天的 40px 縮減回 15px */
-        padding: 15px 10px !important; 
+        padding: 15px 20px !important; 
         
         /* 確保沒有被之前的 min-height 鎖死高度 */
         min-height: auto !important; 
