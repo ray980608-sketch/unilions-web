@@ -2531,3 +2531,43 @@ a {
         font-size: 0.9rem !important; /* 讓文字在小螢幕好讀 */
     }
 }
+@media (max-width: 768px) {
+    /* 1. 核心調整：大幅縮減外層的上下內距 */
+    .game-ticket-v3, 
+    .game-ticket-clean {
+        /* 將上下 padding 從昨天的 40px 縮減回 15px */
+        padding: 15px 10px !important; 
+        
+        /* 確保沒有被之前的 min-height 鎖死高度 */
+        min-height: auto !important; 
+        
+        /* 讓內容更緊湊 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* 2. 縮減內部元件的垂直間距 */
+    .ticket-body {
+        padding: 5px 0 !important;   /* 縮小 Logo 區塊的內距 */
+        gap: 8px !important;         /* 縮小 Logo 與比數之間的距離 */
+    }
+
+    /* 3. 稍微縮小元件尺寸，讓整體比例協調 */
+    .team-logo-v3, 
+    .team-logo-small {
+        height: 55px !important;    /* Logo 稍微變小一點 */
+    }
+
+    .score-v3, 
+    .ticket-score-text {
+        font-size: 1.8rem !important; /* 比數文字縮小 */
+        margin: 5px 0 !important;
+    }
+
+    /* 4. 縮減底部橘色條的高度 */
+    .ticket-footer-live {
+        padding: 8px 0 !important;   /* 讓 LIVE 條變細一點 */
+        font-size: 1.5rem !important;
+    }
+}
