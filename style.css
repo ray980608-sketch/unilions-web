@@ -2613,3 +2613,27 @@ a {
         width: 100% !important;
     }
 }
+@media (max-width: 768px) {
+    /* 1. 調整卡片外框：增加寬度比例 */
+    .game-ticket-v3, 
+    .game-ticket-clean,
+    .ticket-link {
+        width: 95% !important;       /* ✅ 從原本的 85% 增加到 95% */
+        
+        /* ✨ 關鍵：提高最大寬度限制，打破之前的 320px 限制 */
+        max-width: 500px !important;  
+        
+        /* 確保水平置中 */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+    }
+
+    /* 2. 內部比例微調：避免變寬後內容太散 */
+    .ticket-body-area,
+    .ticket-main {
+        padding: 20px 10px !important;
+        /* 如果你希望 Logo 左右分開一點，可以加這行： */
+        /* justify-content: space-around !important; */
+    }
+}
