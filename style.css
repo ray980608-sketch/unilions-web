@@ -2782,3 +2782,23 @@ a {
 .map-zone.active {
     fill: #ff6600 !important;     /* 點選後變實心橘 */
 }
+@media (max-width: 768px) {
+    /* 1. 統一修正應援區所有標題的底線 */
+    .section-title::after, 
+    .section-title.underline::after {
+        width: 60px !important;      /* ✅ 從滿版縮短為 60px，視覺更集中 */
+        height: 3px !important;      /* 稍微變細，增加高級感 */
+        bottom: -10px !important;    /* 調整與文字的垂直距離 */
+        left: 50% !important;        /* 確保絕對居中 */
+        transform: translateX(-50%) !important;
+    }
+
+    /* 2. 針對應援專區標題文字的微調 */
+    .section-title {
+        font-size: 1.6rem !important; /* 讓字體大小更適合手機閱讀 */
+        margin-bottom: 45px !important; /* 留出空間給縮短後的底線 */
+        display: block !important;
+        text-align: center !important;
+        padding-left: 0 !important;   /* 移除桌機版可能的位移 */
+    }
+}
