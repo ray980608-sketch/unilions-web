@@ -2593,7 +2593,8 @@ a {
         padding-left: 0 !important;    /* ✅ 關鍵：移除桌機版留下的 25px */
         width: 100% !important;
     }
-    @media (max-width: 768px) {
+}
+@media (max-width: 768px) {
     /* 1. 縮短手機版標題下方的橘色底線 */
     .section-title.underline::after {
         width: 60px !important;      /* ✅ 從 120px 縮短為 60px，比例更和諧 */
@@ -2606,5 +2607,4 @@ a {
         font-size: 1.6rem !important; /* 稍微縮小字體，手機版才不會太壓迫 */
         letter-spacing: 2px !important; /* 增加一點字距，更有設計感 */
     }
-}
 }
