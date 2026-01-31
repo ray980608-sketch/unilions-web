@@ -2608,3 +2608,22 @@ a {
         letter-spacing: 2px !important; /* 增加一點字距，更有設計感 */
     }
 }
+/* ========================================= */
+/* 🎥 影片新聞卡片微調                       */
+/* ========================================= */
+
+.video-news-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 確保影片填滿卡片上半部，並保持圓角 */
+.video-news-card .video-wrapper {
+    border-radius: 20px 20px 0 0; /* 配合你原本的 news-card 圓角 */
+    padding-bottom: 56.25%;      /* 16:9 比例 */
+}
+
+/* 移除滑鼠移上去時可能產生的邊框衝突 */
+.video-news-card:hover .video-wrapper {
+    border-radius: 20px 20px 0 0;
+}
