@@ -2571,3 +2571,24 @@ a {
         font-size: 1.5rem !important;
     }
 }
+@media (max-width: 768px) {
+    /* 修正父容器，確保不往右擠 */
+    .dashboard-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* ✅ 強制子元件水平置中 */
+        padding: 0 !important;          /* 移除可能的內距 */
+        width: 100% !important;
+    }
+
+    /* 修正直播卡片偏右問題 */
+    .game-ticket-v3, 
+    .game-ticket-clean,
+    .ticket-link {
+        margin: 0 auto !important;      /* ✅ 核心：強制左右間距自動分配 */
+        display: block !important;
+        width: 90% !important;          /* 讓卡片左右留一點呼吸空間 */
+        max-width: 350px !important;    /* 限制最大寬度，避免太胖 */
+        left: 0 !important;             /* 確保沒有被絕對定位影響 */
+    }
+}
