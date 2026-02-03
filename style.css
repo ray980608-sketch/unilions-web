@@ -2820,7 +2820,7 @@ body {
 /* ========================================= */
 /* 🦁 修正版：統一全站標題短線風格           */
 /* ========================================= */
-.section-title {
+@media (max-width: 768px) .section-title {
     display: block;           /* 改為 block 方便置中 */
     text-align: center;
     margin-bottom: 50px;
