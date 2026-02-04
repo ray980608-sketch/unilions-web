@@ -2817,34 +2817,3 @@ body {
     width: 100vw; /* 改用視窗寬度單位 */
     box-sizing: border-box;
 }
-/* ========================================= */
-/* 🦁 修正版：統一全站標題短線風格           */
-/* ========================================= */
-@media (max-width: 768px) .section-title {
-    display: block;           /* 改為 block 方便置中 */
-    text-align: center;
-    margin-bottom: 50px;
-    padding-bottom: 15px;     /* 留空間給下面的短線 */
-    
-    position: relative;       /* 關鍵：作為短線的基準 */
-    border-left: none !important;  /* 移除左邊豎線 */
-    border-bottom: none !important; /* ✅ 關鍵：移除那個太長的底邊框！ */
-    
-    font-size: 2.2rem;
-    color: #333;
-    text-transform: uppercase;
-}
-
-/* 🎨 用這段來畫出真正的 60px 短線 */
-.section-title::after {
-    content: "";              /* 必須有這行，線才會出現 */
-    position: absolute;
-    bottom: 0;                /* 貼在標題底部 */
-    left: 50%;                /* 移到中間 */
-    transform: translateX(-50%); /* 完美置中 */
-    
-    width: 60px;              /* ✅ 設定你要的長度 */
-    height: 5px;              /* 線的粗細 */
-    background-color: #ff6600; /* 猛獅橘 */
-    border-radius: 10px;      /* 圓角讓線條變精緻 */
-}
