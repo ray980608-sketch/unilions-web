@@ -2848,7 +2848,7 @@ body {
     .section-title::after {
         content: "" !important;         /* 確保線條存在 */
         display: block !important;
-        width: 60px !important;        /* ✅ 強制縮短為 60px */
+        width: 1000px !important;        /* ✅ 強制縮短為 60px */
         height: 4px !important;
         background-color: #ff6600 !important; /* 猛獅橘 */
         margin: 12px auto 0 auto !important;  /* ✅ 置中關鍵：左右自動 margin */
