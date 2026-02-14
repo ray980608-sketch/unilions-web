@@ -2851,7 +2851,7 @@ body {
         width: 500px !important;        /* ✅ 強制縮短為 60px */
         height: 4px !important;
         background-color: #ff6600 !important; /* 猛獅橘 */
-        margin: 12px auto 0 auto !important;  /* ✅ 置中關鍵：左右自動 margin */
+        margin: 120px auto 0 auto !important;  /* ✅ 置中關鍵：左右自動 margin */
         border-radius: 10px !important;
         position: static !important;    /* 改用 static 避免絕對定位在手機版跑掉 */
     }
