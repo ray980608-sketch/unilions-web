@@ -2817,3 +2817,42 @@ body {
     width: 100vw; /* 改用視窗寬度單位 */
     box-sizing: border-box;
 }
+/* ========================================= */
+/* 🦁 應援專區手機版最終修正補丁              */
+/* ========================================= */
+@media (max-width: 768px) {
+    
+    /* 1. 殺掉導致白邊的 100vw，改用更穩定的 100% */
+    body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    .navbar {
+        width: 100% !important; /* 避免 vw 產生的捲軸計算錯誤 */
+    }
+
+    /* 2. 徹底封殺標題長線 */
+    .section-title {
+        border-bottom: none !important; /* ❌ 絕對不准出現全寬邊框線 */
+        border-left: none !important;   /* ❌ 移除桌機版的左豎線 */
+        padding-left: 0 !important;
+        width: 100% !important;
+        display: block !important;
+        text-align: center !important;
+        position: relative !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* 3. 重新定義 60px 精緻短線 */
+    .section-title::after {
+        content: "" !important;         /* 確保線條存在 */
+        display: block !important;
+        width: 60px !important;        /* ✅ 強制縮短為 60px */
+        height: 4px !important;
+        background-color: #ff6600 !important; /* 猛獅橘 */
+        margin: 12px auto 0 auto !important;  /* ✅ 置中關鍵：左右自動 margin */
+        border-radius: 10px !important;
+        position: static !important;    /* 改用 static 避免絕對定位在手機版跑掉 */
+    }
+}
