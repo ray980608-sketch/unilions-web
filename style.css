@@ -1916,7 +1916,7 @@ a.ug-card:visited {
 .contact-hero {
     height: 250px;
     background: #000, url('images/questions.jpg')
-    color: white;
+    color white;
     display: flex;
     flex-direction: column;
     justify-content: center;
