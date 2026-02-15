@@ -37,62 +37,11 @@
 </header>
 <body>
     <section class="stadium-hero">
-        <h1>亞太國際棒球訓練中心 (網頁場地圖測試中)</h1>
-        <p>TAINAN ASIA-PACIFIC INTERNATIONAL BASEBALL STADIUM (Beta)</p>
+        <h1>亞太國際棒球訓練中心</h1>
+        <p>TAINAN ASIA-PACIFIC INTERNATIONAL BASEBALL STADIUM</p>
     </section>
 </section>
-        <section class="stadium-interactive">
-    <div class="map-box">
-        <svg viewBox="0 0 800 1000" id="stadium-map">
-    <image href="images/1122.jpg" x="0" y="0" width="800" height="1000" opacity="0.5" />
-
-    <circle id="zone-1" cx="480" cy="150" r="15" class="map-zone" 
-            data-title="1F 外野大廳" 
-            data-desc="1. 外野大廳：球場的主入口，設有服務台與大型展示區。" />
-            
-    <circle id="zone-2" cx="300" cy="450" r="15" class="map-zone" 
-            data-title="1F 球員休息區" 
-            data-desc="9-14. 球員空間：包含重量訓練室、防護室及猛獅戰士的專屬休息空間。" />
-</svg>
-    </div>
-
-    <div id="info-display">
-        <h3 id="info-name">點選地圖區域</h3>
-        <p id="info-text">請點擊左側 1F 平面圖查看詳細設施。</p>
-        <img id="info-img" src="images/unilions1990.png" style="width: 100%; border-radius: 10px;">
-    </div>
-</section>
-
-    <script>
-    // 1. 抓取所有具有 .map-zone 類別的區塊
-    const zones = document.querySelectorAll('.map-zone');
-    const infoName = document.getElementById('info-name');
-    const infoText = document.getElementById('info-text');
-    const infoImg = document.getElementById('info-img');
-
-    // 2. 用「迴圈」幫每個區塊裝上監聽器
-    zones.forEach(zone => {
-        zone.addEventListener('click', function() {
-            // 從 HTML 的 data- 屬性抓取資料
-            const title = this.getAttribute('data-title');
-            const desc = this.getAttribute('data-desc');
-            
-            // 更新右側面板內容
-            infoName.innerText = title;
-            infoText.innerText = desc;
-            
-            // 💡 這裡可以依照區域 ID 換照片
-            if(this.id === 'zone-1') {
-                infoImg.src = "images/stadium_1f_gate.jpg";
-            } else if(this.id === 'zone-2') {
-                infoImg.src = "images/player_zone.jpg";
-            }
-            
-            // 讓點選的區域維持顏色
-            zones.forEach(z => z.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
+    
 </script>
     <main class="stadium-container">
         <section class="stadium-section">
