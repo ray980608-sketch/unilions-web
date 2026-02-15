@@ -1,249 +1,52 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>應援專區 | Uni-Lions</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <section class="stadium-interactive">
+    <div class="map-box">
+        <svg viewBox="0 0 800 1000" id="stadium-map">
+    <image href="images/1122.jpg" x="0" y="0" width="800" height="1000" opacity="0.5" />
 
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html"><img src="images/unilions_logo.jpg" alt="Logo"></a>
-        </div>
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="hamburger">
-            <span></span><span></span><span></span>
-        </label>
-        <nav id="nav-menu">
-            <ul>
-                <li><a href="index.html">首頁</a></li>
-                <li><a href="history.html">球隊沿革</a></li>
-                <li><a href="stadium.html">獅王主場</a></li>
-                <li><a href="roster.html">猛獅戰隊</a></li>
-                <li><a href="cheer.html" class="active">應援專區</a></li> 
-                <li><a href="https://lioncrew.uni-lions.com.tw/?srsltid=AfmBOorFvXPQ7g9BWlbJ9bGTWt34-2Ivv0bZxoIGnyLTFld7AA4uAnCJ" target="_blank">萊恩酷</a></li>
-                <li><a href="https://ticket.ibon.com.tw/Index/Sport" target="_blank">售票資訊</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="cheer-hero">
-        <div class="cheer-hero-content">
-            <h1>LIONS CHEER</h1>
-            <p>南霸天最強應援團，吼出一號隊友的熱情！</p>
-        </div>
-    </section>
-
-    
-    <section class="cheer-section">
-        <h2 class="section-title">應援團長 LEADER</h2>
-        <div class="leaders-grid">
-            </div>
-    </section>
-
-    <div class="leaders-grid">
-        
-        <a href="cheerlions/york.html" class="leader-card">
-            <div class="leader-photo">
-                <img src="images/cheer/york.jpg" alt="York"> 
-            </div>
-            <h3>York #1</h3>
-            <p>#吼吼吼 #南霸天</p>
-        </a>
-
-        <a href="cheerlions/daping.html" class="leader-card">
-            <div class="leader-photo">
-                <img src="images/cheer/daping.jpg" alt="daping"> 
-            </div>
-            <h3>達平 #1</h3>
-            <p>#精神領袖 #統一尚勇</p>
-        </a>
-
-    </div> </section>
-
-    <section class="cheer-section ug-bg">
-        <h2 class="section-title">Uni-Girls 💃</h2>
-        
-        <div class="ug-grid"> 
-        
-            <a href="cheerlions/se7en.html" class="ug-card">
-                <img src="images/cheer/se7en(1).jpg" alt="瑟七">
-                <h3>瑟七</h3>
-            </a>
-
-            <a href="cheerlions/yuki.html" class="ug-card">
-                <img src="images/cheer/yuki(1).jpg" alt="Yuki">
-                <h3>Yuki</h3>
-            </a>
-
-            <a href="cheerlions/faye.html" class="ug-card">
-                <img src="images/cheer/faye.jpg" alt="斐棋">
-                <h3>斐棋</h3>
-            </a>
-
-            <a href="cheerlions/mina.html" class="ug-card">
-                <img src="images/cheer/mina(1).jpg" alt="Mina">
-                <h3>Mina</h3>
-            </a>
-
-        </div>
-    </section>
-
-    <section class="cheer-section">
-        <h2 class="section-title">嗆司應援曲 CHANCE</h2>
-        <div class="video-grid">
+    <circle id="zone-1" cx="480" cy="150" r="15" class="map-zone" 
+            data-title="1F 外野大廳" 
+            data-desc="1. 外野大廳：球場的主入口，設有服務台與大型展示區。" />
             
-            <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/4hni1-4uve0?si=6i_6bHGdtaS5sOgs" 
-                title="獅王點將錄"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>獅王點將錄 (先發守備)</h3>
+    <circle id="zone-2" cx="300" cy="450" r="15" class="map-zone" 
+            data-title="1F 球員休息區" 
+            data-desc="9-14. 球員空間：包含重量訓練室、防護室及猛獅戰士的專屬休息空間。" />
+</svg>
     </div>
 
-            <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/80d-nnbICDc?si=pnI8zulPix6B-Bl3" 
-                title="火力全開"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>火力全開</h3>
+    <div id="info-display">
+        <h3 id="info-name">點選地圖區域</h3>
+        <p id="info-text">請點擊左側 1F 平面圖查看詳細設施。</p>
+        <img id="info-img" src="images/unilions1990.png" style="width: 100%; border-radius: 10px;">
     </div>
+</section>
 
-            <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/rXIBzxbTctk?si=uEmB1dAA28WCHC4p" 
-                title="統一尚勇"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>統一尚勇</h3>
-    </div>
+    <script>
+    // 1. 抓取所有具有 .map-zone 類別的區塊
+    const zones = document.querySelectorAll('.map-zone');
+    const infoName = document.getElementById('info-name');
+    const infoText = document.getElementById('info-text');
+    const infoImg = document.getElementById('info-img');
 
-            <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/XhW7J6MYmSA?si=OtCx9JN31sjHL8RR" 
-                title="統一贏戰"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>統一贏戰</h3>
-    </div>
-
-             <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/mUGCAgGY_oM?si=JjgO2sNKD-k6UHQe" 
-                title="制霸天下"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>制霸天下 (AAOA)</h3>
-    </div>
-
-
-             <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/FGRq0k3GDdE?si=w_KWI6-XHd0PHvPV" 
-                title="誰與爭鋒"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>誰與爭鋒</h3>
-    </div>
-
-                         <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/DKkV7xYBvxc?si=dTYZr2xCTLlzJbSF" 
-                title="霸氣稱王"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>霸氣稱王</h3>
-    </div>
-
-                         <div class="video-card">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/E6SL-f_HPNo?si=gwTLUZ1m9LQCeyji" 
-                title="天下無敵"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h3>天下無敵</h3>
-    </div>
-
-                
-
-
-        </div>
-    </section>
-
-</body>
-</html>
-<footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-column branding">
-                <img src="images/unilions_logo.jpg" alt="Logo" class="footer-logo">
-                <p>2026 賽季，統一尚勇！我們是台南的守護者，猛獅精神永遠傳承。</p>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/unilions/?locale=zh_TW" class="social-btn">FB</a>
-                    <a href="https://www.instagram.com/unilions_official/" class="social-btn">IG</a>
-                    <a href="https://www.youtube.com/@unilions" class="social-btn">YT</a>
-                    <a href="service@uni-lions.com.tw" class="social-btn">✉️</a>
-                </div>
-            </div>
-
-            <div class="footer-column links">
-                <h3>快速導航</h3>
-                <ul>
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="history.html">球隊沿革</a></li>
-                    <li><a href="stadium.html">獅王主場</a></li>
-                    <li><a href="roster.html">猛獅戰隊</a></li>
-                    <li><a href="cheer.html">應援專區</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column links">
-                <h3>球迷資源</h3>
-                <ul>
-                    <li><a href="https://ticket.ibon.com.tw/Index/Sport" target="_blank">ibon 售票系統</a></li>
-                    <li><a href="https://lioncrew.uni-lions.com.tw/" target="_blank">萊恩酷官網</a></li>
-                    <li><a href="https://www.cpbl.com.tw/" target="_blank">CPBL 官網</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 Uni-Lions Fan Project. Designed by 多媒科作品 | 僅供學術交流使用</p>
-        </div>
-    </footer>
-</html>
+    // 2. 用「迴圈」幫每個區塊裝上監聽器
+    zones.forEach(zone => {
+        zone.addEventListener('click', function() {
+            // 從 HTML 的 data- 屬性抓取資料
+            const title = this.getAttribute('data-title');
+            const desc = this.getAttribute('data-desc');
+            
+            // 更新右側面板內容
+            infoName.innerText = title;
+            infoText.innerText = desc;
+            
+            // 💡 這裡可以依照區域 ID 換照片
+            if(this.id === 'zone-1') {
+                infoImg.src = "images/stadium_1f_gate.jpg";
+            } else if(this.id === 'zone-2') {
+                infoImg.src = "images/player_zone.jpg";
+            }
+            
+            // 讓點選的區域維持顏色
+            zones.forEach(z => z.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
