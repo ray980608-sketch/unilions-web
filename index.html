@@ -152,7 +152,7 @@
     const logoMap = {
         "中信兄弟": "images/brothers.png",
         "樂天桃猿": "images/r.png",
-        "統一": "images/Uni_Lions_Caplogo.png", // 縮短名稱增加比對成功率
+        "統一": "images/Uni_Lions_Caplogo.png", // 改用「包含」比對，縮短關鍵字
         "台鋼雄鷹": "images/tsg.png",
         "味全龍": "images/w.png",
         "富邦悍將": "images/g.png"
@@ -161,16 +161,15 @@
     rows.forEach((row, index) => {
         const cells = row.querySelectorAll('td');
         
-        // 官網表格通常有 9-10 格，我們只需要特定的幾格
+        // 官網表格通常有 9 格以上，我們精確挑選我們要的欄位
         if (cells.length >= 7) {
             const tr = document.createElement('tr');
             
-            // 🎯 1. 抓取球隊名稱：只取文字部分，並去掉空格
+            // 🎯 清理隊名：把文字中的數字（如 60）過濾掉
             let teamName = cells[1].innerText.trim();
-            // 如果抓到「中信兄弟60」，只保留「中信兄弟」
             teamName = teamName.replace(/[0-9]/g, '').trim(); 
 
-            // 🎯 2. 比對 Logo：只要隊名「包含」關鍵字就換圖
+            // 🎯 比對 Logo：只要隊名包含關鍵字就換圖
             let logoPath = "images/unilions_logo.jpg"; // 預設圖
             for (let key in logoMap) {
                 if (teamName.includes(key)) {
@@ -178,13 +177,12 @@
                     break;
                 }
             }
-            
-            // 統一獅高亮邏輯
+
+            // 統一獅高亮效果
             if (teamName.includes("統一")) tr.className = 'highlight';
 
-            // 🎯 3. 精確填入欄位 (避開隱藏的淘汰點欄位)
-            // cells[0]: 排名, cells[1]: 隊名, cells[2]: 已賽, cells[3]: 勝-敗-和
-            // cells[4]: 勝率, cells[5]: 勝差, 最後一格通常是近況
+            // 🎯 限定欄位：[0]排名, [1]隊名, [2]出賽, [3]勝敗和, [4]勝率, [5]勝差, [最後一格]近況
+            // 我們跳過 cells[6]（這通常是淘汰指數 E）
             tr.innerHTML = `
                 <td class="rank-num">${cells[0].innerText.trim()}</td>
                 <td class="team-name">
@@ -202,27 +200,28 @@
     });
 }
 
-    function renderLocalTable(data) {
-        const tbody = document.getElementById('standings-body');
-        tbody.innerHTML = '';
-        data.forEach(item => {
-            const tr = document.createElement('tr');
-            if (item.isLions) tr.className = 'highlight';
-            tr.innerHTML = `
-                <td class="rank-num">${item.rank}</td>
-                <td class="team-name">
-                    <img src="${item.logo}" class="team-icon"> 
-                    ${item.team}
-                </td>
-                <td>${item.played}</td>
-                <td>${item.record}</td>
-                <td>${item.winRate}</td>
-                <td>${item.diff}</td>
-                <td>${item.status}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-    }
+// 🏆 2. 本地 JSON 渲染：也要同步修正 Logo 顯示
+function renderLocalTable(data) {
+    const tbody = document.getElementById('standings-body');
+    tbody.innerHTML = '';
+    data.forEach(item => {
+        const tr = document.createElement('tr');
+        if (item.isLions) tr.className = 'highlight';
+        tr.innerHTML = `
+            <td class="rank-num">${item.rank}</td>
+            <td class="team-name">
+                <img src="${item.logo}" class="team-icon"> 
+                ${item.team}
+            </td>
+            <td>${item.played}</td>
+            <td>${item.record}</td>
+            <td>${item.winRate}</td>
+            <td>${item.diff}</td>
+            <td>${item.status}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
 
     autoFetchCPBL();
 </script>
