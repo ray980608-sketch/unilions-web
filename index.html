@@ -92,59 +92,84 @@
     <tr><td colspan="7" style="text-align:center; padding:20px;">戰績更新中...</td></tr>
     <script>
     async function autoFetchCPBL() {
-        console.log("🚀 開始嘗試對焦中職官網...");
+        console.log("🦁 啟動自動對焦模式...");
         const targetUrl = 'https://www.cpbl.com.tw/standings/season';
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+        const tbody = document.getElementById('standings-body');
 
         try {
+            // 1. 嘗試抓取官網即時資料
             const response = await fetch(proxyUrl);
-            if (!response.ok) throw new Error("網路連線有問題！");
+            if (!response.ok) throw new Error("Proxy 連線超時");
             
-            const data = await response.json();
-            console.log("✅ 成功拿回原始碼，開始解析...");
-
+            const htmlString = await response.text();
             const parser = new DOMParser();
-            const doc = parser.parseFromString(data.contents, 'text/html');
-
-            // 💡 這裡我們改用更保險的抓法：抓取表格內的每一行
-            const rows = doc.querySelectorAll('table tr'); 
-            console.log("📊 抓取到的行數：", rows.length);
-
-            const tbody = document.getElementById('standings-body');
+            const doc = parser.parseFromString(htmlString, 'text/html');
+            const table = doc.querySelector('.standing_table');
             
-            if (rows.length <= 1) {
-                tbody.innerHTML = '<tr><td colspan="7">抓不到資料，可能是官網結構變了 😭</td></tr>';
-                return;
-            }
+            if (!table) throw new Error("找不到表格結構");
 
-            tbody.innerHTML = ''; 
+            const rows = table.querySelectorAll('tr');
+            renderTable(rows, true); // ✅ 成功則用官網資料渲染
+            console.log("🎯 官網即時資料同步成功！");
 
-            rows.forEach((row, index) => {
-                // 跳過標頭，且只抓取包含球隊名稱的行
-                const cells = row.querySelectorAll('td');
-                if (cells.length >= 7) {
-                    const tr = document.createElement('tr');
-                    const teamName = cells[1].innerText.trim();
-                    
-                    if (teamName.includes("統一")) tr.className = 'highlight';
-
-                    tr.innerHTML = `
-                        <td class="rank-num">${cells[0].innerText}</td>
-                        <td class="team-name">${teamName}</td>
-                        <td>${cells[2].innerText}</td>
-                        <td>${cells[3].innerText}</td>
-                        <td>${cells[4].innerText}</td>
-                        <td>${cells[5].innerText}</td>
-                        <td>${cells[6].innerText}</td>
-                    `;
-                    tbody.appendChild(tr);
-                }
-            });
-            console.log("🎯 戰績表更新完成！");
         } catch (error) {
-            console.error("❌ 發生錯誤：", error);
-            document.getElementById('standings-body').innerHTML = '<tr><td colspan="7">更新失敗，請檢查網路或 Proxy 狀態</td></tr>';
+            console.warn("⚠️ 即時更新失敗，啟動備援機制：", error.message);
+            
+            // 2. 🛡️ 備援機制：如果抓不到官網，改抓你本地的 standings.json
+            try {
+                const localRes = await fetch('standings.json');
+                const localData = await localRes.json();
+                renderLocalTable(localData);
+                console.log("📦 已改用本地備份資料顯示。");
+            } catch (localError) {
+                tbody.innerHTML = `<tr><td colspan="7">系統維護中，請稍後再試 🦁</td></tr>`;
+            }
         }
+    }
+
+    // 🏆 專門處理官網 HTML 資料的渲染
+    function renderTable(rows) {
+        const tbody = document.getElementById('standings-body');
+        tbody.innerHTML = '';
+        rows.forEach((row, index) => {
+            const cells = row.querySelectorAll('td');
+            if (cells.length >= 7) {
+                const tr = document.createElement('tr');
+                const teamName = cells[1].innerText.trim();
+                if (teamName.includes("統一")) tr.className = 'highlight';
+                tr.innerHTML = `
+                    <td class="rank-num">${cells[0].innerText.trim()}</td>
+                    <td class="team-name">${teamName}</td>
+                    <td>${cells[2].innerText.trim()}</td>
+                    <td>${cells[3].innerText.trim()}</td>
+                    <td>${cells[4].innerText.trim()}</td>
+                    <td>${cells[5].innerText.trim()}</td>
+                    <td>${cells[6].innerText.trim()}</td>
+                `;
+                tbody.appendChild(tr);
+            }
+        });
+    }
+
+    // 🏆 專門處理本地 JSON 資料的渲染
+    function renderLocalTable(data) {
+        const tbody = document.getElementById('standings-body');
+        tbody.innerHTML = '';
+        data.forEach(item => {
+            const tr = document.createElement('tr');
+            if (item.isLions) tr.className = 'highlight';
+            tr.innerHTML = `
+                <td class="rank-num">${item.rank}</td>
+                <td class="team-name">${item.team}</td>
+                <td>${item.played}</td>
+                <td>${item.record}</td>
+                <td>${item.winRate}</td>
+                <td>${item.diff}</td>
+                <td>${item.status}</td>
+            `;
+            tbody.appendChild(tr);
+        });
     }
 
     autoFetchCPBL();
