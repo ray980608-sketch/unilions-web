@@ -90,7 +90,6 @@
                 </thead>
                 <tbody id="standings-body">
     <tr><td colspan="7" style="text-align:center; padding:20px;">戰績載入中...</td></tr>
-</tbody>
 </table> <script>
     // 🦁 1. 建立 Logo 對照表 (確保中職名稱對應到你的圖片路徑)
     const logoMap = {
@@ -146,34 +145,62 @@
     }
 
     function renderTable(rows) {
-        const tbody = document.getElementById('standings-body');
-        tbody.innerHTML = '';
-        rows.forEach((row, index) => {
-            const cells = row.querySelectorAll('td');
-            if (cells.length >= 7) {
-                const tr = document.createElement('tr');
-                const teamName = cells[1].innerText.trim();
-                
-                const logoPath = logoMap[teamName] || "images/unilions_logo.jpg";
-                
-                if (teamName.includes("統一")) tr.className = 'highlight';
-                
-                tr.innerHTML = `
-                    <td class="rank-num">${cells[0].innerText.trim()}</td>
-                    <td class="team-name">
-                        <img src="${logoPath}" class="team-icon"> 
-                        ${teamName}
-                    </td>
-                    <td>${cells[2].innerText.trim()}</td>
-                    <td>${cells[3].innerText.trim()}</td>
-                    <td>${cells[4].innerText.trim()}</td>
-                    <td>${cells[5].innerText.trim()}</td>
-                    <td>${cells[6].innerText.trim()}</td>
-                `;
-                tbody.appendChild(tr);
+    const tbody = document.getElementById('standings-body');
+    tbody.innerHTML = '';
+
+    // 建立 Logo 對照表
+    const logoMap = {
+        "中信兄弟": "images/brothers.png",
+        "樂天桃猿": "images/r.png",
+        "統一": "images/Uni_Lions_Caplogo.png", // 縮短名稱增加比對成功率
+        "台鋼雄鷹": "images/tsg.png",
+        "味全龍": "images/w.png",
+        "富邦悍將": "images/g.png"
+    };
+
+    rows.forEach((row, index) => {
+        const cells = row.querySelectorAll('td');
+        
+        // 官網表格通常有 9-10 格，我們只需要特定的幾格
+        if (cells.length >= 7) {
+            const tr = document.createElement('tr');
+            
+            // 🎯 1. 抓取球隊名稱：只取文字部分，並去掉空格
+            let teamName = cells[1].innerText.trim();
+            // 如果抓到「中信兄弟60」，只保留「中信兄弟」
+            teamName = teamName.replace(/[0-9]/g, '').trim(); 
+
+            // 🎯 2. 比對 Logo：只要隊名「包含」關鍵字就換圖
+            let logoPath = "images/unilions_logo.jpg"; // 預設圖
+            for (let key in logoMap) {
+                if (teamName.includes(key)) {
+                    logoPath = logoMap[key];
+                    break;
+                }
             }
-        });
-    }
+            
+            // 統一獅高亮邏輯
+            if (teamName.includes("統一")) tr.className = 'highlight';
+
+            // 🎯 3. 精確填入欄位 (避開隱藏的淘汰點欄位)
+            // cells[0]: 排名, cells[1]: 隊名, cells[2]: 已賽, cells[3]: 勝-敗-和
+            // cells[4]: 勝率, cells[5]: 勝差, 最後一格通常是近況
+            tr.innerHTML = `
+                <td class="rank-num">${cells[0].innerText.trim()}</td>
+                <td class="team-name">
+                    <img src="${logoPath}" class="team-icon"> 
+                    ${teamName}
+                </td>
+                <td>${cells[2].innerText.trim()}</td>
+                <td>${cells[3].innerText.trim()}</td>
+                <td>${cells[4].innerText.trim()}</td>
+                <td>${cells[5].innerText.trim()}</td>
+                <td>${cells[cells.length - 1].innerText.trim()}</td> 
+            `;
+            tbody.appendChild(tr);
+        }
+    });
+}
 
     function renderLocalTable(data) {
         const tbody = document.getElementById('standings-body');
