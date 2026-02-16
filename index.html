@@ -91,44 +91,18 @@
                 <tbody id="standings-body">
     <tr><td colspan="7" style="text-align:center; padding:20px;">戰績更新中...</td></tr>
     <script>
-    async function autoFetchCPBL() {
-        console.log("🦁 啟動自動對焦模式...");
-        const targetUrl = 'https://www.cpbl.com.tw/standings/season';
-        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
-        const tbody = document.getElementById('standings-body');
+    // 🦁 1. 先建立一張對照表，確保 JS 知道哪隊要配哪張圖
+    const logoMap = {
+        "中信兄弟": "images/brothers.png",
+        "樂天桃猿": "images/r.png",
+        "統一7-ELEVEn獅": "images/Uni_Lions_Caplogo.png",
+        "統一獅": "images/Uni_Lions_Caplogo.png", // 預防官網字縮寫
+        "台鋼雄鷹": "images/tsg.png",
+        "味全龍": "images/w.png",
+        "富邦悍將": "images/g.png"
+    };
 
-        try {
-            // 1. 嘗試抓取官網即時資料
-            const response = await fetch(proxyUrl);
-            if (!response.ok) throw new Error("Proxy 連線超時");
-            
-            const htmlString = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlString, 'text/html');
-            const table = doc.querySelector('.standing_table');
-            
-            if (!table) throw new Error("找不到表格結構");
-
-            const rows = table.querySelectorAll('tr');
-            renderTable(rows, true); // ✅ 成功則用官網資料渲染
-            console.log("🎯 官網即時資料同步成功！");
-
-        } catch (error) {
-            console.warn("⚠️ 即時更新失敗，啟動備援機制：", error.message);
-            
-            // 2. 🛡️ 備援機制：如果抓不到官網，改抓你本地的 standings.json
-            try {
-                const localRes = await fetch('standings.json');
-                const localData = await localRes.json();
-                renderLocalTable(localData);
-                console.log("📦 已改用本地備份資料顯示。");
-            } catch (localError) {
-                tbody.innerHTML = `<tr><td colspan="7">系統維護中，請稍後再試 🦁</td></tr>`;
-            }
-        }
-    }
-
-    // 🏆 專門處理官網 HTML 資料的渲染
+    // 🏆 2. 更新渲染官網資料的函式
     function renderTable(rows) {
         const tbody = document.getElementById('standings-body');
         tbody.innerHTML = '';
@@ -137,10 +111,18 @@
             if (cells.length >= 7) {
                 const tr = document.createElement('tr');
                 const teamName = cells[1].innerText.trim();
+                
+                // 🔍 關鍵：根據隊名找 Logo，找不到就放預設圖
+                const logoPath = logoMap[teamName] || "images/unilions_logo.jpg";
+                
                 if (teamName.includes("統一")) tr.className = 'highlight';
+                
                 tr.innerHTML = `
                     <td class="rank-num">${cells[0].innerText.trim()}</td>
-                    <td class="team-name">${teamName}</td>
+                    <td class="team-name">
+                        <img src="${logoPath}" class="team-icon"> 
+                        ${teamName}
+                    </td>
                     <td>${cells[2].innerText.trim()}</td>
                     <td>${cells[3].innerText.trim()}</td>
                     <td>${cells[4].innerText.trim()}</td>
@@ -152,16 +134,21 @@
         });
     }
 
-    // 🏆 專門處理本地 JSON 資料的渲染
+    // 🏆 3. 更新渲染本地 JSON 資料的函式
     function renderLocalTable(data) {
         const tbody = document.getElementById('standings-body');
         tbody.innerHTML = '';
         data.forEach(item => {
             const tr = document.createElement('tr');
             if (item.isLions) tr.className = 'highlight';
+            
+            // 確保這裡也有 <img> 標籤
             tr.innerHTML = `
                 <td class="rank-num">${item.rank}</td>
-                <td class="team-name">${item.team}</td>
+                <td class="team-name">
+                    <img src="${item.logo}" class="team-icon"> 
+                    ${item.team}
+                </td>
                 <td>${item.played}</td>
                 <td>${item.record}</td>
                 <td>${item.winRate}</td>
@@ -171,8 +158,6 @@
             tbody.appendChild(tr);
         });
     }
-
-    autoFetchCPBL();
 </script>
 </tbody>
                 </tbody>
