@@ -88,79 +88,68 @@
                         <th>近況</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="rank-num">1</td>
-                        <td class="team-name">
-                            <img src="images/brothers.png" alt="兄弟" class="team-icon"> 
-                            中信兄弟
-                        </td>
-                        <td>60</td>
-                        <td>36-24-0</td>
-                        <td>0.600</td>
-                        <td>-</td>
-                        <td>敗1</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-num">2</td>
-                        <td class="team-name">
-                            <img src="images/r.png" alt="樂天" class="team-icon"> 
-                            樂天桃猿
-                        </td>
-                        <td>60</td>
-                        <td>32-27-1</td>
-                        <td>0.542</td>
-                        <td>3.5</td>
-                        <td>勝1</td>
-                    </tr>
-                    <tr class="highlight">
-                        <td class="rank-num">3</td>
-                        <td class="team-name">
-                            <img src="images/Uni_Lions_Caplogo.png" alt="統一" class="team-icon"> 
-                            統一7-ELEVEn獅
-                        </td>
-                        <td>60</td>
-                        <td>30-30-0</td>
-                        <td>0.500</td>
-                        <td>6.0</td>
-                        <td>敗1</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-num">3</td>
-                        <td class="team-name">
-                            <img src="images/tsg.png" alt="台鋼" class="team-icon"> 
-                            台鋼雄鷹
-                        </td>
-                        <td>60</td>
-                        <td>29-29-2</td>
-                        <td>0.500</td>
-                        <td>6.0</td>
-                        <td>勝1</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-num">5</td>
-                        <td class="team-name">
-                            <img src="images/w.png" alt="味全" class="team-icon"> 
-                            味全龍
-                        </td>
-                        <td>60</td>
-                        <td>26-33-1</td>
-                        <td>0.441</td>
-                        <td>9.5</td>
-                        <td>敗5</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-num">6</td>
-                        <td class="team-name">
-                            <img src="images/g.png" alt="富邦" class="team-icon"> 
-                            富邦悍將
-                        </td>
-                        <td>60</td>
-                        <td>25-35-0</td>
-                        <td>0.417</td>
-                        <td>11.0</td>
-                        <td>勝6</td>
-                    </tr>
+                <tbody id="standings-body">
+    <tr><td colspan="7" style="text-align:center; padding:20px;">戰績更新中...</td></tr>
+    <script>
+    async function autoFetchCPBL() {
+        console.log("🚀 開始嘗試對焦中職官網...");
+        const targetUrl = 'https://www.cpbl.com.tw/standings/season';
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+
+        try {
+            const response = await fetch(proxyUrl);
+            if (!response.ok) throw new Error("網路連線有問題！");
+            
+            const data = await response.json();
+            console.log("✅ 成功拿回原始碼，開始解析...");
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data.contents, 'text/html');
+
+            // 💡 這裡我們改用更保險的抓法：抓取表格內的每一行
+            const rows = doc.querySelectorAll('table tr'); 
+            console.log("📊 抓取到的行數：", rows.length);
+
+            const tbody = document.getElementById('standings-body');
+            
+            if (rows.length <= 1) {
+                tbody.innerHTML = '<tr><td colspan="7">抓不到資料，可能是官網結構變了 😭</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = ''; 
+
+            rows.forEach((row, index) => {
+                // 跳過標頭，且只抓取包含球隊名稱的行
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 7) {
+                    const tr = document.createElement('tr');
+                    const teamName = cells[1].innerText.trim();
+                    
+                    if (teamName.includes("統一")) tr.className = 'highlight';
+
+                    tr.innerHTML = `
+                        <td class="rank-num">${cells[0].innerText}</td>
+                        <td class="team-name">${teamName}</td>
+                        <td>${cells[2].innerText}</td>
+                        <td>${cells[3].innerText}</td>
+                        <td>${cells[4].innerText}</td>
+                        <td>${cells[5].innerText}</td>
+                        <td>${cells[6].innerText}</td>
+                    `;
+                    tbody.appendChild(tr);
+                }
+            });
+            console.log("🎯 戰績表更新完成！");
+        } catch (error) {
+            console.error("❌ 發生錯誤：", error);
+            document.getElementById('standings-body').innerHTML = '<tr><td colspan="7">更新失敗，請檢查網路或 Proxy 狀態</td></tr>';
+        }
+    }
+
+    autoFetchCPBL();
+</script>
+</tbody>
                 </tbody>
             </table>
         </div>
