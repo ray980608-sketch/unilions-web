@@ -105,7 +105,7 @@
     async function autoFetchCPBL() {
         console.log("🦁 啟動自動對焦模式...");
         // 修正後的網址：standing (單數)
-        const targetUrl = 'https://www.cpbl.com.tw/standing/season';
+        const targetUrl = 'https://www.cpbl.com.tw/standings/season';
         const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
         const tbody = document.getElementById('standings-body');
 
