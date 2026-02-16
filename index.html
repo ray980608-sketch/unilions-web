@@ -103,41 +103,49 @@
     };
 
     async function autoFetchCPBL() {
-        console.log("🦁 啟動自動對焦模式...");
-        // 修正後的網址：standing (單數)
-        const targetUrl = 'https://www.cpbl.com.tw/standings/season';
-        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
-        const tbody = document.getElementById('standings-body');
+    console.log("🦁 啟動終極對焦模式...");
+    
+    // 💡 嘗試使用最準確的單數網址
+    const targetUrl = 'https://www.cpbl.com.tw/standing/season'; 
+    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+    const tbody = document.getElementById('standings-body');
 
+    try {
+        const response = await fetch(proxyUrl);
+        if (!response.ok) throw new Error("Proxy 伺服器拒絕連線");
+        
+        const htmlString = await response.text();
+        
+        // 🧪 偵錯小工具：讓你在 F12 看到抓回來的長相
+        console.log("📸 原始碼長度：", htmlString.length);
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlString, 'text/html');
+        
+        // 🎯 寬鬆對焦：先抓 .standing_table，抓不到就抓畫面上第一個 table
+        const table = doc.querySelector('.standing_table') || doc.querySelector('table');
+        
+        if (!table) throw new Error("抓到了網頁，但裡面找不到戰績表格");
+
+        const rows = table.querySelectorAll('tr');
+        console.log("📊 成功解析行數：", rows.length);
+        
+        renderTable(rows); // 呼叫你已經寫好且 Logo 正常的渲染函式
+        console.log("🎯 官網即時資料已掛載！");
+
+    } catch (error) {
+        console.warn("❌ 抓取失敗原因：", error.message);
+        // 🛡️ 啟動備援機制
         try {
-            const response = await fetch(proxyUrl);
-            if (!response.ok) throw new Error("Proxy 連線超時");
-            
-            const htmlString = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlString, 'text/html');
-            const table = doc.querySelector('.standing_table');
-            
-            if (!table) throw new Error("找不到表格結構");
-
-            const rows = table.querySelectorAll('tr');
-            renderTable(rows); 
-            console.log("🎯 官網即時資料同步成功！");
-
-        } catch (error) {
-            console.warn("⚠️ 即時更新失敗，啟動備援機制：", error.message);
-            
-            // 備援機制：抓不到官網就抓本地的 JSON
-            try {
-                const localRes = await fetch('standings.json');
-                const localData = await localRes.json();
-                renderLocalTable(localData);
-                console.log("📦 已改用本地備份資料顯示。");
-            } catch (localError) {
-                tbody.innerHTML = `<tr><td colspan="7">系統維護中，請稍後再試 🦁</td></tr>`;
-            }
+            const localRes = await fetch('standings.json');
+            const localData = await localRes.json();
+            renderLocalTable(localData);
+            console.log("📦 已自動切換至本地備援資料。");
+        } catch (localError) {
+            tbody.innerHTML = `<tr><td colspan="7">連線與備援皆失敗 🦁</td></tr>`;
         }
     }
+}
 
     function renderTable(rows) {
         const tbody = document.getElementById('standings-body');
