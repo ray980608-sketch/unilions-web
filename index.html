@@ -92,7 +92,7 @@
     <tr><td colspan="7" style="text-align:center; padding:20px;">戰績載入中...</td></tr>
 </tbody>
 </table> <script>
-    // 1. 建立 Logo 對照表，確保 JS 知道哪隊要配哪張圖
+    // 🦁 1. 建立 Logo 對照表 (確保中職名稱對應到你的圖片路徑)
     const logoMap = {
         "中信兄弟": "images/brothers.png",
         "樂天桃猿": "images/r.png",
@@ -103,49 +103,47 @@
     };
 
     async function autoFetchCPBL() {
-    console.log("🦁 啟動終極對焦模式...");
-    
-    // 💡 嘗試使用最準確的單數網址
-    const targetUrl = 'https://www.cpbl.com.tw/standing/season'; 
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
-    const tbody = document.getElementById('standings-body');
+        console.log("🦁 啟動強力對焦模式...");
+        
+        // 💡 修正 1：移除 www，使用官網目前的標準網址
+        const targetUrl = 'https://cpbl.com.tw/standings/season'; 
+        
+        // 💡 修正 2：更換 Proxy 服務 (使用 codetabs，在 GitHub 上通常比 allorigins 更穩)
+        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
+        
+        const tbody = document.getElementById('standings-body');
 
-    try {
-        const response = await fetch(proxyUrl);
-        if (!response.ok) throw new Error("Proxy 伺服器拒絕連線");
-        
-        const htmlString = await response.text();
-        
-        // 🧪 偵錯小工具：讓你在 F12 看到抓回來的長相
-        console.log("📸 原始碼長度：", htmlString.length);
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlString, 'text/html');
-        
-        // 🎯 寬鬆對焦：先抓 .standing_table，抓不到就抓畫面上第一個 table
-        const table = doc.querySelector('.standing_table') || doc.querySelector('table');
-        
-        if (!table) throw new Error("抓到了網頁，但裡面找不到戰績表格");
-
-        const rows = table.querySelectorAll('tr');
-        console.log("📊 成功解析行數：", rows.length);
-        
-        renderTable(rows); // 呼叫你已經寫好且 Logo 正常的渲染函式
-        console.log("🎯 官網即時資料已掛載！");
-
-    } catch (error) {
-        console.warn("❌ 抓取失敗原因：", error.message);
-        // 🛡️ 啟動備援機制
         try {
-            const localRes = await fetch('standings.json');
-            const localData = await localRes.json();
-            renderLocalTable(localData);
-            console.log("📦 已自動切換至本地備援資料。");
-        } catch (localError) {
-            tbody.innerHTML = `<tr><td colspan="7">連線與備援皆失敗 🦁</td></tr>`;
+            const response = await fetch(proxyUrl);
+            if (!response.ok) throw new Error("轉接伺服器暫時休息中");
+            
+            const htmlString = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlString, 'text/html');
+            
+            // 🎯 精確定位表格結構
+            const table = doc.querySelector('.standing_table') || doc.querySelector('table');
+            
+            if (!table) throw new Error("在官網原始碼中找不到戰績表");
+
+            const rows = table.querySelectorAll('tr');
+            renderTable(rows); 
+            console.log("🎯 即時戰績同步成功！");
+
+        } catch (error) {
+            console.warn("⚠️ 即時連線失敗，啟動備援機制：", error.message);
+            // 🛡️ 備援機制：抓不到官網就抓你上傳的 JSON
+            try {
+                const localRes = await fetch('standings.json');
+                if (!localRes.ok) throw new Error("JSON 檔案讀取失敗");
+                const localData = await localRes.json();
+                renderLocalTable(localData);
+                console.log("📦 已改用本地備份資料顯示。");
+            } catch (localError) {
+                tbody.innerHTML = `<tr><td colspan="7">戰績暫時無法更新 🦁</td></tr>`;
+            }
         }
     }
-}
 
     function renderTable(rows) {
         const tbody = document.getElementById('standings-body');
@@ -156,15 +154,15 @@
                 const tr = document.createElement('tr');
                 const teamName = cells[1].innerText.trim();
                 
-                // 根據隊名尋找對應的 Logo 路徑
                 const logoPath = logoMap[teamName] || "images/unilions_logo.jpg";
                 
-                if (teamName.includes("統一")) tr.className = 'highlight'; 
+                if (teamName.includes("統一")) tr.className = 'highlight';
                 
                 tr.innerHTML = `
                     <td class="rank-num">${cells[0].innerText.trim()}</td>
                     <td class="team-name">
-                        <img src="${logoPath}" class="team-icon"> ${teamName}
+                        <img src="${logoPath}" class="team-icon"> 
+                        ${teamName}
                     </td>
                     <td>${cells[2].innerText.trim()}</td>
                     <td>${cells[3].innerText.trim()}</td>
@@ -182,7 +180,7 @@
         tbody.innerHTML = '';
         data.forEach(item => {
             const tr = document.createElement('tr');
-            if (item.isLions) tr.className = 'highlight'; 
+            if (item.isLions) tr.className = 'highlight';
             tr.innerHTML = `
                 <td class="rank-num">${item.rank}</td>
                 <td class="team-name">
