@@ -90,54 +90,43 @@
                 </thead>
                 <tbody id="standings-body">
     <tr><td colspan="7" style="text-align:center; padding:20px;">戰績載入中...</td></tr>
-</table> <script>
-    // 🦁 1. 建立 Logo 對照表 (確保中職名稱對應到你的圖片路徑)
+</table> 
+<script>
+    // 1. 建立 Logo 對照表
     const logoMap = {
-        "中信兄弟": "images/brothers.png",
+        "中信兄弟": "images/borthers.png",
         "樂天桃猿": "images/r.png",
-        "統一7-ELEVEn獅": "images/Uni_Lions_Caplogo.png",
+        "統一": "images/Uni_Lions_Caplogo.png",
         "台鋼雄鷹": "images/tsg.png",
         "味全龍": "images/w.png",
         "富邦悍將": "images/g.png"
     };
 
     async function autoFetchCPBL() {
-        console.log("🦁 啟動強力對焦模式...");
-        
-        // 💡 修正 1：移除 www，使用官網目前的標準網址
+        console.log("🦁 啟動精準對焦模式...");
         const targetUrl = 'https://cpbl.com.tw/standings/season'; 
-        
-        // 💡 修正 2：更換 Proxy 服務 (使用 codetabs，在 GitHub 上通常比 allorigins 更穩)
         const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
-        
         const tbody = document.getElementById('standings-body');
 
         try {
             const response = await fetch(proxyUrl);
-            if (!response.ok) throw new Error("轉接伺服器暫時休息中");
-            
             const htmlString = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(htmlString, 'text/html');
-            
-            // 🎯 精確定位表格結構
             const table = doc.querySelector('.standing_table') || doc.querySelector('table');
             
-            if (!table) throw new Error("在官網原始碼中找不到戰績表");
+            if (!table) throw new Error("找不到表格");
 
             const rows = table.querySelectorAll('tr');
             renderTable(rows); 
             console.log("🎯 即時戰績同步成功！");
 
         } catch (error) {
-            console.warn("⚠️ 即時連線失敗，啟動備援機制：", error.message);
-            // 🛡️ 備援機制：抓不到官網就抓你上傳的 JSON
+            console.warn("⚠️ 連線失敗，啟動備援機制：", error.message);
             try {
                 const localRes = await fetch('standings.json');
-                if (!localRes.ok) throw new Error("JSON 檔案讀取失敗");
                 const localData = await localRes.json();
                 renderLocalTable(localData);
-                console.log("📦 已改用本地備份資料顯示。");
             } catch (localError) {
                 tbody.innerHTML = `<tr><td colspan="7">戰績暫時無法更新 🦁</td></tr>`;
             }
@@ -145,83 +134,62 @@
     }
 
     function renderTable(rows) {
-    const tbody = document.getElementById('standings-body');
-    tbody.innerHTML = '';
-
-    // 建立 Logo 對照表
-    const logoMap = {
-        "中信兄弟": "images/brothers.png",
-        "樂天桃猿": "images/r.png",
-        "統一": "images/Uni_Lions_Caplogo.png", // 改用「包含」比對，縮短關鍵字
-        "台鋼雄鷹": "images/tsg.png",
-        "味全龍": "images/w.png",
-        "富邦悍將": "images/g.png"
-    };
-
-    rows.forEach((row, index) => {
-        const cells = row.querySelectorAll('td');
-        
-        // 官網表格通常有 9 格以上，我們精確挑選我們要的欄位
-        if (cells.length >= 7) {
-            const tr = document.createElement('tr');
+        const tbody = document.getElementById('standings-body');
+        tbody.innerHTML = '';
+        rows.forEach((row, index) => {
+            const cells = row.querySelectorAll('td');
             
-            // 🎯 清理隊名：把文字中的數字（如 60）過濾掉
-            let teamName = cells[1].innerText.trim();
-            teamName = teamName.replace(/[0-9]/g, '').trim(); 
+            // 🎯 關鍵：中職官網資料通常有 7-8 格
+            if (cells.length >= 7) {
+                const tr = document.createElement('tr');
+                
+                // 1. 從 cells[1] 拆分隊名與數字 (例如從 "中信兄弟60" 拆開)
+                const rawData = cells[1].innerText.trim();
+                const teamName = rawData.replace(/[0-9]/g, '').trim(); // 只留文字
+                const gamesPlayed = rawData.replace(/[^0-9]/g, '').trim(); // 只留數字
 
-            // 🎯 比對 Logo：只要隊名包含關鍵字就換圖
-            let logoPath = "images/unilions_logo.jpg"; // 預設圖
-            for (let key in logoMap) {
-                if (teamName.includes(key)) {
-                    logoPath = logoMap[key];
-                    break;
+                // 2. 比對 Logo：只要隊名包含關鍵字就換圖
+                let logoPath = "images/unilions_logo.jpg"; 
+                for (let key in logoMap) {
+                    if (teamName.includes(key)) {
+                        logoPath = logoMap[key];
+                        break;
+                    }
                 }
+                
+                if (teamName.includes("統一")) tr.className = 'highlight';
+                
+                // 3. 填入欄位：精確跳過 cells[5] (那是淘汰指數 E)
+                tr.innerHTML = `
+                    <td class="rank-num">${cells[0].innerText.trim()}</td>
+                    <td class="team-name">
+                        <img src="${logoPath}" class="team-icon"> 
+                        ${teamName}
+                    </td>
+                    <td>${gamesPlayed}</td> <td>${cells[2].innerText.trim()}</td> <td>${cells[3].innerText.trim()}</td> <td>${cells[4].innerText.trim()}</td> <td>${cells[cells.length - 1].innerText.trim()}</td> `;
+                tbody.appendChild(tr);
             }
+        });
+    }
 
-            // 統一獅高亮效果
-            if (teamName.includes("統一")) tr.className = 'highlight';
-
-            // 🎯 限定欄位：[0]排名, [1]隊名, [2]出賽, [3]勝敗和, [4]勝率, [5]勝差, [最後一格]近況
-            // 我們跳過 cells[6]（這通常是淘汰指數 E）
+    function renderLocalTable(data) {
+        const tbody = document.getElementById('standings-body');
+        tbody.innerHTML = '';
+        data.forEach(item => {
+            const tr = document.createElement('tr');
+            if (item.isLions) tr.className = 'highlight';
             tr.innerHTML = `
-                <td class="rank-num">${cells[0].innerText.trim()}</td>
-                <td class="team-name">
-                    <img src="${logoPath}" class="team-icon"> 
-                    ${teamName}
-                </td>
-                <td>${cells[2].innerText.trim()}</td>
-                <td>${cells[3].innerText.trim()}</td>
-                <td>${cells[4].innerText.trim()}</td>
-                <td>${cells[5].innerText.trim()}</td>
-                <td>${cells[cells.length - 1].innerText.trim()}</td> 
+                <td class="rank-num">${item.rank}</td>
+                <td class="team-name"><img src="${item.logo}" class="team-icon"> ${item.team}</td>
+                <td>${item.played}</td>
+                <td>${item.record}</td>
+                <td>${item.winRate}</td>
+                <td>${item.diff}</td>
+                <td>${item.status}</td>
             `;
             tbody.appendChild(tr);
-        }
-    });
-}
-
-// 🏆 2. 本地 JSON 渲染：也要同步修正 Logo 顯示
-function renderLocalTable(data) {
-    const tbody = document.getElementById('standings-body');
-    tbody.innerHTML = '';
-    data.forEach(item => {
-        const tr = document.createElement('tr');
-        if (item.isLions) tr.className = 'highlight';
-        tr.innerHTML = `
-            <td class="rank-num">${item.rank}</td>
-            <td class="team-name">
-                <img src="${item.logo}" class="team-icon"> 
-                ${item.team}
-            </td>
-            <td>${item.played}</td>
-            <td>${item.record}</td>
-            <td>${item.winRate}</td>
-            <td>${item.diff}</td>
-            <td>${item.status}</td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
+        });
+    }
 
     autoFetchCPBL();
 </script>
