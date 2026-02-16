@@ -1,0 +1,8 @@
+[
+    { "rank": 1, "team": "中信兄弟", "logo": "images/brothers.png", "played": 60, "record": "36-24-0", "winRate": "0.600", "diff": "-", "status": "敗1" },
+    { "rank": 2, "team": "樂天桃猿", "logo": "images/r.png", "played": 60, "record": "32-27-1", "winRate": "0.542", "diff": "3.5", "status": "勝1" },
+    { "rank": 3, "team": "統一7-ELEVEn獅", "logo": "images/Uni_Lions_Caplogo.png", "played": 60, "record": "30-30-0", "winRate": "0.500", "diff": "6.0", "status": "敗1", "isLions": true },
+    { "rank": 3, "team": "台鋼雄鷹", "logo": "images/tsg.png", "played": 60, "record": "29-29-2", "winRate": "0.500", "diff": "6.0", "status": "勝1" },
+    { "rank": 5, "team": "味全龍", "logo": "images/w.png", "played": 60, "record": "26-33-1", "winRate": "0.441", "diff": "9.5", "status": "敗5" },
+    { "rank": 6, "team": "富邦悍將", "logo": "images/g.png", "played": 60, "record": "25-35-0", "winRate": "0.417", "diff": "11.0", "status": "勝6" }
+]
