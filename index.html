@@ -88,112 +88,79 @@
                         <th>近況</th>
                     </tr>
                 </thead>
-                <tbody id="standings-body">
-    <tr><td colspan="7" style="text-align:center; padding:20px;">戰績載入中...</td></tr>
-</table> 
-<script>
-    // 1. 建立 Logo 對照表
-    const logoMap = {
-        "中信兄弟": "images/borthers.png",
-        "樂天桃猿": "images/r.png",
-        "統一": "images/Uni_Lions_Caplogo.png",
-        "台鋼雄鷹": "images/tsg.png",
-        "味全龍": "images/w.png",
-        "富邦悍將": "images/g.png"
-    };
-
-    async function autoFetchCPBL() {
-        console.log("🦁 啟動精準對焦模式...");
-        const targetUrl = 'https://cpbl.com.tw/standings/season'; 
-        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
-        const tbody = document.getElementById('standings-body');
-
-        try {
-            const response = await fetch(proxyUrl);
-            const htmlString = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlString, 'text/html');
-            const table = doc.querySelector('.standing_table') || doc.querySelector('table');
-            
-            if (!table) throw new Error("找不到表格");
-
-            const rows = table.querySelectorAll('tr');
-            renderTable(rows); 
-            console.log("🎯 即時戰績同步成功！");
-
-        } catch (error) {
-            console.warn("⚠️ 連線失敗，啟動備援機制：", error.message);
-            try {
-                const localRes = await fetch('standings.json');
-                const localData = await localRes.json();
-                renderLocalTable(localData);
-            } catch (localError) {
-                tbody.innerHTML = `<tr><td colspan="7">戰績暫時無法更新 🦁</td></tr>`;
-            }
-        }
-    }
-
-    function renderTable(rows) {
-        const tbody = document.getElementById('standings-body');
-        tbody.innerHTML = '';
-        rows.forEach((row, index) => {
-            const cells = row.querySelectorAll('td');
-            
-            // 🎯 關鍵：中職官網資料通常有 7-8 格
-            if (cells.length >= 7) {
-                const tr = document.createElement('tr');
-                
-                // 1. 從 cells[1] 拆分隊名與數字 (例如從 "中信兄弟60" 拆開)
-                const rawData = cells[1].innerText.trim();
-                const teamName = rawData.replace(/[0-9]/g, '').trim(); // 只留文字
-                const gamesPlayed = rawData.replace(/[^0-9]/g, '').trim(); // 只留數字
-
-                // 2. 比對 Logo：只要隊名包含關鍵字就換圖
-                let logoPath = "images/unilions_logo.jpg"; 
-                for (let key in logoMap) {
-                    if (teamName.includes(key)) {
-                        logoPath = logoMap[key];
-                        break;
-                    }
-                }
-                
-                if (teamName.includes("統一")) tr.className = 'highlight';
-                
-                // 3. 填入欄位：精確跳過 cells[5] (那是淘汰指數 E)
-                tr.innerHTML = `
-                    <td class="rank-num">${cells[0].innerText.trim()}</td>
-                    <td class="team-name">
-                        <img src="${logoPath}" class="team-icon"> 
-                        ${teamName}
-                    </td>
-                    <td>${gamesPlayed}</td> <td>${cells[2].innerText.trim()}</td> <td>${cells[3].innerText.trim()}</td> <td>${cells[4].innerText.trim()}</td> <td>${cells[cells.length - 1].innerText.trim()}</td> `;
-                tbody.appendChild(tr);
-            }
-        });
-    }
-
-    function renderLocalTable(data) {
-        const tbody = document.getElementById('standings-body');
-        tbody.innerHTML = '';
-        data.forEach(item => {
-            const tr = document.createElement('tr');
-            if (item.isLions) tr.className = 'highlight';
-            tr.innerHTML = `
-                <td class="rank-num">${item.rank}</td>
-                <td class="team-name"><img src="${item.logo}" class="team-icon"> ${item.team}</td>
-                <td>${item.played}</td>
-                <td>${item.record}</td>
-                <td>${item.winRate}</td>
-                <td>${item.diff}</td>
-                <td>${item.status}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-    }
-
-    autoFetchCPBL();
-</script>
-</tbody>
+                <tbody>
+                    <tr>
+                        <td class="rank-num">1</td>
+                        <td class="team-name">
+                            <img src="images/brothers.png" alt="兄弟" class="team-icon"> 
+                            中信兄弟
+                        </td>
+                        <td>60</td>
+                        <td>36-24-0</td>
+                        <td>0.600</td>
+                        <td>-</td>
+                        <td>敗1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-num">2</td>
+                        <td class="team-name">
+                            <img src="images/r.png" alt="樂天" class="team-icon"> 
+                            樂天桃猿
+                        </td>
+                        <td>60</td>
+                        <td>32-27-1</td>
+                        <td>0.542</td>
+                        <td>3.5</td>
+                        <td>勝1</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td class="rank-num">3</td>
+                        <td class="team-name">
+                            <img src="images/Uni_Lions_Caplogo.png" alt="統一" class="team-icon"> 
+                            統一7-ELEVEn獅
+                        </td>
+                        <td>60</td>
+                        <td>30-30-0</td>
+                        <td>0.500</td>
+                        <td>6.0</td>
+                        <td>敗1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-num">3</td>
+                        <td class="team-name">
+                            <img src="images/tsg.png" alt="台鋼" class="team-icon"> 
+                            台鋼雄鷹
+                        </td>
+                        <td>60</td>
+                        <td>29-29-2</td>
+                        <td>0.500</td>
+                        <td>6.0</td>
+                        <td>勝1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-num">5</td>
+                        <td class="team-name">
+                            <img src="images/w.png" alt="味全" class="team-icon"> 
+                            味全龍
+                        </td>
+                        <td>60</td>
+                        <td>26-33-1</td>
+                        <td>0.441</td>
+                        <td>9.5</td>
+                        <td>敗5</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-num">6</td>
+                        <td class="team-name">
+                            <img src="images/g.png" alt="富邦" class="team-icon"> 
+                            富邦悍將
+                        </td>
+                        <td>60</td>
+                        <td>25-35-0</td>
+                        <td>0.417</td>
+                        <td>11.0</td>
+                        <td>勝6</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
