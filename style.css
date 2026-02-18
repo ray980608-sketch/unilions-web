@@ -2856,3 +2856,74 @@ body {
         position: static !important;    /* 改用 static 避免絕對定位在手機版跑掉 */
     }
 }
+/* ========================================= */
+/* 🦁 300px 限寬賽前對戰組合卡片              */
+/* ========================================= */
+.matchup-ticket-v6 {
+    width: 100%;
+    max-width: 300px; /* ✅ 嚴格遵守左右配比，絕不爆開 */
+    background-color: #fdf1e7; /* 奶油色底 */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 20px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    margin: 0 auto;
+}
+
+.m-header-v6 {
+    background-color: #1a3b5d; /* 深藍頂條 */
+    color: white;
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.m-id-tag {
+    background: #ff6600; /* 猛獅橘 */
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.m-content-v6 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 10px;
+    background: white;
+}
+
+.m-logo-v6 {
+    height: 90px; /* 300px 寬度下的黃金比例 */
+    width: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.team-v6 { text-align: center; }
+.side-v6 { font-size: 20px; color: #999; font-weight: bold; display: block; margin-top: 10px; }
+
+.vs-txt-v6 { font-size: 30px; font-weight: 900; font-style: italic; color: #333; display: block; }
+.time-v6 { font-size: 1rem; font-weight: bold; color: #ff6600; }
+
+.m-footer-v6 { padding: 30px; text-align: center; }
+.venue-v6 { font-size: 0.9rem; color: #444; font-weight: bold; margin-bottom: 50px; }
+
+/* 前往 CPBLTV 觀看按鈕 */
+.watch-now-btn {
+    display: block;
+    background-color: #ff6600;
+    color: white !important;
+    padding: 10px 0;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    text-decoration: none !important;
+}
+
+.watch-now-btn:hover {
+    background-color: #000;
+    transform: translateY(-3px);
+}
