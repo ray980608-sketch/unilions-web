@@ -277,5 +277,74 @@
         <div class="footer-bottom">
             <p>&copy; 2026 Uni-Lions Fan Project. Designed by @chenray121 | 示範測試版本</p>
         </div>
-    </footer>
-</html>
+    </footer> <script>
+        async function updateMatchDashboard() {
+            try {
+                const response = await fetch('schedule.json');
+                if (!response.ok) throw new Error("找不到賽程檔案");
+                const lionsSchedule = await response.json();
+
+                const now = new Date();
+                const twDateStr = now.toLocaleString("zh-TW", {
+                    timeZone: "Asia/Taipei",
+                    year: 'numeric', month: '2-digit', day: '2-digit'
+                }).replace(/\//g, '/');
+                const todayStr = twDateStr.split(' ')[0];
+
+                let targetGame = lionsSchedule.find(game => game.date === todayStr);
+                let statusText = "今日比賽 TODAY";
+
+                if (!targetGame) {
+                    const futureGames = lionsSchedule
+                        .filter(game => game.date > todayStr)
+                        .sort((a, b) => a.date.localeCompare(b.date));
+                    if (futureGames.length > 0) {
+                        targetGame = futureGames[0];
+                        statusText = "下一場 NEXT GAME";
+                    }
+                }
+
+                // 🎯 精確對準 .match-side 區塊
+                const container = document.querySelector('.match-side');
+                
+                if (targetGame && container) {
+                    // 使用你 style.css 裡定義的 v6 系列 Class
+                    container.innerHTML = `
+                        <h2 class="section-title underline">${statusText}</h2>
+                        <div class="matchup-ticket-v6">
+                            <div class="m-header-v6">
+                                <span class="m-date">${targetGame.date}</span>
+                                <span class="m-id-tag">${targetGame.id}</span>
+                            </div>
+                            <div class="m-content-v6">
+                                <div class="team-v6">
+                                    <img src="${targetGame.homeLogo}" class="m-logo-v6">
+                                    <span class="side-v6">HOME</span>
+                                </div>
+                                <div class="vs-v6">
+                                    <span class="vs-txt-v6">VS</span>
+                                    <span class="time-v6">${targetGame.time}</span>
+                                </div>
+                                <div class="team-v6">
+                                    <img src="${targetGame.awayLogo}" class="m-logo-v6">
+                                    <span class="side-v6">AWAY</span>
+                                </div>
+                            </div>
+                            <div class="m-footer-v6">
+                                <p class="venue-v6">📍 ${targetGame.venue}</p>
+                                <a href="${targetGame.link}" target="_blank" class="watch-now-btn">
+                                    📺 前往 CPBLTV 觀看
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.warn("賽程讀取失敗:", error);
+            }
+        }
+
+        // 🚀 啟動函式
+        window.onload = updateMatchDashboard;
+    </script>
+</body> </html>
