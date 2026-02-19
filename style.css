@@ -479,7 +479,7 @@ div.roster-card:hover .number {
 
     /* 2. 文字內容區塊：優化手機排版 */
     .hero-content {
-        padding: 0 0 20px 20px !important; /* 縮減留白，對齊左側與下方 */
+        padding: 0 0 0px 0px !important; /* 縮減留白，對齊左側與下方 */
         max-width: 100% !important;
         text-align: left !important;
     }
