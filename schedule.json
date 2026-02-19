@@ -6,7 +6,7 @@
         "homeTeam": "澳洲隊",
         "homeLogo": "images/Aus.png",
         "awayTeam": "中華隊",
-        "awayLogo": "images/Taiwan.png",
+        "awayLogo": "images/Chinese_Taipei_national_baseball_team.png",
         "venue": "日本東京巨蛋<br><br>⚾ 世界棒球經典賽開幕戰",
         "link": "https://www.netflix.com/browse"
     },
@@ -15,7 +15,7 @@
         "id": "WBC-G4",
         "time": "18:00",
         "homeTeam": "中華隊",
-        "homeLogo": "images/Taiwan.png",
+        "homeLogo": "images/Chinese_Taipei_national_baseball_team.png",
         "awayTeam": "日本隊",
         "awayLogo": "images/Japan.png",
         "venue": "日本東京巨蛋<br><br>⚾ 台日強打豪投大對決",
@@ -28,7 +28,7 @@
         "homeTeam": "捷克隊",
         "homeLogo": "images/jack.png",
         "awayTeam": "中華隊",
-        "awayLogo": "images/Taiwan.png",
+        "awayLogo": "images/Chinese_Taipei_national_baseball_team.png",
         "venue": "日本東京巨蛋<br><br>⚾ 中華隊前進邁阿密的機會",
         "link": "https://www.netflix.com/browse"
     },
@@ -39,7 +39,7 @@
         "homeTeam": "韓國隊",
         "homeLogo": "images/kbo.png",
         "awayTeam": "中華隊",
-        "awayLogo": "images/Taiwan.png",
+        "awayLogo": "images/Chinese_Taipei_national_baseball_team.png",
         "venue": "日本東京巨蛋<br><br>⚾ 中華隊經典賽最後一戰",
         "link": "https://www.netflix.com/browse"
     },
