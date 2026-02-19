@@ -468,36 +468,40 @@ div.roster-card:hover .number {
     gap: 40px;
 }
 @media (max-width: 768px) {
-    /* 1. 縮減高度：強制呈現橫向比例 */
+    /* 1. 修正 Banner：高度縮減並讓內容對齊底部 */
     .hero-banner {
-        height: 300px !important;      /* ✅ 從 700px 縮小至 300px，視覺上變回橫向 */
-        align-items: center !important; /* 手機版文字改為垂直置中，避免被切到 */
-        margin-top: 60px !important;    /* 保持避開 Navbar */
+        height: 350px !important;      /* ✅ 維持橫向比例的高（可依喜好調整 300-400px） */
+        display: flex !important;
+        align-items: flex-end !important; /* 🎯 關鍵：將文字對齊照片底部 */
+        justify-content: flex-start !important;
+        padding-bottom: 30px !important;  /* 留一點底邊距離，不要完全黏在邊緣 */
     }
 
-    /* 2. 文字內容區塊：縮減留白 */
+    /* 2. 文字內容區塊：優化手機排版 */
     .hero-content {
-        padding: 0 20px !important;    /* 移除桌機版的大量左側留白 */
+        padding: 0 0 20px 20px !important; /* 縮減留白，對齊左側與下方 */
         max-width: 100% !important;
+        text-align: left !important;
     }
 
-    /* 3. 標題縮放：配合變扁的 Banner */
+    /* 3. 標題與副標題：縮小字體以適應窄螢幕 */
     .hero-content h1 {
-        font-size: 2.5rem !important;  /* 稍微縮小標題 */
-        border-left: 5px solid #ff6600 !important;
-        padding-left: 15px !important;
+        font-size: 2.2rem !important;  /* 縮小標題字體 */
+        line-height: 1.1;
+        margin-bottom: 10px;
     }
 
-    /* 4. 副標題與按鈕：緊湊化 */
     .hero-content p {
-        font-size: 1.1rem !important;
-        margin: 10px 0 20px 15px !important;
+        font-size: 1rem !important;    /* 縮小副標題 */
+        margin: 5px 0 20px 5px !important;
+        letter-spacing: 1px;
     }
 
+    /* 4. 按鈕：調整至手機舒適點擊的大小 */
     .cta-button {
-        padding: 10px 25px !important;
+        padding: 10px 30px !important;
         font-size: 16px !important;
-        margin-left: 15px !important;
+        margin-left: 5px !important;
     }
 }
 
@@ -3156,38 +3160,5 @@ body {
         background: #333 !important;
         margin: auto 0 !important;           /* 垂直居中 */
         display: block !important;
-    }
-}
-@media (max-width: 768px) {
-    /* 1. 縮減高度：強制呈現橫向比例 */
-    .hero-banner {
-        height: 300px !important;      /* ✅ 從 700px 縮小至 300px，視覺上變回橫向 */
-        align-items: center !important; /* 手機版文字改為垂直置中，避免被切到 */
-        margin-top: 60px !important;    /* 保持避開 Navbar */
-    }
-
-    /* 2. 文字內容區塊：縮減留白 */
-    .hero-content {
-        padding: 0 20px !important;    /* 移除桌機版的大量左側留白 */
-        max-width: 100% !important;
-    }
-
-    /* 3. 標題縮放：配合變扁的 Banner */
-    .hero-content h1 {
-        font-size: 2.5rem !important;  /* 稍微縮小標題 */
-        border-left: 5px solid #ff6600 !important;
-        padding-left: 15px !important;
-    }
-
-    /* 4. 副標題與按鈕：緊湊化 */
-    .hero-content p {
-        font-size: 1.1rem !important;
-        margin: 10px 0 20px 15px !important;
-    }
-
-    .cta-button {
-        padding: 10px 25px !important;
-        font-size: 16px !important;
-        margin-left: 15px !important;
     }
 }
