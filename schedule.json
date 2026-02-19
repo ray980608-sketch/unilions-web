@@ -20,5 +20,38 @@
         "awayLogo": "images/guardians_logo.png",
         "venue": "臺南亞太國際棒球場<br><br>⚾一軍例行賽",
         "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/04/01",
+        "id": "G008",
+        "time": "17:05",
+        "homeTeam": "中信兄弟",
+        "homeLogo": "images/brothers_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台中洲際棒球場<br><br>⚾一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/04/02",
+        "id": "G011",
+        "time": "17:05",
+        "homeTeam": "中信兄弟",
+        "homeLogo": "images/brothers_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台中洲際棒球場<br><br>⚾一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/04/03",
+        "id": "G014",
+        "time": "17:05",
+        "homeTeam": "中信兄弟",
+        "homeLogo": "images/brothers_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台中洲際棒球場<br><br>⚾一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
     }
 ]
