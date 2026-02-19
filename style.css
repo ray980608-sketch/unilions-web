@@ -493,7 +493,7 @@ div.roster-card:hover .number {
 
     .hero-content p {
         font-size: 1rem !important;    /* 縮小副標題 */
-        margin: 5px 0 20px 5px !important;
+        margin: 0px 0 20px 0px !important;
         letter-spacing: 1px;
     }
 
