@@ -2907,7 +2907,7 @@ body {
 .vs-txt-v6 { font-size: 30px; font-weight: 900; font-style: italic; color: #333; display: block; }
 .time-v6 { font-size: 1rem; font-weight: bold; color: #ff6600; }
 
-.m-footer-v6 { padding: 30px; text-align: center; }
+.m-footer-v6 { padding: 15px; text-align: center; }
 .venue-v6 { font-size: 0.9rem; color: #444; font-weight: bold; margin-bottom: 50px; }
 
 /* 前往 CPBLTV 觀看按鈕 */
