@@ -474,26 +474,26 @@ div.roster-card:hover .number {
         display: flex !important;
         align-items: flex-end !important; /* 🎯 關鍵：將文字對齊照片底部 */
         justify-content: flex-start !important;
-        padding-bottom: 0px !important;  /* 留一點底邊距離，不要完全黏在邊緣 */
+        padding-bottom: 15px !important;  /* 留一點底邊距離，不要完全黏在邊緣 */
     }
 
     /* 2. 文字內容區塊：優化手機排版 */
     .hero-content {
-        padding: 0 0 0px 20px !important; /* 縮減留白，對齊左側與下方 */
+        padding: 0 0 10px 20px !important; /* 縮減留白，對齊左側與下方 */
         max-width: 100% !important;
         text-align: left !important;
     }
 
     /* 3. 標題與副標題：縮小字體以適應窄螢幕 */
     .hero-content h1 {
-        font-size: 2.2rem !important;  /* 縮小標題字體 */
-        line-height: 1.1;
+        font-size: 33px !important;  /* 縮小標題字體 */
+        line-height: 30px;
         margin-bottom: 10px;
     }
 
     .hero-content p {
         font-size: 1rem !important;    /* 縮小副標題 */
-        margin: 5px 0 20px 5px !important;
+        margin: 1px 0 20px 10px !important;
         letter-spacing: 1px;
     }
 
@@ -501,7 +501,7 @@ div.roster-card:hover .number {
     .cta-button {
         padding: 10px 30px !important;
         font-size: 16px !important;
-        margin-left: 5px !important;
+        margin-left: 10px !important;
     }
 }
 
