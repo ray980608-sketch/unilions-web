@@ -3088,3 +3088,40 @@ body {
         padding: 5px 15px !important;
     }
 }
+@media (max-width: 768px) {
+    /* 1. 數據列容器：恢復橫向排列 */
+    .history-stats-bar {
+        flex-direction: row !important;      /* ✅ 強制橫向排列 */
+        justify-content: space-around !important; /* 均勻分布空間 */
+        gap: 5px !important;                /* 極小化間距，避免爆開 */
+        padding: 30px 10px !important;      /* 縮減左右內距 */
+    }
+
+    /* 2. 數據盒子：平分寬度 */
+    .stat-box {
+        flex: 1;
+        text-align: center;
+    }
+
+    /* 3. 數字大小：從 3rem 縮小到適合橫排的大小 */
+    .stat-num {
+        font-size: 1.8rem !important;        /* 縮小數字，確保三組並列不重疊 */
+        margin-bottom: 5px !important;
+    }
+
+    /* 4. 文字標籤：微調字體大小與間距 */
+    .stat-label {
+        font-size: 0.75rem !important;       /* 標籤變細小一點 */
+        letter-spacing: 1px !important;      /* 縮減字距 */
+        white-space: nowrap;                 /* ❌ 絕對不准換行，保持單行美感 */
+    }
+
+    /* 5. 分隔線：恢復為精細的垂直線 */
+    .stat-divider {
+        width: 1px !important;               /* 恢復垂直細線 */
+        height: 40px !important;             /* 設定適當高度 */
+        background: #333 !important;
+        margin: auto 0 !important;           /* 垂直居中 */
+        display: block !important;
+    }
+}
