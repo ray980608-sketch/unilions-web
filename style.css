@@ -3162,73 +3162,81 @@ body {
         display: block !important;
     }
 }
-/* 🦁 球場數據區塊樣式 */
-.stadium-data-section {
-    max-width: 1100px;
+/* 🦁 球場規格區塊 (垂直條狀版) */
+.stadium-specs-section {
+    max-width: 800px; /* 寬度稍微收窄，增加閱讀集中度 */
     margin: 80px auto;
     padding: 0 20px;
-    text-align: center;
 }
 
-.stadium-data-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
+.specs-list {
+    display: flex;
+    flex-direction: column; /* ✅ 強制垂直排列 */
+    gap: 15px;
     margin-top: 40px;
 }
 
-.data-card {
+.spec-bar {
     background: #fff;
-    padding: 30px 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-    transition: 0.3s ease;
+    padding: 20px 30px;
+    border-radius: 12px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between; /* 標籤靠左，數值靠右 */
     align-items: center;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: 0.3s ease;
 }
 
-.data-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(255, 102, 0, 0.1);
+.spec-bar:hover {
+    border-color: #ff6600;
+    transform: translateX(10px); /* 滑鼠移上去稍微往右推，增加動感 */
 }
 
-
-
-.data-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+/* 高亮顯示總容量 */
+.spec-bar.highlight {
+    background-color: #fdf1e7;
+    border-left: 8px ;
 }
 
-.data-content h4 {
+.spec-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.spec-icon {
+    font-size: 1.5rem;
+}
+
+.label-text {
+    font-weight: bold;
     color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
+    font-size: 0.95rem;
 }
 
-.data-value {
-    font-size: 2.2rem;
+.spec-value {
+    font-size: 1.2rem;
     font-weight: 900;
-    color: #1a3b5d; /* 深藍色質感 */
-    margin-bottom: 5px;
+    color: #1a3b5d; /* 深藍配色 */
     font-family: 'Arial', sans-serif;
 }
 
-.data-desc {
-    font-size: 0.8rem;
-    color: #aaa;
-    font-weight: bold;
-}
-
-/* 📱 手機版 RWD：確保兩兩一排或單排 */
+/* 📱 手機版 RWD：縮減內距與字體 */
 @media (max-width: 768px) {
-    .stadium-data-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+    .spec-bar {
+        padding: 15px 20px;
+        flex-direction: column; /* 手機版如果還是太擠，就連標籤數值也變上下排 */
+        align-items: flex-start;
+        gap: 5px;
     }
-    .data-value {
-        font-size: 1.6rem;
+    
+    .spec-bar:hover {
+        transform: none; /* 手機版不執行右推動畫 */
+    }
+
+    .spec-value {
+        font-size: 1.1rem;
+        padding-left: 40px; /* 對齊圖標後的文字 */
     }
 }
