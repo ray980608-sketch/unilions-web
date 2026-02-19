@@ -1,16 +1,5 @@
 [
     {
-        "date": "2026/02/20",
-        "id": "beta",
-        "time": "17:05",
-        "homeTeam": "統一獅",
-        "homeLogo": "images/unilions_team.png",
-        "awayTeam": "味全龍",
-        "awayLogo": "images/drangons_logo.png",
-        "venue": "臺南亞太國際棒球場<br><br>⚾猛獅職棒37年首戰",
-        "link": "https://hamivideo.hinet.net/main/606.do"
-    },
-    {
         "date": "2026/03/29",
         "id": "G004",
         "time": "17:05",
@@ -19,6 +8,17 @@
         "awayTeam": "台鋼雄鷹",
         "awayLogo": "images/tsg_logo.png",
         "venue": "臺南亞太國際棒球場<br><br>⚾猛獅職棒37年首戰",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/30",
+        "id": "G007",
+        "time": "18:35",
+        "homeTeam": "統一獅",
+        "homeLogo": "images/unilions_team.png",
+        "awayTeam": "富邦悍將",
+        "awayLogo": "images/guardians_logo.png",
+        "venue": "臺南亞太國際棒球場<br><br>⚾一軍例行賽",
         "link": "https://hamivideo.hinet.net/main/606.do"
     }
 ]
