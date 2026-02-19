@@ -467,6 +467,39 @@ div.roster-card:hover .number {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
 }
+@media (max-width: 768px) {
+    /* 1. 縮減高度：強制呈現橫向比例 */
+    .hero-banner {
+        height: 300px !important;      /* ✅ 從 700px 縮小至 300px，視覺上變回橫向 */
+        align-items: center !important; /* 手機版文字改為垂直置中，避免被切到 */
+        margin-top: 60px !important;    /* 保持避開 Navbar */
+    }
+
+    /* 2. 文字內容區塊：縮減留白 */
+    .hero-content {
+        padding: 0 20px !important;    /* 移除桌機版的大量左側留白 */
+        max-width: 100% !important;
+    }
+
+    /* 3. 標題縮放：配合變扁的 Banner */
+    .hero-content h1 {
+        font-size: 2.5rem !important;  /* 稍微縮小標題 */
+        border-left: 5px solid #ff6600 !important;
+        padding-left: 15px !important;
+    }
+
+    /* 4. 副標題與按鈕：緊湊化 */
+    .hero-content p {
+        font-size: 1.1rem !important;
+        margin: 10px 0 20px 15px !important;
+    }
+
+    .cta-button {
+        padding: 10px 25px !important;
+        font-size: 16px !important;
+        margin-left: 15px !important;
+    }
+}
 
 /* === 新聞卡片樣式 === */
 .news-card {
