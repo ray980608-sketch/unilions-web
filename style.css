@@ -3014,3 +3014,77 @@ body {
     height: 4px;
     background: #ff6600;
 }
+/* ========================================= */
+/* 🦁 歷史沿革頁面：手機版 (max-width: 768px) */
+/* ========================================= */
+@media (max-width: 768px) {
+
+    /* 1. 英雄背景區：縮小高度，讓標題更集中 */
+    .history-hero {
+        height: 50vh !important;
+        background-attachment: scroll !important; /* 手機版關閉視差，避免卡頓 */
+    }
+
+    .eng-title { font-size: 2.5rem !important; }
+    .sub-title { font-size: 1rem !important; padding: 0 20px; }
+
+    /* 2. 數據統計列：改為垂直排列 */
+    .history-stats-bar {
+        flex-direction: column !important;
+        gap: 40px !important;
+        padding: 40px 0 !important;
+    }
+
+    .stat-num { font-size: 3rem !important; }
+    .stat-divider {
+        width: 50px;
+        height: 2px;
+        background: #333;
+        margin: 0 auto;
+        display: block; /* 讓分隔線從垂直變水平 */
+    }
+
+    /* 3. 數位雜誌排版：圖文垂直堆疊 */
+    .magazine-history-v2 {
+        padding: 0 20px !important;
+        margin: 50px auto !important;
+    }
+
+    .mag-row, 
+    .mag-row.rev {
+        flex-direction: column !important; /* ✅ 不管奇偶數，一律圖片在上、文字在下 */
+        gap: 30px !important;
+        margin-bottom: 80px !important;
+    }
+
+    .mag-img-wrapper {
+        width: 100% !important;
+        box-shadow: 15px 15px 0px rgba(26, 59, 93, 0.1) !important; /* 縮小陰影偏移 */
+    }
+
+    .mag-text-wrapper {
+        width: 100% !important;
+        text-align: center; /* 手機版文字居中較美觀 */
+    }
+
+    .mag-text-wrapper h3 {
+        font-size: 1.8rem !important;
+        margin: 10px 0 20px 0 !important;
+    }
+
+    .mag-text-wrapper h3::after {
+        left: 50% !important; /* 橘色裝飾線置中 */
+        transform: translateX(-50%);
+    }
+
+    .mag-text-wrapper p {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        text-align: justify; /* 兩端對齊增加雜誌質感 */
+    }
+
+    .mag-year-tag {
+        font-size: 0.8rem !important;
+        padding: 5px 15px !important;
+    }
+}
