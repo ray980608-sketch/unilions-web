@@ -3240,3 +3240,65 @@ body {
         padding-left: 40px; /* 對齊圖標後的文字 */
     }
 }
+/* 🦁 隊史紀錄區塊 (極簡清單版) */
+.lions-records-section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 40px;
+}
+
+.records-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 三欄排版 */
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.record-category h3 {
+    font-size: 1.3rem;
+    color: #1a3b5d; /* 深藍色 */
+    border-bottom: 2px solid #ff6600; /* 猛獅橘底線 */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.record-list {
+    list-style: none;
+    padding: 0;
+}
+
+.record-list li {
+    display: flex;
+    justify-content: space-between; /* 標籤靠左，數值靠右 */
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.record-list li:hover {
+    background-color: #fdf1e7; /* 奶油色互動效果 */
+    padding-left: 10px;
+    color: #ff6600;
+}
+
+.rec-label {
+    color: #555;
+    font-weight: bold;
+}
+
+.rec-value {
+    color: #1a3b5d;
+    font-weight: 900; /* 強調數據 */
+    font-family: 'Arial', sans-serif;
+}
+
+/* 📱 手機版 RWD：變回單欄且字體微調 */
+@media (max-width: 768px) {
+    .records-container { grid-template-columns: 1fr; gap: 30px; }
+    .lions-records-section { padding: 0 20px; }
+    .record-list li { font-size: 0.85rem; }
+}
