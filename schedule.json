@@ -44,6 +44,116 @@
         "link": "https://www.netflix.com/browse"
     },
     {
+        "date": "2026/03/09",
+        "id": "G001",
+        "time": "18:35",
+        "homeTeam": "台鋼雄鷹",
+        "homeLogo": "images/tsg_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "高雄澄清湖棒球場<br><br>⚾ 猛獅職棒37年熱身賽首戰",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/12",
+        "id": "G004",
+        "time": "18:35",
+        "homeTeam": "味全龍",
+        "homeLogo": "images/drangons_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "斗六棒球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/14",
+        "id": "G007",
+        "time": "12:05",
+        "homeTeam": "中信兄弟",
+        "homeLogo": "images/brothers_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台南亞太成棒副球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/15",
+        "id": "G010",
+        "time": "17:05",
+        "homeTeam": "富邦悍將",
+        "homeLogo": "images/guardians_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台南亞太成棒副球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/18",
+        "id": "G015",
+        "time": "18:35",
+        "homeTeam": "統一獅",
+        "homeLogo": "images/unilions_team.png",
+        "awayTeam": "味全龍",
+        "awayLogo": "images/guardians_logo.png",
+        "venue": "斗六棒球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/20",
+        "id": "G017",
+        "time": "18:35",
+        "homeTeam": "統一獅",
+        "homeLogo": "images/unilions_team.png",
+        "awayTeam": "樂天桃猿",
+        "awayLogo": "images/Rakuten_Monkeys_logo.png",
+        "venue": "台南亞太成棒主球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/21",
+        "id": "G019",
+        "time": "13:05",
+        "homeTeam": "統一獅",
+        "homeLogo": "images/unilions_team.png",
+        "awayTeam": "中信兄弟",
+        "awayLogo": "images/brothers_logo.png",
+        "venue": "台南亞太成棒主球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/22",
+        "id": "G022",
+        "time": "13:05",
+        "homeTeam": "統一獅",
+        "homeLogo": "images/unilions_team.png",
+        "awayTeam": "富邦悍將",
+        "awayLogo": "images/guardians_logo.png",
+        "venue": "台南亞太成棒主球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+        {
+        "date": "2026/03/24",
+        "id": "G027",
+        "time": "17:05",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "嘉義市立棒球場<br><br>⚾ 一軍熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/03/25",
+        "id": "G030",
+        "time": "18:35",
+        "homeTeam": "台鋼雄鷹",
+        "homeLogo": "images/tsg_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "高雄澄清湖棒球場<br><br>⚾ 一軍熱身賽，聯盟最後一場熱身賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+{
         "date": "2026/03/29",
         "id": "G004",
         "time": "17:05",
@@ -62,7 +172,7 @@
         "homeLogo": "images/unilions_team.png",
         "awayTeam": "富邦悍將",
         "awayLogo": "images/guardians_logo.png",
-        "venue": "臺南亞太國際棒球場<br><br>⚾ 一軍例行賽",
+        "venue": "台南亞太成棒主球場<br><br>⚾ 一軍例行賽",
         "link": "https://hamivideo.hinet.net/main/606.do"
     },
     {
