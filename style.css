@@ -3307,3 +3307,28 @@ body {
     .lions-records-section { padding: 0 20px; }
     .record-list li { font-size: 0.85rem; }
 }
+/* === 新聞卡片樣式修正 === */
+.news-card {
+    background: white;
+    border: 2px solid #e0e0e0; 
+    border-radius: 20px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    
+    /* ❌ 刪除這行：width: 400px; */
+    width: 100% !important; /* ✅ 改成 100%，由 Grid 決定寬度 */
+    max-width: 450px;       /* ✅ 設定最大寬度，避免在大螢幕上長太胖 */
+    
+    margin: 0 auto;         /* 確保卡片在格子裡置中 */
+    overflow: hidden;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-sizing: border-box; 
+}
+
+/* 確保網格容器在大螢幕置中 */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 40px;
+    justify-content: center; /* 讓內容物水平置中 */
+}
