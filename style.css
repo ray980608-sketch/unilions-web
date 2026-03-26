@@ -1001,7 +1001,7 @@ div.roster-card:hover .number {
 /* 應援主視覺 */
 .cheer-hero {
     height: 400px;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/unilionscheer.jpg'); /* 記得找一張全場橘海的照片 */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/unigirls.jpg'); /* 記得找一張全場橘海的照片 */
     background-size: cover;
     background-position: center;
     display: flex;
