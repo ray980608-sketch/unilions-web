@@ -1833,7 +1833,7 @@ a.ug-card:visited {
 /* --- 🏟️ 亞太主場頁面專屬樣式 --- */
 
 .stadium-hero {
-    height: 300px;
+    height: 500px;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/ASIA-PACIFIC.jpg');
     background-size: cover;
     background-position: center;
@@ -3331,4 +3331,118 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 40px;
     justify-content: center; /* 讓內容物水平置中 */
+}
+/* 🦁 接駁頁面專屬 CSS */
+.shuttle-hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/unilions_2026.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.shuttle-notice {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.notice-box {
+    background: #fff5f0;
+    border-left: 5px solid #ff6600;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: #d35400;
+}
+
+.shuttle-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.route-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.route-header {
+    background: #1a1a1a;
+    padding: 20px;
+    color: white;
+}
+
+.route-tag {
+    background: #ff6600;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.route-body {
+    padding: 20px;
+}
+
+.time-group {
+    margin-bottom: 15px;
+}
+
+.time-group h4 {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.time-group.holiday h4 {
+    color: #ff6600; /* 假日用橘色標記 */
+}
+
+.route-footer {
+    border-top: 1px dashed #eee;
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.station-master-tip {
+    max-width: 800px;
+    margin: 60px auto;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #ff6600;
+    text-align: center;
+}
+/* 🦁 猛獅接駁跳轉按鈕樣式 */
+.shuttle-link-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #ff6600; /* 猛獅橘 */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* 圓角膠囊狀，呼應你之前的設計邏輯 */
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 2px solid #ff6600;
+}
+
+.shuttle-link-btn:hover {
+    background-color: white;
+    color: #ff6600;
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+    transform: translateY(-3px); /* 輕微浮起感 */
 }
