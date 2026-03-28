@@ -3488,7 +3488,7 @@ body {
 
     .route-card {
         width: 90%; /* 確保卡片不會超出父容器 */
-        max-width: 100%;
+        max-width: 90%;
         box-sizing: border-box; /* 讓 Padding 不會撐開寬度 */
         margin: 0 auto;
     }
