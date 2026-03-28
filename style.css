@@ -3480,7 +3480,7 @@ body {
     .shuttle-grid {
         /* ✅ 關鍵修正：將最小值改為 0，讓 Grid 隨螢幕縮放 */
         grid-template-columns: minmax(0, 1fr); 
-        gap: 15px;
+        gap: 0px;
         padding: 0 0px; /* 增加兩側留白，避免貼齊邊緣 */
         width: 100%;
         box-sizing: border-box;
