@@ -3481,13 +3481,13 @@ body {
         /* ✅ 關鍵修正：將最小值改為 0，讓 Grid 隨螢幕縮放 */
         grid-template-columns: minmax(0, 1fr); 
         gap: 15px;
-        padding: 15 15px; /* 增加兩側留白，避免貼齊邊緣 */
+        padding: 0 0px; /* 增加兩側留白，避免貼齊邊緣 */
         width: 100%;
         box-sizing: border-box;
     }
 
     .route-card {
-        width: 100%; /* 確保卡片不會超出父容器 */
+        width: 90%; /* 確保卡片不會超出父容器 */
         max-width: 100%;
         box-sizing: border-box; /* 讓 Padding 不會撐開寬度 */
         margin: 0 auto;
