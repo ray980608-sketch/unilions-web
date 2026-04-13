@@ -3623,11 +3623,31 @@ body {
     color: white;
     margin-top: 60px;
 }
-.unilions_food {
-    font-size: 32px;
-    color: #000;
-    margin-bottom: 40px;
-    font-weight: 900;
-    border-left: 6px solid #ff6600;
-    padding-left: 15px;
+/* 🦁 美食頁面：標題與底線置中 */
+.center-header {
+    width: 100%;
+    text-align: center; /* ✅ 文字置中 */
+    margin: 80px 0 40px; /* 避開固定在頂部的導覽列 */
+}
+
+.center-header .section-title.underline {
+    display: inline-block; /* ✅ 讓容器寬度隨文字長度縮放，底線才能對齊中心 */
+    position: relative;
+    padding-bottom: 12px;
+    border-bottom: none !important; /* ✅ 移除全域可能存在的長底線 */
+    border-left: none !important;   /* ✅ 移除你在 .unilions_food 等設定的左邊框 */
+    padding-left: 0 !important;
+}
+
+/* 🎯 繪製置中橘色短線 */
+.center-header .section-title.underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;            /* 移至一半處 */
+    transform: translateX(-50%); /* ✅ 往回推一半，達成絕對置中 */
+    width: 60px;          /* 橘線寬度 */
+    height: 4px;          /* 橘線粗細 */
+    background-color: #ff6600; /* 猛獅橘 */
+    border-radius: 10px;
 }
