@@ -3631,18 +3631,3 @@ body {
     border-left: 6px solid #ff6600;
     padding-left: 15px;
 }
-/* 🦁 標題置中與橘線對齊 */
-.section-header {
-    width: 100%;
-    text-align: center; /* ✅ 讓文字置中 */
-    margin-bottom: 40px; /* 給標題與下方卡片一點呼吸空間 */
-}
-
-.section-title.underline {
-    display: inline-block; /* ✅ 讓容器寬度隨文字長度縮放 */
-    position: relative;
-    font-size: 2rem;
-    font-weight: 900;
-    color: #1a1a1a;
-}
-
