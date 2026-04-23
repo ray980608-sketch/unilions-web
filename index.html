@@ -86,29 +86,28 @@
 </div>
 
             <div class="dashboard-col">
-                <h2 class="section-title underline">球隊戰績 STANDING</h2>
-                
-                <div class="table-container standings-mini">
-                    <div class="table-container">
-            <div class="season-header">
-                <span class="season-title">2026 上半季</span>
-            </div>
-
-            <table class="standings-table">
-    <thead>
-        <tr>
-            <th>排名</th>
-            <th>球隊</th>
-            <th>出賽數</th>
-            <th>勝-敗-和</th>
-            <th>勝率</th>
-            <th>勝差</th>
-            <th>近況</th>
-        </tr>
-    </thead>
-    <tbody id="standings-data">
-        </tbody>
-</table>
+    <h2 class="section-title underline">球隊戰績 STANDING</h2>
+    <div class="table-container standings-mini">
+        <div class="season-header">
+            <span class="season-title">2026 上半季</span>
+        </div>
+        <table class="standings-table">
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>球隊</th>
+                    <th>出賽數</th>
+                    <th>勝-敗-和</th>
+                    <th>勝率</th>
+                    <th>勝差</th>
+                    <th>近況</th>
+                </tr>
+            </thead>
+            <tbody id="standings-body">
+                </tbody>
+        </table>
+    </div>
+</div>
         </div>👆行動裝置請左右滑動 查看戰績
     </section>
     <section class="schedule-display-section">
@@ -283,36 +282,47 @@
         console.warn("賽程讀取失敗:", error);
     }
 }
-fetch('standings.json')
-    .then(response => response.json())
-    .then(data => {
-        const tbody = document.getElementById('standings-data');
-        tbody.innerHTML = ''; // 清空原本內容
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('standings.json')
+        .then(response => response.json())
+        .then(data => {
+            // 1. 自動計算勝率並排序 (勝率由高到低)
+            data.sort((a, b) => (b.win / (b.win + b.loss)) - (a.win / (a.win + a.loss)));
 
-        data.forEach(item => {
-            // 自動計算勝率 (勝 / (勝 + 敗))，取到小數點三位
-            const winRate = (item.win / (item.win + item.loss)).toFixed(3);
-            
-            // 判斷是否為統一獅 (加上 highlight 類別)
-            const rowClass = item.isHighlight ? 'class="highlight"' : '';
+            const firstTeam = data[0]; // 取得第一名，用來算勝差
+            const container = document.getElementById('standings-body');
+            container.innerHTML = ''; 
 
-            const row = `
-                <tr ${rowClass}>
-                    <td class="rank-num">${item.rank}</td>
-                    <td class="team-name">
-                        <img src="${item.icon}" alt="${item.team}" class="team-icon"> 
-                        ${item.team}
-                    </td>
-                    <td>${item.played}</td>
-                    <td>${item.win}-${item.loss}-${item.draw}</td>
-                    <td>${winRate}</td>
-                    <td>${item.gb}</td>
-                    <td>${item.streak}</td>
-                </tr>
-            `;
-            tbody.innerHTML += row;
+            data.forEach((item, index) => {
+                // 自動計算：出賽數、勝率、勝差
+                const played = item.win + item.loss + item.draw;
+                const winRate = (item.win / (item.win + item.loss)).toFixed(3);
+                
+                // 勝差公式：[(第一名勝 - 該隊勝) + (該隊敗 - 第一名敗)] / 2
+                let gb = ((firstTeam.win - item.win) + (item.loss - firstTeam.loss)) / 2;
+                gb = gb === 0 ? '-' : gb;
+
+                // 🦁 判斷高亮：如果是統一獅，就加上 highlight class
+                const isLions = item.team.includes('統一');
+                const rowClass = isLions ? 'class="highlight"' : '';
+
+                container.innerHTML += `
+                    <tr ${rowClass}>
+                        <td class="rank-num">${index + 1}</td>
+                        <td class="team-name">
+                            <img src="${item.icon}" alt="${item.team}" class="team-icon"> 
+                            ${item.team}
+                        </td>
+                        <td>${played}</td>
+                        <td>${item.win}-${item.loss}-${item.draw}</td>
+                        <td>${winRate}</td>
+                        <td>${gb}</td>
+                        <td>${item.streak}</td>
+                    </tr>
+                `;
+            });
         });
-    });
+});
 
         // 🚀 啟動函式
         window.onload = updateMatchDashboard;
