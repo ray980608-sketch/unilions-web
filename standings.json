@@ -1,8 +1,8 @@
 [
-    { "team": "味全龍", "icon": "images/w.png", "win": 13, "loss": 7, "draw": 0, "streak": "勝1" },
-    { "team": "台鋼雄鷹", "icon": "images/tsg.png", "win": 11, "loss": 10, "draw": 1, "streak": "敗2" },
-    { "team": "富邦悍將", "icon": "images/g.png", "win": 10, "loss": 9, "draw": 0, "streak": "勝3" },
-    { "team": "樂天桃猿", "icon": "images/r.png", "win": 9, "loss": 10, "draw": 0, "streak": "勝1" },
-    { "team": "統一7-ELEVEn獅", "icon": "images/Uni_Lions_Caplogo.png", "win": 10, "loss": 10, "draw": 1, "streak": "敗1" },
-    { "team": "中信兄弟", "icon": "images/brothers.png", "win": 6, "loss": 13, "draw": 0, "streak": "敗1" }
+    { "team": "味全龍", "icon": "images/w.png", "win": 14, "loss": 7, "draw": 0, "streak": "勝2" },
+    { "team": "台鋼雄鷹", "icon": "images/tsg.png", "win": 12, "loss": 10, "draw": 1, "streak": "勝1" },
+    { "team": "富邦悍將", "icon": "images/g.png", "win": 10, "loss": 10, "draw": 0, "streak": "敗1" },
+    { "team": "樂天桃猿", "icon": "images/r.png", "win": 9, "loss": 10, "draw": 1, "streak": "和1" },
+    { "team": "統一7-ELEVEn獅", "icon": "images/Uni_Lions_Caplogo.png", "win": 10, "loss": 11, "draw": 1, "streak": "敗2" },
+    { "team": "中信兄弟", "icon": "images/brothers.png", "win": 6, "loss": 13, "draw": 1, "streak": "和1" }
 ]
