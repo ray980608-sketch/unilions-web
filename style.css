@@ -3760,3 +3760,83 @@ body {
         line-height: 1.6;
     }
 }
+/* --- 全季賽程月曆頁面樣式 --- */
+.monthly-calendar-page {
+    max-width: 1200px;
+    margin: 90px auto;
+    padding: 0 90px;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.calendar-desc {
+    color: #555;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* 網格佈局 (預設電腦版：一排 2 到 4 張) */
+.calendar-gallery {
+    display: grid;
+    /* 這裡的 350px 決定了圖片多小才會換行，可依據你的圖片比例微調 */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* 單張月份卡片設計 */
+.calendar-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.calendar-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.calendar-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 月份小標籤 (壓在圖片底部或頂部) */
+.month-label {
+    background: #1a3b5d; /* 統一獅深藍 */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    border-top: 3px solid #ff6600; /* 猛獅橘點綴 */
+}
+
+/* --- 手機版 RWD 微調 (手機版月曆區塊) --- */
+@media (max-width: 768px) {
+    .monthly-calendar-page {
+        margin: 90px auto;
+        padding: 0 15px;
+    }
+
+    .calendar-gallery {
+        grid-template-columns: 1fr; /* 手機版強制單欄 */
+        gap: 20px;
+    }
+
+    .calendar-header .section-title {
+        font-size: 1.5rem;
+    }
+
+    .calendar-desc {
+        font-size: 0.95rem;
+    }
+}
