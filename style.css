@@ -3651,3 +3651,112 @@ body {
     background-color: #ff6600; /* 猛獅橘 */
     border-radius: 10px;
 }
+/* --- 資料來源區塊樣式 --- */
+.credits-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+}
+
+.credits-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.credits-header .en-title {
+    color: #ff6600; /* 猛獅橘 */
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+.credits-desc {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 網格佈局 */
+.credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* 卡片設計 */
+.credit-card {
+    background: #ffffff;
+    border-top: 4px solid #1a3b5d; /* 統一獅深藍 */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.credit-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.credit-card h3 {
+    color: #1a3b5d;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+
+.credit-card p, .credit-card li {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.8;
+}
+
+.credit-card ul {
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.credit-card li span {
+    color: #ff6600;
+    font-weight: bold;
+}
+/* --- 手機版 RWD 微調 (手機版資料來源區塊) --- */
+@media (max-width: 768px) {
+    .credits-section {
+        margin: 20px 15px; /* 縮小左右外邊距，讓手機螢幕能顯示更多內容 */
+        padding: 15px;     /* 縮小內邊距 */
+    }
+
+    .credits-header .section-title {
+        font-size: 1.4rem; /* 標題稍微縮小 */
+    }
+
+    .credits-desc {
+        font-size: 0.85rem;
+        text-align: justify; /* 手機版文字對齊，讓邊緣更整齊 */
+        margin-bottom: 20px;
+    }
+
+    .credits-grid {
+        grid-template-columns: 1fr; /* 強制變成單欄，上下疊加 */
+        gap: 15px; /* 卡片之間的垂直距離稍微縮小 */
+    }
+
+    .credit-card {
+        padding: 15px; /* 卡片內縮小邊距，把空間留給文字 */
+    }
+
+    .credit-card h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .credit-card p, .credit-card li {
+        font-size: 0.85rem; /* 字體稍微調小，避免手機上一直折行 */
+        line-height: 1.6;
+    }
+}
