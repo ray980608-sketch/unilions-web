@@ -25,7 +25,7 @@
 
     <nav id="nav-menu">
     <ul>
-        <li><a href="index.html" class="active">獅王基地</a></li>
+        <li><a href="index.html">獅王基地</a></li>
         <li><a href="history.html">榮耀歷史</a></li>
         <li><a href="stadium.html">主場攻略</a></li>
         <li><a href="roster.html">猛獅戰將</a></li>
@@ -39,51 +39,58 @@
 <main class="monthly-calendar-page">
     <div class="calendar-header">
         <h2 class="section-title">2026 獅王賽季月曆 <span class="en-title">MONTHLY SCHEDULE</span></h2>
-        <p class="calendar-desc">全年度主客場賽程總覽，跟著猛獅軍團征戰全台！🦁</p>
     </div>
 
-    <!-- 8 張圖片的網格展示區 -->
-    <div class="calendar-gallery">
-        <!-- 3月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-mar.png" alt="2026年3月賽程">
-            <div class="month-label">MARCH 3月</div>
-        </div>
-        <!-- 4月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-apr.png" alt="2026年4月賽程">
-            <div class="month-label">APRIL 4月</div>
-        </div>
-        <!-- 5月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-may.png" alt="2026年5月賽程">
-            <div class="month-label">MAY 5月</div>
-        </div>
-        <!-- 6月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-jun.png" alt="2026年6月賽程">
-            <div class="month-label">JUNE 6月</div>
-        </div>
-        <!-- 7月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-jul.png" alt="2026年7月賽程">
-            <div class="month-label">JULY 7月</div>
-        </div>
-        <!-- 8月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-aug.png" alt="2026年8月賽程">
-            <div class="month-label">AUGUST 8月</div>
-        </div>
-        <!-- 9月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-sep.png" alt="2026年9月賽程">
-            <div class="month-label">SEPTEMBER 9月</div>
-        </div>
-        <!-- 10月 -->
-        <div class="calendar-item">
-            <img src="images/calendar/unilions-oct.png" alt="2026年10月賽程">
-            <div class="month-label">OCTOBER 10月</div>
-        </div>
+    <!-- 月份標籤列 (Tab Buttons) -->
+    <div class="tab-container">
+        <!-- 預設 3 月是 active 狀態 -->
+        <button class="tab-button active" onclick="openMonth('month-3')">3月</button>
+        <button class="tab-button" onclick="openMonth('month-4')">4月</button>
+        <button class="tab-button" onclick="openMonth('month-5')">5月</button>
+        <button class="tab-button" onclick="openMonth('month-6')">6月</button>
+        <button class="tab-button" onclick="openMonth('month-7')">7月</button>
+        <button class="tab-button" onclick="openMonth('month-8')">8月</button>
+        <button class="tab-button" onclick="openMonth('month-9')">9月</button>
+        <button class="tab-button" onclick="openMonth('month-10')">10月</button>
+        <button class="tab-button" onclick="openMonth('theme day')">上半季主題日</button>
+    </div>
+
+    <!-- 圖片顯示區 (Tab Content) -->
+    <!-- 3月 (預設顯示) -->
+    <div id="month-3" class="tab-content" style="display: block;">
+        <img src="images/calendar/unilions-mar.png" alt="2026年3月賽程" class="calendar-img-large">
+    </div>
+    <!-- 4月 -->
+    <div id="month-4" class="tab-content">
+        <img src="images/calendar/unilions-apr.png" alt="2026年4月賽程" class="calendar-img-large">
+    </div>
+    <!-- 5月 -->
+    <div id="month-5" class="tab-content">
+        <img src="images/calendar/unilions-may.png" alt="2026年5月賽程" class="calendar-img-large">
+    </div>
+    <!-- 6月 -->
+    <div id="month-6" class="tab-content">
+        <img src="images/calendar/unilions-jun.png" alt="2026年6月賽程" class="calendar-img-large">
+    </div>
+    <!-- 7月 -->
+    <div id="month-7" class="tab-content">
+        <img src="images/calendar/unilions-jul.png" alt="2026年7月賽程" class="calendar-img-large">
+    </div>
+    <!-- 8月 -->
+    <div id="month-8" class="tab-content">
+        <img src="images/calendar/unilions-aug.png" alt="2026年8月賽程" class="calendar-img-large">
+    </div>
+    <!-- 9月 -->
+    <div id="month-9" class="tab-content">
+        <img src="images/calendar/unilions-sep.png" alt="2026年9月賽程" class="calendar-img-large">
+    </div>
+    <!-- 10月 -->
+    <div id="month-10" class="tab-content">
+        <img src="images/calendar/unilions-oct.png" alt="2026年10月賽程" class="calendar-img-large">
+    </div>
+    <!-- 主題日 -->
+    <div id="theme day" class="tab-content">
+        <img src="images/calendar/unilions-theme day.jpg" alt="上半季主題日" class="calendar-img-large">
     </div>
 </main>
 <footer class="main-footer">
@@ -124,3 +131,23 @@
             <p>&copy; 2026 Uni-Lions Fan Project. Designed by @chenray121 | 陳柏睿製作</p>
         </div>
     </footer> 
+    <script>
+function openMonth(monthId) {
+    // 1. 隱藏所有的圖片內容
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // 2. 移除所有按鈕的 "active" 狀態 (把橘色拿掉)
+    tablinks = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // 3. 顯示你點擊的那個月份，並把該按鈕加上 "active" 狀態
+    document.getElementById(monthId).style.display = "block";
+    event.currentTarget.className += " active";
+}
+</script>
