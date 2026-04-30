@@ -3727,7 +3727,7 @@ body {
 /* --- 手機版 RWD 微調 (手機版資料來源區塊) --- */
 @media (max-width: 768px) {
     .credits-section {
-        margin: 20px 15px; /* 縮小左右外邊距，讓手機螢幕能顯示更多內容 */
+        margin: 70px 15px; /* 縮小左右外邊距，讓手機螢幕能顯示更多內容 */
         padding: 15px;     /* 縮小內邊距 */
     }
 
