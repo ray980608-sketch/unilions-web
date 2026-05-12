@@ -1,0 +1,41 @@
+{
+    "weekRange": "5/4㊀ - 5/10㊐",
+    "bannerImg": "../images/weekly-banner.png",
+    "record1st": "2勝 2敗",
+    "record2nd": "2勝 1敗",
+    "firstTeamGames": [
+        {
+            "date": "5/6㊂",
+            "title": "統一獅 vs 台鋼雄鷹",
+            "details": "勝利投手：銳力獅（5局6K）<br>救援投手：鍾允華（1局無失分）<br>高偉強、林子崴、髙塩將樹、黃竣彥無失分<br>MVP陳重羽單場2支2<br>蘇智傑、陳傑憲單場4支2 / 林培緯單場3支1<br>余羿賢生涯首安出爐",
+            "videoLink": "https://reurl.cc/8e7xRR",
+            "videoTitle": "重羽MVP精彩表現"
+        },
+        {
+            "date": "5/9㊅",
+            "title": "統一獅 vs 樂天桃猿",
+            "details": "勝利投手布雷克主投8局無失分，送出4次三振，拿下MVP<br>林靖凱單場3支2，1分打點全壘打<br>林子豪、蘇智傑、潘傑楷、朱迦恩各有1支安打",
+            "videoLink": "https://reurl.cc/9WymaV",
+            "videoTitle": "全場精華回顧"
+        }
+    ],
+    "secondTeamGames": [
+        {
+            "date": "5/7㊃",
+            "title": "統一獅 vs 中信兄弟",
+            "details": "勝利投手：周彥農<br>林祖傑單場4支3，2分打點全壘打<br>全紹凱單場5支3，2分打點全壘打<br>王翾祐單場5支3 / 余羿賢單場3支2"
+        }
+    ],
+    "upcoming1st": [
+        "5/12 (二) 18:35 龍vs.獅 亞太主",
+        "5/13 (三) 18:35 龍vs.獅 亞太主",
+        "5/15 (五) 18:35 象vs.獅 亞太主",
+        "5/16 (六) 17:05 象vs.獅 亞太主",
+        "5/17 (日) 17:05 象vs.獅 亞太主"
+    ],
+    "upcoming2nd": [
+        "5/12㊁ 14:05 邦vs.獅 亞太副",
+        "5/14㊃ 14:05 猿vs.獅 亞太副"
+    ],
+    "upcomingEvent": "5/16～5/17 府城獅吼宮 吼力包高中"
+}

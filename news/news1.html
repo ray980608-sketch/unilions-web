@@ -3,45 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 獅王春訓：進駐亞太基地 | 統一獅 Uni-Lions</title>
+    <title>獅子軍週報</title>
     <link rel="stylesheet" href="../style.css">
-</head>
+</head>    
+<body>
+
+    <header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../images/unilions_logo.jpg" alt="Uni-Lions Logo">
+        </a>
+    </div>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <nav id="nav-menu">
+    <ul>
+        <li><a href="../index.html">獅王基地</a></li>
+        <li><a href="../history.html">榮耀歷史</a></li>
+        <li><a href="../stadium.html">主場攻略</a></li>
+        <li><a href="../roster.html">猛獅戰將</a></li>
+        <li><a href="../beta.html">看台應援</a></li>
+        <li><a href="https://lioncrew.uni-lions.com.tw/" target="_blank">萊恩酷</a></li>
+        <li><a href="https://ticket.ibon.com.tw/Index/Sport" target="_blank">搶票去</a></li>
+    </ul>
+</nav>
+</header>
 <body>
 
     <main class="news-detail-container">
         <section class="news-header">
-            <span class="category-tag">球隊動態</span>
-            <h1 class="section-title underline">2026 獅王春訓全面啟動：進駐亞太基地，榮耀再現</h1>
+            <span class="category-tag">獅子軍週報</span>
+            <h1 id="main-title" class="section-title underline">▍獅子軍週報 載入中... ▍</h1>
             <div class="news-meta">
-                <span>📅 2026.02.01</span>
+                <span id="pub-date">📅 2026.05.11</span>
                 <span>📍 台南亞太國際棒球訓練中心</span>
             </div>
         </section>
 
         <div class="schedule-display">
-            <img src="../images/unilionsspring.jpg" alt="2026 春訓大合照" class="schedule-img">
+            <img id="banner-img" src="../images/weekly-banner.png" alt="週報橫幅" class="schedule-img">
         </div>
 
         <article class="news-body-content">
-            <p>統一獅 2026 年春訓正式於台南亞太國際棒球訓練中心展開！這也是獅隊首次完整進駐這座國際級基地進行年度整備。總教練林岳平表示：「全新的環境象徵全新的開始，我們的目標只有一個，就是拿回失去的榮耀。」</p>
             
             <div class="info-box">
-                <h3>🦁 本次春訓三大亮點</h3>
+                <p><strong>上週一軍獅隊戰績：</strong> <span id="rec-1st" class="orange-text"></span></p>
+                <p><strong>上週二軍獅隊戰績：</strong> <span id="rec-2nd" class="orange-text"></span></p>
+            </div>
+
+            <h2 class="category-title">▍一軍戰況</h2>
+            <div id="first-team-wrap"></div>
+
+            <h2 class="category-title">▍二軍戰況</h2>
+            <div id="second-team-wrap"></div>
+
+            <div class="info-box schedule-box">
+                <h3>🦁 本週賽程預告</h3>
+                <p><strong>一軍賽程：</strong></p>
+                <ul id="up-1st-list"></ul>
+                <p><strong>二軍賽程：</strong></p>
+                <ul id="up-2nd-list"></ul>
+                <p id="up-event" class="highlight-event"></p>
+            </div>
+            
+            <p class="hash-tag">#統一獅 #Unilions #鬥陣起行 #獅子軍週報</p>
+        </article>
+    </main>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column branding">
+                <img src="../images/unilions_logo.jpg" alt="Logo" class="footer-logo">
+                <p>2026 賽季，統一尚勇！我們是台南的守護者，猛獅精神永遠傳承。</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/unilions/?locale=zh_TW" class="social-btn">FB</a>
+                    <a href="https://www.instagram.com/unilions_official/" class="social-btn">IG</a>
+                    <a href="https://www.youtube.com/@unilions" class="social-btn">YT</a>
+                </div>
+            </div>
+
+            <div class="footer-column links">
+                <h3>快速導航</h3>
                 <ul>
-                    <li><strong>大聯盟級指導：</strong> 客座教練卡諾（Kano）正式加入，針對守備細節進行特訓。</li>
-                    <li><strong>年輕戰力覺醒：</strong> 教練團特別點名捕手張翔，在阻殺能力上有顯著進化。</li>
-                    <li><strong>隊長精神領袖：</strong> 陳傑憲展現領袖風範，帶領新秀們適應高強度的訓練節奏。</li>
+                    <li><a href="../index.html">首頁</a></li>
+                    <li><a href="../history.html">球隊沿革</a></li>
+                    <li><a href="../stadium.html">獅王主場</a></li>
+                    <li><a href="../roster.html">猛獅戰隊</a></li>
+                    <li><a href="../cheer.html">應援專區</a></li>
                 </ul>
             </div>
 
-            <p>春訓期間也將開放部分時段供球迷進場參觀，邀請一號隊友們一起來到亞太球場，近距離感受猛獅們的汗水與鬥志！</p>
-        </article>
-
-        <div class="action-bar">
-            <a href="../index.html" class="download-btn">返回首頁</a>
-            <a href="../roster.html" class="back-link">查看球員名單 &rarr;</a>
+            <div class="footer-column links">
+                <h3>球迷資源</h3>
+                <ul>
+                    <li><a href="https://ticket.ibon.com.tw/Index/Sport" target="_blank">ibon 售票系統</a></li>
+                    <li><a href="https://lioncrew.uni-lions.com.tw/" target="_blank">萊恩酷官網</a></li>
+                    <li><a href="https://www.cpbl.com.tw/" target="_blank">CPBL 官網</a></li>
+                    <li><a href="../credits.html"target="_blank">資料來源</a></li>
+                </ul>
+            </div>
         </div>
-    </main>
 
-    </body>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Uni-Lions Fan Project. Designed by @chenray121 | 陳柏睿製作</p>
+        </div>
+    </footer> 
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('weekly_news.json')
+            .then(res => res.json())
+            .then(data => {
+                // 1. 標題與照片
+                document.getElementById('main-title').innerText = `▍獅子軍週報 ${data.weekRange} ▍`;
+                document.getElementById('banner-img').src = data.bannerImg;
+                document.getElementById('rec-1st').innerText = data.record1st;
+                document.getElementById('rec-2nd').innerText = data.record2nd;
+
+                // 2. 渲染一軍戰況
+                const firstWrap = document.getElementById('first-team-wrap');
+                data.firstTeamGames.forEach(game => {
+                    firstWrap.innerHTML += `
+                        <div class="game-item">
+                            <p class="game-header">${game.date} — ${game.title}</p>
+                            <p class="game-details">${game.details}</p>
+                            ${game.videoLink ? `<a href="${game.videoLink}" target="_blank" class="video-btn">🎬 ${game.videoTitle}</a>` : ''}
+                        </div>
+                    `;
+                });
+
+                // 3. 渲染二軍戰況
+                const secondWrap = document.getElementById('second-team-wrap');
+                data.secondTeamGames.forEach(game => {
+                    secondWrap.innerHTML += `
+                        <div class="game-item">
+                            <p class="game-header">${game.date} — ${game.title}</p>
+                            <p class="game-details">${game.details}</p>
+                        </div>
+                    `;
+                });
+
+                // 4. 賽程預告
+                document.getElementById('up-1st-list').innerHTML = data.upcoming1st.map(s => `<li>${s}</li>`).join('');
+                document.getElementById('up-2nd-list').innerHTML = data.upcoming2nd.map(s => `<li>${s}</li>`).join('');
+                document.getElementById('up-event').innerText = data.upcomingEvent;
+            });
+    });
+    </script>
+
+    <style>
+        .orange-text { color: #ff6600; font-weight: bold; }
+        .category-title { color: #1a3b5d; margin: 30px 0 15px 0; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        .game-item { margin-bottom: 25px; border-left: 4px solid #ff6600; padding-left: 15px; }
+        .game-header { font-weight: bold; color: #1a3b5d; font-size: 1.1rem; margin-bottom: 5px; }
+        .game-details { line-height: 1.8; color: #444; margin-bottom: 10px; }
+        .video-btn { display: inline-block; color: #ff6600; text-decoration: none; font-size: 0.9rem; border: 1px solid #ff6600; padding: 3px 10px; border-radius: 4px; }
+        .video-btn:hover { background: #ff6600; color: #fff; }
+        .schedule-box { background: #f9f9f9; border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-top: 40px; }
+        .highlight-event { color: #ff6600; font-weight: 800; margin-top: 15px; text-align: center; }
+        .hash-tag { color: #888; margin-top: 30px; font-style: italic; }
+    </style>
+</body>
 </html>
