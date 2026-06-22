@@ -733,7 +733,7 @@
         "homeLogo": "images/brothers_logo.png",
         "awayTeam": "統一獅",
         "awayLogo": "images/unilions_team.png",
-        "venue": "台北大巨蛋<br><br>⚾ 一軍例行賽",
+        "venue": "台中洲際棒球場<br><br>⚾ 一軍例行賽",
         "link": "https://hamivideo.hinet.net/main/606.do"
     } ,
     {
@@ -822,6 +822,95 @@
         "awayTeam": "中信兄弟",
         "awayLogo": "images/brothers_logo.png",
         "venue": "台南亞太成棒主球場<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/06/23",
+        "id": "G153",
+        "time": "18:35",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "樂天桃園棒球場<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    }
+    ,
+    {
+        "date": "2026/07/15",
+        "id": "G209",
+        "time": "18:35",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "樂天桃園棒球場<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/07/16",
+        "id": "G210",
+        "time": "18:35",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "樂天桃園棒球場<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/08/28",
+        "id": "G293",
+        "time": "18:35",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台北大巨蛋<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/08/29",
+        "id": "G296",
+        "time": "17:05",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台北大巨蛋<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/08/30",
+        "id": "G300",
+        "time": "16:05",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "台北大巨蛋<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/09/28",
+        "id": "G359",
+        "time": "17:05",
+        "homeTeam": "樂天桃猿",
+        "homeLogo": "images/Rakuten_Monkeys_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "樂天桃園棒球場<br><br>⚾ 一軍例行賽",
+        "link": "https://hamivideo.hinet.net/main/606.do"
+    },
+    {
+        "date": "2026/07/03",
+        "id": "G181",
+        "time": "18:35",
+        "homeTeam": "台鋼雄鷹",
+        "homeLogo": "images/tsg_logo.png",
+        "awayTeam": "統一獅",
+        "awayLogo": "images/unilions_team.png",
+        "venue": "樂天桃園棒球場<br><br>⚾ 一軍例行賽",
         "link": "https://hamivideo.hinet.net/main/606.do"
     }
     
