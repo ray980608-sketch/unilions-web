@@ -327,20 +327,21 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
             // 1. 渲染左側佈告欄內部資料
-            document.getElementById('move-date').innerText = data.rosterMovement.date;
-            
-            const listWrap = document.getElementById('movement-list-wrap');
-            listWrap.innerHTML = ''; // 清空預設
-            
-            data.rosterMovement.list.forEach(player => {
-                const statusClass = player.status.includes('升') ? 'badge-up' : 'badge-down';
-                listWrap.innerHTML += `
-                    <div class="movement-item-row">
-                        <span class="p-name">${player.name}</span>
-                        <span class="p-status ${statusClass}">${player.status}</span>
-                    </div>
-                `;
-            });
+document.getElementById('move-date').innerText = data.rosterMovement.date;
+
+const listWrap = document.getElementById('movement-list-wrap');
+listWrap.innerHTML = ''; // 清空預設
+
+data.rosterMovement.list.forEach(player => {
+    const statusClass = player.status.includes('升') ? 'badge-up' : 'badge-down';
+    listWrap.innerHTML += `
+        <div class="movement-item-row">
+            <!-- 加上專屬手機版的 class，徹底與電腦版樣式脫鉤 -->
+            <span class="p-name p-name-mobile">${player.name}</span>
+            <span class="p-status ${statusClass} p-status-mobile">${player.status}</span>
+        </div>
+    `;
+});
 
             // 2. 渲染中間週報
             document.getElementById('weekly-report-card').innerHTML = `
@@ -355,9 +356,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // 3. 渲染右側影片 (上方維持正確的 iframe 嵌入，下方按鈕獨立連結)
+            // 3. 渲染右側影片 (確保 video-wrapper 完美包裹 iframe 鎖定 16:9)
 document.getElementById('youtube-card').innerHTML = `
-    <div class="news-image video-wrapper">
+    <div class="video-wrapper">
         <iframe 
             src="${data.youtubeVideo.embedUrl}" 
             title="YouTube video player" 
