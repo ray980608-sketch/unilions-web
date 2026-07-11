@@ -1,0 +1,28 @@
+{
+  "rosterMovement": {
+    "date": "2026.07.11",
+    "title": "統一獅隊球員異動",
+    "list": [
+      { "name": "林培緯", "status": "升一軍" },
+      { "name": "林詔恩", "status": "升一軍" },
+      { "name": "林佳緯", "status": "降二軍" },
+      { "name": "胡智爲", "status": "降二軍" },
+      { "name": "陳鏞基", "status": "降二軍" }
+    ]
+  },
+  "weeklyReport": {
+    "date": "2026.07.11",
+    "title": "獅子軍週報 (測試中)",
+    "summary": "2026猛獅「鬥陣起行」，萊回顧本週猛獅軍團的表現！",
+    "image": "images/unilions_2026.jpg",
+    "link": "news/news1.html"
+  },
+  "youtubeVideo": {
+    "date": "2026.07.11",
+    "title": "2026獅王SPOTLIGHT #008：獅王調查局 生活小秘密！！",
+    "summary": "今天沒比賽 這一集，2026獅王SPOTLIGHT #008 ，又來到獅王調查局～ 讓你一起來認真選手的生活小秘密！！",
+    "embedUrl": "https://www.youtube.com/embed/SSdQ5ado_gw?si=STK7ww9dYDW0rO6j",
+    "btnLink": "https://youtu.be/SSdQ5ado_gw?si=QMmPgrhS9yBnz0fa",
+    "btnText": "一起來看看"
+  }
+}

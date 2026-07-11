@@ -126,48 +126,40 @@
     </section>
 
     <section class="news-section">
-        <h2 class="section-title">LIONS NEWS ⚾️</h2>
+    <div class="section-title-wrap">
+        <h2 class="section-title">LIONS NEWS ⚾</h2>
+    </div>
+    
+    <!-- 三欄卡片網格：結構固定，絕不跑版 -->
+    <div class="news-grid-three">
         
-        <div class="news-grid">
-            <div class="news-card">
-                <div class="news-image">
-                    <img src="images/unilionsspring.jpg" alt="春訓">
+        <!-- 欄位一：球隊名單異動 (保留你滿意的直式精緻版型) -->
+        <div class="news-card border-card">
+            <div class="news-card-content">
+                <div>
+                    <span id="move-date" class="date"></span>
+                    <h3 class="board-title">統一獅隊球員異動</h3>
+                    <div id="movement-list-wrap" class="movement-list-wrap">
+                        <!-- JS 動態注入球員名態 -->
+                    </div>
                 </div>
-                <div class="news-card-content"> 
-                    <span class="date">2026.01.31</span>
-                    <h3>2026 UNILIONS 春訓  全員大集合！</h3>
-                    <p>春訓開始，新起點</p>
-                    <a href="news/news1.html" class="read-more">閱讀更多 &rarr;</a>
-                </div>
-            </div>
 
-            <div class="news-card">
-                <div class="news-image">
-                    <img src="images/unilions_2026.jpg" alt="鬥陣起行">
-                </div>
-                <div class="news-card-content"> 
-                    <span class="date">2026.02.22</span>
-                    <h3>猛獅軍團在台南球場正式開訓</h3>
-                    <p>雙2026猛獅「鬥陣起行」，開訓典禮，餅總盼本土投手群...</p>
-                    <a href="news/news2.html" class="read-more">閱讀更多 &rarr;</a>
-                </div>
-            </div>
-
-            <div class="news-card video-news-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/NBJHpW4MMMs?si=nrSereTEctLBVOTt" frameborder=" title="Uni-Lions Video" allowfullscreen></iframe>
-                </div>
-                <div class="news-card-content">
-                    <span class="date">2026.03.25</span>
-                    <h3>2026統一獅年度主視覺棚拍花絮-介紹新主、客場球衣</h3>
-                    <p>哇哇哇！迎接新球季開打，獅子軍也換上了改款主、客場球衣
-你喜歡哪一款呢？主場？客場？
-答案是，通通都喜歡啦！！！</p>
-                    <a href="https://youtu.be/NBJHpW4MMMs?si=nsVegJwvdAVqbUQS" class="read-more">一起來看看 &rarr;</a>
-                </div>
+                <br><a href="roster.html" class="read-more">查看完整陣容 &rarr;</a>
             </div>
         </div>
-    </section>
+
+        <!-- 欄位二：獅子軍週報 -->
+        <div class="news-card" id="weekly-report-card">
+            <!-- 由 JS 注入內文 -->
+        </div>
+
+        <!-- 欄位三：YouTube 影片 -->
+        <div class="news-card" id="youtube-card">
+            <!-- 由 JS 注入內文 -->
+        </div>
+
+    </div>
+</section>
 
 </body>
 <footer class="main-footer">
@@ -329,5 +321,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 🚀 啟動函式
         window.onload = updateMatchDashboard;
+
+        document.addEventListener('DOMContentLoaded', () => {
+    fetch('home_focus.json')
+        .then(res => res.json())
+        .then(data => {
+            // 1. 渲染左側佈告欄內部資料
+            document.getElementById('move-date').innerText = data.rosterMovement.date;
+            
+            const listWrap = document.getElementById('movement-list-wrap');
+            listWrap.innerHTML = ''; // 清空預設
+            
+            data.rosterMovement.list.forEach(player => {
+                const statusClass = player.status.includes('升') ? 'badge-up' : 'badge-down';
+                listWrap.innerHTML += `
+                    <div class="movement-item-row">
+                        <span class="p-name">${player.name}</span>
+                        <span class="p-status ${statusClass}">${player.status}</span>
+                    </div>
+                `;
+            });
+
+            // 2. 渲染中間週報
+            document.getElementById('weekly-report-card').innerHTML = `
+                <div class="news-image">
+                    <img src="${data.weeklyReport.image}" alt="週報封面">
+                </div>
+                <div class="news-card-content">
+                    <span class="date">${data.weeklyReport.date}</span>
+                    <h3>${data.weeklyReport.title}</h3>
+                    <p>${data.weeklyReport.summary}</p>
+                    <a href="${data.weeklyReport.link}" class="read-more">閱讀更多 &rarr;</a>
+                </div>
+            `;
+
+            // 3. 渲染右側影片 (上方維持正確的 iframe 嵌入，下方按鈕獨立連結)
+document.getElementById('youtube-card').innerHTML = `
+    <div class="news-image video-wrapper">
+        <iframe 
+            src="${data.youtubeVideo.embedUrl}" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="news-card-content">
+        <span class="date">${data.youtubeVideo.date}</span>
+        <h3>${data.youtubeVideo.title}</h3>
+        <p>${data.youtubeVideo.summary}</p>
+        <a href="${data.youtubeVideo.btnLink}" target="_blank" class="read-more">${data.youtubeVideo.btnText} &rarr;</a>
+    </div>
+`;
+        })
+        .catch(err => console.error('資料讀取失敗:', err));
+});
     </script>
 </body> </html>
