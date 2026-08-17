@@ -3,11 +3,11 @@
     "date": "2026.07.13",
     "title": "統一獅隊球員異動",
     "list": [
-      { "name": "余羿賢", "status": "升一軍" },
-      { "name": "張皓崴", "status": "升一軍" },
-      { "name": "王翾祐", "status": "降二軍" },
-      { "name": "柯育民", "status": "降二軍" },
-      { "name": "陳韻文", "status": "降二軍" }
+      { "name": "柯育民", "status": "升一軍" },
+      { "name": "張宥謙", "status": "升一軍" },
+      { "name": "戴伯丞", "status": "升一軍" },
+      { "name": "林詔恩", "status": "降二軍" },
+      { "name": "李丞齡", "status": "降二軍" }
     ]
   },
   "weeklyReport": {
